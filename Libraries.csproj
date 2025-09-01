@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{36E3DC7C-1075-4B6F-9CFB-130A8D70170F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Libraries</RootNamespace>
+    <AssemblyName>Libraries</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <LangVersion>preview</LangVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>5ray69.Libraries</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>5ray69</Authors>
+    <Company>5ray69</Company>
+    <Description>Библиотека вспомогательных классов для плагинов Revit</Description>
+    <PackageProjectUrl>https://github.com/5ray69/Libraries.git</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/5ray69/Libraries.git</RepositoryUrl>
+    <PackageOutputPath>$(SolutionDir)</PackageOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
+      None
+    </ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="RevitAPI">
+      <HintPath>..\..\..\..\..\Program Files\Autodesk\Revit 2022\RevitAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>..\..\..\..\..\Program Files\Autodesk\Revit 2022\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ElectricsLib\AllCircuits.cs" />
+    <Compile Include="ElectricsLib\AllObjectsElectric.cs" />
+    <Compile Include="ElectricsLib\AllObjectsElectricOnLevel.cs" />
+    <Compile Include="ElectricsLib\CircuitNamingSchemeChecker.cs" />
+    <Compile Include="ElectricsLib\FeederShield.cs" />
+    <Compile Include="ElectricsLib\LengthCircuit.cs" />
+    <Compile Include="ElectricsLib\LoadCircuit.cs" />
+    <Compile Include="ElectricsLib\MySort.cs" />
+    <Compile Include="ElectricsLib\PanelNameValidator.cs" />
+    <Compile Include="ElectricsLib\ScheduleKey.cs" />
+    <Compile Include="ElectricsLib\UserWarningElectricsLib\ByProjectCircuitNaming.cs" />
+    <Compile Include="ElectricsLib\UserWarningElectricsLib\CircuitNamingSchemeSettingseError.cs" />
+    <Compile Include="ElectricsLib\UserWarningElectricsLib\EmptyParameter.cs" />
+    <Compile Include="ElectricsLib\UserWarningElectricsLib\ErrorConnectEquipment.cs" />
+    <Compile Include="ElectricsLib\UserWarningElectricsLib\ErrorNoCorrectNaming.cs" />
+    <Compile Include="ElectricsLib\UserWarningElectricsLib\FamilyEmptyType.cs" />
+    <Compile Include="ElectricsLib\UserWarningElectricsLib\NoConnectCircuit.cs" />
+    <Compile Include="ElectricsLib\UserWarningElectricsLib\NoContainLocationElectricsLib.cs" />
+    <Compile Include="ElectricsLib\UserWarningElectricsLib\NoElementKey.cs" />
+    <Compile Include="ElectricsLib\UserWarningElectricsLib\NoElementKeyId.cs" />
+    <Compile Include="ElectricsLib\UserWarningElectricsLib\NoFoundConduitType.cs" />
+    <Compile Include="ElectricsLib\UserWarningElectricsLib\NoScheduleKey.cs" />
+    <Compile Include="ElectricsLib\UserWarningElectricsLib\NotPointInPanelName.cs" />
+    <Compile Include="ElectricsLib\UserWarningElectricsLib\NotSelectedByUser.cs" />
+    <Compile Include="ErrorModelLib\ErrorModel.cs" />
+    <Compile Include="ErrorModelLib\UserNotificationException.cs" />
+    <Compile Include="LevelsLib\ElevationDouble.cs" />
+    <Compile Include="LevelsLib\LevelAnyObject.cs" />
+    <Compile Include="LevelsLib\LevelCache.cs" />
+    <Compile Include="LevelsLib\UserWarningLevelsLib\LevelsElevationNotInDocument.cs" />
+    <Compile Include="LevelsLib\UserWarningLevelsLib\LevelsNotInDocument.cs" />
+    <Compile Include="LevelsLib\UserWarningLevelsLib\NoConnectCircuit.cs" />
+    <Compile Include="LinksLib\UserWarningLinksLib\ButtonApplyNoSelectUser.cs" />
+    <Compile Include="LinksLib\UserWarningLinksLib\NoLinks.cs" />
+    <Compile Include="LocationLib\LocationAnyObject.cs" />
+    <Compile Include="LocationLib\PointSpatialElementOrPointLocation.cs" />
+    <Compile Include="LocationLib\UserWarningLocationLib\NoConnectCircuit.cs" />
+    <Compile Include="LocationLib\UserWarningLocationLib\NoContainLocation.cs" />
+    <Compile Include="ParametersLib\CopyValueParameter.cs" />
+    <Compile Include="ParametersLib\ParameterValidatorForEmpty.cs" />
+    <Compile Include="ParametersLib\ParameterValidatorIsMissing.cs" />
+    <Compile Include="ParametersLib\UserParameter.cs" />
+    <Compile Include="ParametersLib\UserWarningParametersLib\ErrorStorageType.cs" />
+    <Compile Include="ParametersLib\UserWarningParametersLib\ParameterElementAtLevelEmpty.cs" />
+    <Compile Include="ParametersLib\UserWarningParametersLib\ParameterElementMissing.cs" />
+    <Compile Include="ParametersLib\UserWarningParametersLib\ParameterIsMissing.cs" />
+    <Compile Include="ParametersLib\UserWarningParametersLib\ParameterIsReadOnly.cs" />
+    <Compile Include="ParametersLib\UserWarningParametersLib\ParameterMissingInFamilyinstance.cs" />
+    <Compile Include="ParametersLib\UserWarningParametersLib\ParameterMissingInScheduleKey.cs" />
+    <Compile Include="ParametersLib\UserWarningParametersLib\ParameterWithoutValue.cs" />
+    <Compile Include="RoomsLib\LocationAnyObject.cs" />
+    <Compile Include="RoomsLib\BordersRoom.cs" />
+    <Compile Include="RoomsLib\CountIntersectionsWithPolygon.cs" />
+    <Compile Include="RoomsLib\PointSpatialElementOrPointLocation.cs" />
+    <Compile Include="RoomsLib\IsLocated.cs" />
+    <Compile Include="RoomsLib\ObjectToLine.cs" />
+    <Compile Include="RoomsLib\PolygonBordersRoom.cs" />
+    <Compile Include="RoomsLib\RoomPlaced.cs" />
+    <Compile Include="RoomsLib\UserWarningRoomsLib\NoConnectCircuit.cs" />
+    <Compile Include="RoomsLib\UserWarningRoomsLib\NoContainLocation.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RoomsLib\app.config" />
+    <None Include="RoomsLib\packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
