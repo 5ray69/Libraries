@@ -3,7 +3,7 @@ using Autodesk.Revit.DB.Architecture;
 using System.Collections.Generic;
 using Line = Autodesk.Revit.DB.Line;
 
-namespace Libraries
+namespace Libraries.RoomsLib
 {
     public class IsLocated(Room room, Line projectLine, Transform linkTransform)
     {

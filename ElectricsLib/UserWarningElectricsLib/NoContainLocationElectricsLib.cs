@@ -1,6 +1,6 @@
 ﻿using Autodesk.Revit.DB;
 
-namespace ElectricsLib.UserWarningElectricsLib
+namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {
     public class NoContainLocationElectricsLib
     {

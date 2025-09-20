@@ -1,6 +1,6 @@
 ﻿using Autodesk.Revit.DB;
 
-namespace Libraries
+namespace Libraries.RoomsLib
 {
     public class PointSpatialElementOrPointLocation(FamilyInstance elem)
     {

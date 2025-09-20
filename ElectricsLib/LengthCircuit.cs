@@ -1,6 +1,6 @@
 ﻿using Autodesk.Revit.DB;
 
-namespace ElectricsLib
+namespace Libraries.ElectricsLib
 {
     /// <summary>
     /// Возвращает значения в зависимости от длины цепи, идущей от ЩЭ до ЩК

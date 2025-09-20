@@ -1,4 +1,4 @@
-﻿namespace ElectricsLib.UserWarningElectricsLib
+﻿namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {
     public class NotSelectedByUser
     {

@@ -1,12 +1,7 @@
 ﻿using Autodesk.Revit.DB;
-using LevelsLib;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Libraries.LevelsLib;
 
-namespace ElectricsLib.UserWarningElectricsLib
+namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {
     public class ErrorNoCorrectNaming
     {

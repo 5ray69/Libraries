@@ -1,9 +1,9 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Electrical;
-using LevelsLib;
+using Libraries.LevelsLib;
 using System.Collections.Generic;
 
-namespace ElectricsLib
+namespace Libraries.ElectricsLib
 {
     public class AllCircuits
     {

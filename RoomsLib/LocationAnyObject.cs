@@ -1,10 +1,10 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Electrical;
-using ErrorModelLib;
-using Libraries.UserWarningRoomsLib;
+using Libraries.ErrorModelLib;
+using Libraries.RoomsLib.UserWarningRoomsLib;
 using System;
 
-namespace Libraries
+namespace Libraries.RoomsLib
 {
     public class LocationAnyObject()
     {

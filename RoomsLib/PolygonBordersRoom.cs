@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Line = Autodesk.Revit.DB.Line;
 
-namespace Libraries
+namespace Libraries.RoomsLib
 {
     public class PolygonBordersRoom(UIApplication uiapp)
     {

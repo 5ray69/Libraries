@@ -1,12 +1,10 @@
 ﻿using Autodesk.Revit.DB;
-using ElectricsLib.MyDll.UserWarningStrings;
-using ElectricsLib.UserWarningElectricsLib;
-using ElectricsLib.UserWarningStrings;
-using ErrorModelLib;
+using Libraries.ElectricsLib.UserWarningElectricsLib;
+using Libraries.ErrorModelLib;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ElectricsLib
+namespace Libraries.ElectricsLib
 {
     public class ScheduleKey(Document doc, string nameSchedule)
     {

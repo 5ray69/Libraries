@@ -1,6 +1,6 @@
 ﻿using Autodesk.Revit.DB.Electrical;
 
-namespace ElectricsLib.UserWarningElectricsLib
+namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {
     public class NoConnectCircuit
     {

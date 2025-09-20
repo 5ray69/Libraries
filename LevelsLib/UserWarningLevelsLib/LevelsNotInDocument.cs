@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace RenameCircuit.MyDll.UserWarningStrings
+namespace Libraries.LevelsLib.UserWarningLevelsLib
 {
     public class LevelsNotInDocument
     {

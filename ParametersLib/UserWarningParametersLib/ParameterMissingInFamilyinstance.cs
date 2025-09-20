@@ -1,7 +1,7 @@
 ﻿using Autodesk.Revit.DB;
-using LevelsLib;
+using Libraries.LevelsLib;
 
-namespace ParametersLib.UserWarningParametersLib
+namespace Libraries.ParametersLib.UserWarningParametersLib
 {
     public class ParameterMissingInFamilyinstance
     {

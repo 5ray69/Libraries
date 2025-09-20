@@ -1,4 +1,4 @@
-﻿namespace LinksLib.UserWarningLinksLib
+﻿namespace Libraries.LinksLib.UserWarningLinksLib
 {
     public class NoLinks
     {

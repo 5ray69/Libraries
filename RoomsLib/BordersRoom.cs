@@ -2,7 +2,7 @@
 using Autodesk.Revit.DB.Architecture;
 using System.Collections.Generic;
 
-namespace Libraries
+namespace Libraries.RoomsLib
 {
     public class BordersRoom(Room room, Transform linkTransform)
     {

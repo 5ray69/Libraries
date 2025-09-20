@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ParametersLib.UserWarningParametersLib
+namespace Libraries.ParametersLib.UserWarningParametersLib
 {
     public class ParameterIsReadOnly
     {

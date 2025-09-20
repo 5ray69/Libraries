@@ -1,9 +1,10 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Electrical;
-using ErrorModelLib;
+using Libraries.ElectricsLib.UserWarningElectricsLib;
+using Libraries.ErrorModelLib;
 using System;
 
-namespace LevelsLib
+namespace Libraries.LevelsLib
 {
     public class LevelAnyObject(Document doc)
     {

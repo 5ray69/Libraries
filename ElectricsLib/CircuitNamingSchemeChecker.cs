@@ -1,9 +1,9 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Electrical;
-using ElectricsLib.UserWarningElectricsLib;
-using ErrorModelLib;
+using Libraries.ErrorModelLib;
+using Libraries.ElectricsLib.UserWarningElectricsLib;
 
-namespace ElectricsLib
+namespace Libraries.ElectricsLib
 {
     public class CircuitNamingSchemeChecker(Document doc, ErrorModel errorModel)
     {

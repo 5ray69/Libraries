@@ -3,7 +3,7 @@ using Autodesk.Revit.DB.Architecture;
 using System;
 using Line = Autodesk.Revit.DB.Line;
 
-namespace Libraries
+namespace Libraries.RoomsLib
 {
     public class ObjectToLine(Object lineOrXYZ, Room room, double lengthOutLine = 7)
     {

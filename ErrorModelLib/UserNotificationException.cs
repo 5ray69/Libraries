@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ErrorModelLib
+namespace Libraries.ErrorModelLib
 {
     public class UserNotificationException : Exception
     {

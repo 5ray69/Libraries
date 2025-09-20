@@ -1,4 +1,4 @@
-﻿namespace RenameCircuit.MyDll.UserWarningStrings
+﻿namespace Libraries.LinksLib.UserWarningLinksLib
 {
     public class ButtonApplyNoSelectUser
     {

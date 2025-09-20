@@ -1,6 +1,6 @@
 ﻿using Autodesk.Revit.DB;
 
-namespace ParametersLib.UserWarningParametersLib
+namespace Libraries.ParametersLib.UserWarningParametersLib
 {
     public class ParameterIsMissing
     {

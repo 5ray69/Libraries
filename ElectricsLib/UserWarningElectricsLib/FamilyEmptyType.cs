@@ -1,7 +1,7 @@
 ﻿using Autodesk.Revit.DB;
-using LevelsLib;
+using Libraries.LevelsLib;
 
-namespace RenameCircuit.MyDll.UserWarningStrings
+namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {
     public class FamilyEmptyType
     {

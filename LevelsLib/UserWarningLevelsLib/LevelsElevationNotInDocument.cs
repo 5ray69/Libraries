@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace LevelsLib.UserWarningLevelsLib
+namespace Libraries.LevelsLib.UserWarningLevelsLib
 {
     public class LevelsElevationNotInDocument
     {

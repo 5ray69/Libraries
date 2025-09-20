@@ -119,7 +119,6 @@
     <Compile Include="LinksLib\UserWarningLinksLib\NoLinks.cs" />
     <Compile Include="LocationLib\LocationAnyObject.cs" />
     <Compile Include="LocationLib\PointSpatialElementOrPointLocation.cs" />
-    <Compile Include="LocationLib\UserWarningLocationLib\NoConnectCircuit.cs" />
     <Compile Include="LocationLib\UserWarningLocationLib\NoContainLocation.cs" />
     <Compile Include="ParametersLib\CopyValueParameter.cs" />
     <Compile Include="ParametersLib\ParameterValidatorForEmpty.cs" />

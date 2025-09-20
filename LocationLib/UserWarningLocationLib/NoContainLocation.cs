@@ -1,6 +1,6 @@
 ﻿using Autodesk.Revit.DB;
 
-namespace LocationLib.UserWarningRoomsLib
+namespace Libraries.LocationLib.UserWarningLocationLib
 {
     public class NoContainLocation
     {

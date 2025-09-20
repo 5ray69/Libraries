@@ -361,3 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+PackagePush.bat
+KeyLibraries.docx
+Git перед созданием перенеси KeyLibraries и PackagePush.txt

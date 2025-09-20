@@ -1,8 +1,8 @@
 ﻿using Autodesk.Revit.DB;
-using ElectricsLib.UserWarningElectricsLib;
-using ErrorModelLib;
+using Libraries.ErrorModelLib;
+using Libraries.ElectricsLib.UserWarningElectricsLib;
 
-namespace ElectricsLib
+namespace Libraries.ElectricsLib
 {
     public class PanelNameValidator(ErrorModel errorModel)
     {

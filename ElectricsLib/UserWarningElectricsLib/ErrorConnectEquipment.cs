@@ -1,9 +1,9 @@
 ﻿using Autodesk.Revit.DB;
-using LevelsLib;
+using Libraries.LevelsLib;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ElectricsLib.UserWarningElectricsLib
+namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {
     public class ErrorConnectEquipment
     {

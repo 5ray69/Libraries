@@ -1,8 +1,8 @@
 ﻿using Autodesk.Revit.DB;
-using ErrorModelLib;
-using ParametersLib.UserWarningParametersLib;
+using Libraries.ErrorModelLib;
+using Libraries.ParametersLib.UserWarningParametersLib;
 
-namespace ParametersLib
+namespace Libraries.ParametersLib
 {
     public class UserParameter
     {

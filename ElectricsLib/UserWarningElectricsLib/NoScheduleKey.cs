@@ -1,4 +1,4 @@
-﻿namespace ElectricsLib.MyDll.UserWarningStrings
+﻿namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {
     internal class NoScheduleKey
     {

@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Libraries
+namespace Libraries.RoomsLib
 {
     public class CountIntersectionsWithPolygon(ICollection<Line> roomBorders, Line projectLine)
     {

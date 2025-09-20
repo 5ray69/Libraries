@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ElectricsLib
+namespace Libraries.ElectricsLib
 {
     public class MySort
     {

@@ -1,6 +1,6 @@
 ﻿using Autodesk.Revit.UI;
 
-namespace ErrorModelLib
+namespace Libraries.ErrorModelLib
 {
     public class ErrorModel
     {

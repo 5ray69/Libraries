@@ -1,6 +1,6 @@
 ﻿using Autodesk.Revit.DB;
 
-namespace ElectricsLib.UserWarningStrings
+namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {
     public class NoElementKeyId
     {

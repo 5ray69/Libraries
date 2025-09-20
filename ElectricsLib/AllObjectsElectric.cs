@@ -1,9 +1,9 @@
 ﻿using Autodesk.Revit.DB;
-using LevelsLib;
+using Libraries.LevelsLib;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ElectricsLib
+namespace Libraries.ElectricsLib
 {
     public class AllObjectsElectric(Document doc, List<string> userSelect)
     {

@@ -1,12 +1,12 @@
 ﻿using Autodesk.Revit.DB;
-using LevelsLib;
+using Libraries.LevelsLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ParametersLib.UserWarningParametersLib
+namespace Libraries.ParametersLib.UserWarningParametersLib
 {
     public class ParameterMissingInScheduleKey
     {

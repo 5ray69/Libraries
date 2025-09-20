@@ -1,7 +1,7 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Electrical;
 
-namespace ElectricsLib
+namespace Libraries.ElectricsLib
 {
     public class FeederShield
     {

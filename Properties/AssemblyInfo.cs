@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанные со сборкой.
 [assembly: AssemblyTitle("5ray69.Libraries")]
-[assembly: AssemblyDescription("Библиотека вспомогательных классов для плагинов Revit")]
+[assembly: AssemblyDescription("Библиотека вспомогательных классов для плагинов Revit 2022")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("5ray69")]
 [assembly: AssemblyProduct("ElectricsRevit")]
@@ -29,5 +29,5 @@ using System.Runtime.InteropServices;
 //      Номер сборки
 //      Редакция
 //
-[assembly: AssemblyVersion("1.0.0.3")]
+[assembly: AssemblyVersion("2.0.0.3")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
