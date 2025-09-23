@@ -363,5 +363,7 @@ MigrationBackup/
 FodyWeavers.xsd
 
 PackagePush.bat
+PackagePushMove.bat
+PackagePushName.bat
 KeyLibraries.docx
 Git перед созданием перенеси KeyLibraries и PackagePush.txt

@@ -87,9 +87,13 @@
     <Compile Include="ElectricsLib\AllObjectsElectric.cs" />
     <Compile Include="ElectricsLib\AllObjectsElectricOnLevel.cs" />
     <Compile Include="ElectricsLib\CircuitNamingSchemeChecker.cs" />
+    <Compile Include="ElectricsLib\DozaCollector.cs" />
+    <Compile Include="ElectricsLib\DozaGroup.cs" />
+    <Compile Include="ElectricsLib\DozaGroups.cs" />
     <Compile Include="ElectricsLib\FeederShield.cs" />
     <Compile Include="ElectricsLib\LengthCircuit.cs" />
     <Compile Include="ElectricsLib\LoadCircuit.cs" />
+    <Compile Include="ElectricsLib\LoadsPanel.cs" />
     <Compile Include="ElectricsLib\MySort.cs" />
     <Compile Include="ElectricsLib\PanelNameValidator.cs" />
     <Compile Include="ElectricsLib\ScheduleKey.cs" />
@@ -105,6 +109,7 @@
     <Compile Include="ElectricsLib\UserWarningElectricsLib\NoElementKeyId.cs" />
     <Compile Include="ElectricsLib\UserWarningElectricsLib\NoFoundConduitType.cs" />
     <Compile Include="ElectricsLib\UserWarningElectricsLib\NoScheduleKey.cs" />
+    <Compile Include="ElectricsLib\UserWarningElectricsLib\NoTargetCategory.cs" />
     <Compile Include="ElectricsLib\UserWarningElectricsLib\NotPointInPanelName.cs" />
     <Compile Include="ElectricsLib\UserWarningElectricsLib\NotSelectedByUser.cs" />
     <Compile Include="ErrorModelLib\ErrorModel.cs" />
@@ -115,6 +120,8 @@
     <Compile Include="LevelsLib\UserWarningLevelsLib\LevelsElevationNotInDocument.cs" />
     <Compile Include="LevelsLib\UserWarningLevelsLib\LevelsNotInDocument.cs" />
     <Compile Include="LevelsLib\UserWarningLevelsLib\NoConnectCircuit.cs" />
+    <Compile Include="LinksLib\Links.cs" />
+    <Compile Include="LinksLib\LinksDto.cs" />
     <Compile Include="LinksLib\UserWarningLinksLib\ButtonApplyNoSelectUser.cs" />
     <Compile Include="LinksLib\UserWarningLinksLib\NoLinks.cs" />
     <Compile Include="LocationLib\LocationAnyObject.cs" />
