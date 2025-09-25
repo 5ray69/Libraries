@@ -8,13 +8,14 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
     <projectUrl>http://github.com/5ray69/Libraries.git/</projectUrl>
-    <description>Библиотека вспомогательных классов плагинов Ревита в работе электрика</description>
-    <releaseNotes>изменены определения AssemblyInfo и созданы вспомогательные файлы</releaseNotes>
+    <description>Библиотека вспомогательных классов плагинов Ревита 2022 в работе электрика</description>
+    <releaseNotes>добавлены комментарии к методам классов в пакет</releaseNotes>
     <tags>C# package 5ray69 Libraries</tags>
     <readme>README.md</readme>
   </metadata>
 
   <files>
     <file src="README.md" target="" />
+    <file src="bin\Release\Libraries.*" target="lib\net48\" />
   </files>
 </package>

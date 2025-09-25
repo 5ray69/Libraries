@@ -13,6 +13,8 @@
     <LangVersion>preview</LangVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <DocumentationFile>bin\$(Configuration)\Libraries.xml</DocumentationFile>
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -96,17 +98,24 @@
     <Compile Include="ElectricsLib\LoadsPanel.cs" />
     <Compile Include="ElectricsLib\MySort.cs" />
     <Compile Include="ElectricsLib\PanelNameValidator.cs" />
+    <Compile Include="ElectricsLib\Panels.cs" />
     <Compile Include="ElectricsLib\ScheduleKey.cs" />
+    <Compile Include="ElectricsLib\UserWarningElectricsLib\ActiveViewNotViewSection.cs" />
     <Compile Include="ElectricsLib\UserWarningElectricsLib\ByProjectCircuitNaming.cs" />
     <Compile Include="ElectricsLib\UserWarningElectricsLib\CircuitNamingSchemeSettingseError.cs" />
     <Compile Include="ElectricsLib\UserWarningElectricsLib\EmptyParameter.cs" />
     <Compile Include="ElectricsLib\UserWarningElectricsLib\ErrorConnectEquipment.cs" />
     <Compile Include="ElectricsLib\UserWarningElectricsLib\ErrorNoCorrectNaming.cs" />
+    <Compile Include="ElectricsLib\UserWarningElectricsLib\ErrorSizeSectionView.cs" />
     <Compile Include="ElectricsLib\UserWarningElectricsLib\FamilyEmptyType.cs" />
     <Compile Include="ElectricsLib\UserWarningElectricsLib\NoConnectCircuit.cs" />
+    <Compile Include="ElectricsLib\UserWarningElectricsLib\NoConnector.cs" />
     <Compile Include="ElectricsLib\UserWarningElectricsLib\NoContainLocationElectricsLib.cs" />
+    <Compile Include="ElectricsLib\UserWarningElectricsLib\NoDotLevelInNamePanel.cs" />
     <Compile Include="ElectricsLib\UserWarningElectricsLib\NoElementKey.cs" />
     <Compile Include="ElectricsLib\UserWarningElectricsLib\NoElementKeyId.cs" />
+    <Compile Include="ElectricsLib\UserWarningElectricsLib\NoFamilyContainString.cs" />
+    <Compile Include="ElectricsLib\UserWarningElectricsLib\NoFamilyName.cs" />
     <Compile Include="ElectricsLib\UserWarningElectricsLib\NoFoundConduitType.cs" />
     <Compile Include="ElectricsLib\UserWarningElectricsLib\NoScheduleKey.cs" />
     <Compile Include="ElectricsLib\UserWarningElectricsLib\NoTargetCategory.cs" />
