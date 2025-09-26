@@ -14,7 +14,7 @@
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <DocumentationFile>bin\$(Configuration)\Libraries.xml</DocumentationFile>
-    <NoWarn>1591</NoWarn>
+    <NoWarn>1570, 1572, 1573, 1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -126,6 +126,7 @@
     <Compile Include="LevelsLib\ElevationDouble.cs" />
     <Compile Include="LevelsLib\LevelAnyObject.cs" />
     <Compile Include="LevelsLib\LevelCache.cs" />
+    <Compile Include="LevelsLib\Levels.cs" />
     <Compile Include="LevelsLib\UserWarningLevelsLib\LevelsElevationNotInDocument.cs" />
     <Compile Include="LevelsLib\UserWarningLevelsLib\LevelsNotInDocument.cs" />
     <Compile Include="LevelsLib\UserWarningLevelsLib\NoConnectCircuit.cs" />

@@ -126,7 +126,7 @@ namespace Libraries.LevelsLib
 
 
         /// <summary>
-        /// Проверяет, все ли имена уровней из связанного файла есть в уровнях основного файла.
+        /// Проверяет, все ли отметки уровней из связанного файла есть в отметках уровней основного файла.
         /// </summary>
         public static ICollection<string> GetMissingElevationLevels(Document doc, Document linkDoc)
         {
@@ -139,7 +139,7 @@ namespace Libraries.LevelsLib
             foreach (Level linkedLevel in linkedLevels)
             {
                 double levelRoundElevation = Math.Round(linkedLevel.Elevation, 2);
-                if (!levelElevationDict.ContainsKey(levelRoundElevation)) // проверяем, есть ли имя уровня
+                if (!levelElevationDict.ContainsKey(levelRoundElevation)) // проверяем, есть ли отметка уровня
                 {
                     noLevelNamesElevations.Add(linkedLevel.Name);
                 }
@@ -149,7 +149,7 @@ namespace Libraries.LevelsLib
 
 
         /// <summary>
-        /// Метод очистки/сброса кэша, если документ измениться после вставки/удаления уровней.
+        /// Метод очистки/сброса кэша, если документ изменится после вставки/удаления уровней.
         /// </summary>
         public static void ResetCache()
         {
@@ -160,9 +160,5 @@ namespace Libraries.LevelsLib
                 _elevationDict = null;
             }
         }
-
-
-
-
     }
 }
