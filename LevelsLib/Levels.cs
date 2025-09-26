@@ -34,6 +34,23 @@ namespace Libraries.LevelsLib
             return _cachedLevels;
         }
 
+
+        /// <summary>
+        /// Возвращает список округлённых до двух знаков высотных отметок уровней,
+        /// отсортированных по возрастанию.
+        /// </summary>
+        /// <param name="roundDgits"></param>
+        /// <returns></returns>
+        public List<double> GetSortedRoundedElevations(int roundDgits)
+        {
+            return GetSortedLevels()                       // берём отсортированные уровни
+                .Select(level => Math.Round(level.Elevation, roundDgits)) // округляем каждую отметку
+                .Distinct()                                // убираем возможные дубликаты
+                .OrderBy(elev => elev)                     // сортируем по возрастанию
+                .ToList();                                  // преобразуем в список
+        }
+
+
         /// <summary>
         /// Возвращает список имён уровней из кэша.
         /// </summary>
