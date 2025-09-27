@@ -3,6 +3,9 @@ using System.Linq;
 
 namespace Libraries.ElectricsLib
 {
+    /// <summary>
+    /// сборщик доз по группам одного семейства - дозы
+    /// </summary>
     public class DozaCollector
     {
         private readonly Document _doc;
@@ -12,13 +15,19 @@ namespace Libraries.ElectricsLib
             _doc = doc;
         }
 
+
         /// <summary>
-        /// Собирает группы доз по выбранному семейству.
+        /// Группирует семейства по имени до точки.<br/>
+        /// Группируются семейства указанного ElementId.<br/>
+        /// Семейства выбираются на виде.
         /// </summary>
-        public DozaGroups Collect(ElementId elementIdFamily)
+        /// <param name="elementIdFamily"></param>
+        /// <param name="viewId"></param>
+        /// <returns></returns>
+        public DozaGroups Collect(ElementId elementIdFamily, ElementId viewId)
         {
             // Собираем FamilyInstance на активном виде
-            var familyInstances = new FilteredElementCollector(_doc, _doc.ActiveView.Id)
+            var familyInstances = new FilteredElementCollector(_doc, viewId)
                 .WhereElementIsNotElementType()
                 .OfClass(typeof(FamilyInstance))
                 .Cast<FamilyInstance>()

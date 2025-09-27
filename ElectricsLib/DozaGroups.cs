@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Libraries.ElectricsLib
 {
+    /// <summary>
+    /// все группы доз одного семейства
+    /// </summary>
     public class DozaGroups : IEnumerable<DozaGroup>
     {
         private readonly List<DozaGroup> _groups;
