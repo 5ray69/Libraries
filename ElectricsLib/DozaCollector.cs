@@ -17,9 +17,9 @@ namespace Libraries.ElectricsLib
 
 
         /// <summary>
-        /// Группирует семейства по имени до точки.<br/>
-        /// Группируются семейства указанного ElementId.<br/>
-        /// Семейства выбираются на виде.
+        /// <para>Группирует семейства по имени до точки.</para>
+        /// <para>Группируются семейства указанного ElementId.</para>
+        /// <para>Семейства выбираются на виде.</para>
         /// </summary>
         /// <param name="elementIdFamily"></param>
         /// <param name="viewId"></param>

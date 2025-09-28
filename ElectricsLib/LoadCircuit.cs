@@ -12,8 +12,8 @@ namespace Libraries.ElectricsLib
     public class LoadCircuit
     {
         /// <summary>
-        /// Вспомогательный метод. Не для использования.<br/>
-        /// Перечисляет все FamilyInstance из системы нагрузок как поток<br/>
+        /// <para>Вспомогательный метод. Не для использования.</para>
+        /// <para>Перечисляет все FamilyInstance из системы нагрузок как поток</para>
         /// </summary>
         public IEnumerable<FamilyInstance> EnumerateLoads(ElectricalSystem electricalSystem)
         {
@@ -56,8 +56,8 @@ namespace Libraries.ElectricsLib
 
 
         /// <summary>
-        /// Соответсвуют ли элементы нагрузок цепи<br/>
-        /// указанной категории<br/>
+        /// <para>Соответсвуют ли элементы нагрузок цепи</para>
+        /// <para>указанной категории</para>
         /// </summary>
         /// <param name="electricalSystem"></param>
         /// <returns></returns>
@@ -75,9 +75,9 @@ namespace Libraries.ElectricsLib
 
 
         /// <summary>
-        /// Возвращает список элементов нагрузок цепи,<br/>
-        /// которые не соответствуют указанной категории.<br/>
-        /// Возвращается список не более 10 элементов<br/>
+        /// <para>Возвращает список элементов нагрузок цепи,</para>
+        /// <para>которые не соответствуют указанной категории.</para>
+        /// <para>Возвращается список не более 10 элементов</para>
         /// </summary>
         /// <param name="electricalSystem"></param>
         /// <returns></returns>
@@ -104,10 +104,10 @@ namespace Libraries.ElectricsLib
         //if (isFound)
         //    Console.WriteLine("Подходящая электрическая система найдена!");
         /// <summary>
-        /// возвращает true,<br/>
-        /// если у нагрузки цепи,<br/>
-        /// имя типоразмера семейства, удовлетворяет условиям,<br/>
-        /// иначе false
+        /// <para>возвращает true,</para>
+        /// <para>если у нагрузки цепи,</para>
+        /// <para>имя типоразмера семейства, удовлетворяет условиям,</para>
+        /// <para>иначе false</para>
         /// </summary>
         public bool FamilyNameContain(ElectricalSystem electricalSystem, params Func<string, bool>[] conditions)
         {

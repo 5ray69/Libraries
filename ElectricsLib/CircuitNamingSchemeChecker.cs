@@ -11,9 +11,9 @@ namespace Libraries.ElectricsLib
         private readonly ErrorModel _errorModel = errorModel;
 
         /// <summary>
-        /// Проверяет настройку "По проекту – схема обозн. цепей"<br/>
-        /// В Управление - Настройки МЕР - Настройки<br/>
-        /// электротехнических систем - Обозначение цепей
+        /// <para>Проверяет настройку "По проекту – схема обозн. цепей"</para>
+        /// <para>В Управление - Настройки МЕР - Настройки</para>
+        /// <para>электротехнических систем - Обозначение цепей</para>
         /// </summary>
         public bool ValidateCircuitNamingScheme()
         {

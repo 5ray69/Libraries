@@ -16,10 +16,18 @@ namespace Libraries.ElectricsLib
     public class LoadsPanel
     {
         ErrorModel errorModel = new();
+        // на аргумент load к чему хотим подключить нагрузку
+
         /// <summary>
-        /// Проверяет, является ли load нагрузкой у panel
+        /// <para>Проверяет, является ли load нагрузкой у panel (true), иначе false.</para>
+        /// <para>Циклическая ссылка, когда мы пытаемся подключить панель к ее нагрузе.</para>
+        /// <para>Для проверки циклической ссылки на аргумент panel подаем то, что хотим подключить,</para>
+        /// <para>а на аргумент load - к чему хотим подключить нагрузку</para>
         /// </summary>
-        /// <returns>true - если load в нагрузках panel, иначе false</returns>
+        /// <param name="doc"></param>
+        /// <param name="panel"></param>
+        /// <param name="load"></param>
+        /// <returns></returns>
         public bool IsLoad(Document doc, FamilyInstance panel, FamilyInstance load)
         {
             if (panel == null || load == null)
