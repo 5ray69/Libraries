@@ -31,7 +31,7 @@ namespace Libraries.ElectricsLib
         /// После использования класса нужно отписаться от события, чтобы избежать утечек памяти.
         /// </summary>
         /// <param name="uiApp"></param>
-        public void Unsubscribe()
+        public void UnsubscribeEvent()
         {
             _uiApp.Application.DocumentChanged -= OnDocumentChanged;
         }
