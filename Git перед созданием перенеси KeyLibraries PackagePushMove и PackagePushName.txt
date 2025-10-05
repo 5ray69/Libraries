@@ -1,0 +1,8 @@
+Перед созданием Git вынеси в другую папку KeyLibraries.docx, PackagePush.bat, PackagePushMove.bat и PackagePushName.bat.
+Потом добавь четыре этих файла в gitignor, чтоб не опубликовать ключ API huget
+
+
+PackagePush.bat
+PackagePushMove.bat
+PackagePushName.bat
+KeyLibraries.docx
