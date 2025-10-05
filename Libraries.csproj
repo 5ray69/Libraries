@@ -118,6 +118,7 @@
     <Compile Include="ElectricsLib\UserWarningElectricsLib\NoFamilyName.cs" />
     <Compile Include="ElectricsLib\UserWarningElectricsLib\NoFoundConduitType.cs" />
     <Compile Include="ElectricsLib\UserWarningElectricsLib\NoScheduleKey.cs" />
+    <Compile Include="ElectricsLib\UserWarningElectricsLib\NoSubstringInPanelName.cs" />
     <Compile Include="ElectricsLib\UserWarningElectricsLib\NoTargetCategory.cs" />
     <Compile Include="ElectricsLib\UserWarningElectricsLib\NotPointInPanelName.cs" />
     <Compile Include="ElectricsLib\UserWarningElectricsLib\NotSelectedByUser.cs" />
