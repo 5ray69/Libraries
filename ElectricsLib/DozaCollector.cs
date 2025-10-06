@@ -1,4 +1,5 @@
 ﻿using Autodesk.Revit.DB;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Libraries.ElectricsLib
@@ -34,6 +35,39 @@ namespace Libraries.ElectricsLib
                 .Where(fi => fi.Symbol?.Family?.Id == elementIdFamily)
                 .ToList();
 
+            return GroupByName(familyInstances);
+        }
+
+
+        /// <summary>
+        /// <para>Группирует семейства по имени до точки.</para>
+        /// <para>Группируются семейства указанных в коллекции ElementId.</para>
+        /// <para>Семейства выбираются на виде.</para>
+        /// </summary>
+        /// <param name="familyIds"></param>
+        /// <param name="viewId"></param>
+        /// <returns></returns>
+        public DozaGroups Collect(ICollection<ElementId> familyIds, ElementId viewId)
+        {
+            if (familyIds == null || familyIds.Count == 0)
+                return new DozaGroups();
+
+            var familyInstances = new FilteredElementCollector(_doc, viewId)
+                .WhereElementIsNotElementType()
+                .OfClass(typeof(FamilyInstance))
+                .Cast<FamilyInstance>()
+                .Where(fi => fi.Symbol?.Family != null && familyIds.Contains(fi.Symbol.Family.Id))
+                .ToList();
+
+            return GroupByName(familyInstances);
+        }
+
+
+        /// <summary>
+        /// Общая логика группировки по имени до точки.
+        /// </summary>
+        private DozaGroups GroupByName(IEnumerable<FamilyInstance> familyInstances)
+        {
             // Создаём коллекцию DozaGroups
             var groups = new DozaGroups();
 
@@ -52,5 +86,9 @@ namespace Libraries.ElectricsLib
 
             return groups;
         }
+
+
+
+
     }
 }
