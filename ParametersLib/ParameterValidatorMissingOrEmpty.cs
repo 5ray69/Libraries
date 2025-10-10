@@ -30,7 +30,7 @@ namespace Libraries.ParametersLib
         /// </summary>
         /// <param name="element"></param>
         /// <param name="nameParameter"></param>
-        public void ValidateAndWarning(Element element, string nameParameter)
+        public Parameter ValidateAndWarning(Element element, string nameParameter)
         {
             Parameter parameter = element.LookupParameter(nameParameter);
 
@@ -46,6 +46,8 @@ namespace Libraries.ParametersLib
             {
                 _errorModel.UserWarning(new ParameterElementAtLevelEmpty().MessageForUser(_doc, element, nameParameter));
             }
+
+            return parameter;
         }
     }
 }
