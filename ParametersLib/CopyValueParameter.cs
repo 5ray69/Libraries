@@ -25,16 +25,16 @@ namespace Libraries.ParametersLib
         /// </summary>
         /// <param name="sourceElement"></param>
         /// <param name="targetElement"></param>
-        /// <param name="parameterName"></param>
-        public void FromOneToAnother(Element sourceElement, Element targetElement, string parameterName)
+        /// <param name="nameParameter"></param>
+        public void FromOneToAnother(Element sourceElement, Element targetElement, string nameParameter)
         {
-            Parameter sourceParam = _parameterValidator.ValidateExistsParameter(sourceElement, parameterName);
-            Parameter targetParam = _parameterValidator.ValidateValueParameter(targetElement, parameterName);
+            Parameter sourceParam = _parameterValidator.ValidateExistsParameter(sourceElement, nameParameter);
+            Parameter targetParam = _parameterValidator.ValidateValueParameter(targetElement, nameParameter);
 
             if (sourceParam.StorageType != targetParam.StorageType)
             {
                 _errorModel.UserWarning(
-                    new ErrorStorageType().MessageForUser(sourceElement, targetElement, parameterName)
+                    new ErrorStorageType().MessageForUser(sourceElement, targetElement, nameParameter)
                 );
                 return;
             }
@@ -68,8 +68,9 @@ namespace Libraries.ParametersLib
         /// <para>в обеих объектах и не только ли для чтения они
         /// </summary>
         /// <param name="sourceElement"></param>
+        /// <param name="parameterNameSource"></param>
         /// <param name="targetElement"></param>
-        /// <param name="parameterName"></param>
+        /// <param name="parameterNameTarget"></param>
         public void TwoDifferentParamers(Element sourceElement, string parameterNameSource, Element targetElement, string parameterNameTarget)
         {
             Parameter sourceParam = _parameterValidator.ValidateExistsParameter(sourceElement, parameterNameSource);
@@ -110,15 +111,15 @@ namespace Libraries.ParametersLib
 
 
 
-//public void FromOneToAnother(Element sourceElement, Element targetElement, string parameterName)
+//public void FromOneToAnother(Element sourceElement, Element targetElement, string nameParameter)
 //{
 //    #region СОЗДАЕМ ЭКЗЕМПЛЯРЫ КЛАССОВ
 //    ErrorModel errorModel = new();
 //    ParameterValidatorIsMissing parameterValidatorIsMissing = new(errorModel);
 //    #endregion
 
-//    Parameter sourceParam = parameterValidatorIsMissing.ValidateValueParameter(sourceElement, parameterName);
-//    Parameter targetParam = parameterValidatorIsMissing.ValidateValueParameter(targetElement, parameterName);
+//    Parameter sourceParam = parameterValidatorIsMissing.ValidateValueParameter(sourceElement, nameParameter);
+//    Parameter targetParam = parameterValidatorIsMissing.ValidateValueParameter(targetElement, nameParameter);
 
 
 //    if (sourceParam.StorageType == targetParam.StorageType)
@@ -149,7 +150,7 @@ namespace Libraries.ParametersLib
 
 //    else
 //    {
-//        errorModel.UserWarning(new ErrorStorageType().MessageForUser(sourceElement, targetElement, parameterName));
+//        errorModel.UserWarning(new ErrorStorageType().MessageForUser(sourceElement, targetElement, nameParameter));
 //    }
 
 //}

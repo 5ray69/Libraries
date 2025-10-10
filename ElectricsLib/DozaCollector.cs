@@ -87,8 +87,5 @@ namespace Libraries.ElectricsLib
             return groups;
         }
 
-
-
-
     }
 }

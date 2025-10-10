@@ -14,7 +14,7 @@ namespace Libraries.ParametersLib.UserWarningParametersLib
 
 у элемента: {element.Name}
 с Id: {element.Id}
-на уровне: {levelAnyObject.GetLevel(element).Name}
+на уровне: {levelAnyObject.GetLevel(element)?.Name?? "уровень не определен"}
 
 Заполните параметр
 и запустите код заново.

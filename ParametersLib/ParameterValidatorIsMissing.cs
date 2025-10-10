@@ -14,22 +14,22 @@ namespace Libraries.ParametersLib
         /// <para>и присваиваем параметру значение, LookupParameter
         /// </summary>
         /// <param name="element"></param>
-        /// <param name="parameterName"></param>
+        /// <param name="nameParameter"></param>
         /// <param name="value"></param>
 
-        public void ValidateAndSetParameter(Element element, string parameterName, string value)
+        public void ValidateAndSetParameter(Element element, string nameParameter, string value)
         {
-            Parameter parameter = element.LookupParameter(parameterName);
+            Parameter parameter = element.LookupParameter(nameParameter);
 
             if (parameter == null)
             {
-                _errorModel.UserWarning(new ParameterIsMissing().MessageForUser(element, parameterName));
+                _errorModel.UserWarning(new ParameterIsMissing().MessageForUser(element, nameParameter));
                 return; // Завершаем выполнение, если параметр не найден
             }
 
             if (parameter.IsReadOnly)
             {
-                _errorModel.UserWarning(new ParameterIsReadOnly().MessageForUser(element, parameterName));
+                _errorModel.UserWarning(new ParameterIsReadOnly().MessageForUser(element, nameParameter));
                 return; // Завершаем выполнение, если параметр только для чтения
             }
 

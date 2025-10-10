@@ -4,11 +4,11 @@ namespace Libraries.ParametersLib.UserWarningParametersLib
 {
     public class ParameterIsMissing
     {
-        public string MessageForUser(Element el, string str)
+        public string MessageForUser(Element el, string nameParameter)
         {
             string message = $@"
 Отсутствует параметр
-{str}
+{nameParameter}
 
 у элемента с именем:
 {el.Name}

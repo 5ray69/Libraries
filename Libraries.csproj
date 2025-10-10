@@ -141,6 +141,7 @@
     <Compile Include="ParametersLib\CopyValueParameter.cs" />
     <Compile Include="ParametersLib\ParameterValidatorForEmpty.cs" />
     <Compile Include="ParametersLib\ParameterValidatorIsMissing.cs" />
+    <Compile Include="ParametersLib\ParameterValidatorMissingOrEmpty.cs" />
     <Compile Include="ParametersLib\UserParameter.cs" />
     <Compile Include="ParametersLib\UserWarningParametersLib\ErrorStorageType.cs" />
     <Compile Include="ParametersLib\UserWarningParametersLib\ParameterElementAtLevelEmpty.cs" />

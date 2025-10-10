@@ -16,21 +16,21 @@ namespace Libraries.ParametersLib
         /// <para>и присваивает параметру значение в том случае, если параметр не заполнен
         /// </summary>
         /// <param name="element"></param>
-        /// <param name="parameterName"></param>
+        /// <param name="nameParameter"></param>
         /// <param name="value"></param>
-        public void ValidateAndSetParameter(Element element, string parameterName, string value)
+        public void ValidateAndSetParameter(Element element, string nameParameter, string value)
         {
-            Parameter parameter = element.LookupParameter(parameterName);
+            Parameter parameter = element.LookupParameter(nameParameter);
 
             if (parameter == null)
             {
-                _errorModel.UserWarning(new ParameterIsMissing().MessageForUser(element, parameterName));
+                _errorModel.UserWarning(new ParameterIsMissing().MessageForUser(element, nameParameter));
                 return; // Завершаем выполнение, если параметр не найден
             }
 
             if (parameter.IsReadOnly)
             {
-                _errorModel.UserWarning(new ParameterIsReadOnly().MessageForUser(element, parameterName));
+                _errorModel.UserWarning(new ParameterIsReadOnly().MessageForUser(element, nameParameter));
                 return; // Завершаем выполнение, если параметр только для чтения
             }
 
@@ -69,11 +69,11 @@ namespace Libraries.ParametersLib
 
 
         /// <summary>
-        /// Определяет, является ли параметр пустым в зависимости от его типа
+        /// Определяет, является ли параметр пустым или равным нулю в зависимости от его типа
         /// </summary>
         /// <param name="parameter"></param>
         /// <returns></returns>
-        private bool IsParameterEmpty(Parameter parameter)
+        public bool IsParameterEmpty(Parameter parameter)
         {
             if (!parameter.HasValue)
                 return true;
