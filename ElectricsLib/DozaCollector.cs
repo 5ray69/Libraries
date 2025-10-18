@@ -71,6 +71,7 @@ namespace Libraries.ElectricsLib
             // Создаём коллекцию DozaGroups
             var groups = new DozaGroups();
 
+            //fi.Name возвращает значение параметра "Имя панели".
             // Группируем по имени до точки
             foreach (var g in familyInstances.GroupBy(fi =>
             {
