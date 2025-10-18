@@ -2,14 +2,14 @@
 <package >
   <metadata>
     <id>5ray69.Libraries</id>
-    <version>2.0.0.18</version>
+    <version>2.0.0.19</version>
     <title>Libraries</title>
     <authors>5ray69</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
     <projectUrl>http://github.com/5ray69/Libraries.git/</projectUrl>
     <description>Библиотека вспомогательных классов Ревита 2022 в работе электрика</description>
-    <releaseNotes>corrected class ParameterValidatorForEmpty</releaseNotes>
+    <releaseNotes>corrected class ActiveViewNotViewSection</releaseNotes>
     <tags>C# package 5ray69 Libraries</tags>
     <readme>README.md</readme>
     <dependencies>
