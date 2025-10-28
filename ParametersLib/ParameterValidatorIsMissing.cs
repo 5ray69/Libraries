@@ -10,13 +10,12 @@ namespace Libraries.ParametersLib
 
 
         /// <summary>
-        /// <para>проверяет существует ли параметр и что он не только для чтения
-        /// <para>и присваиваем параметру значение, LookupParameter
+        /// <para> проверяет существует ли параметр и что он не только для чтения </para>
+        /// <para> и присваиваем параметру значение, LookupParameter </para>
         /// </summary>
         /// <param name="element"></param>
         /// <param name="nameParameter"></param>
         /// <param name="value"></param>
-
         public void ValidateAndSetParameter(Element element, string nameParameter, string value)
         {
             Parameter parameter = element.LookupParameter(nameParameter);
