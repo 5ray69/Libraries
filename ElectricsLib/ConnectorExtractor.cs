@@ -1,7 +1,7 @@
 ﻿using Autodesk.Revit.DB;
 using System.Collections.Generic;
 
-namespace CreateRisersShield
+namespace Libraries.ElectricsLib
 {
     public class ConnectorExtractor
     {

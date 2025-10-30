@@ -4,7 +4,7 @@ using Libraries.ParametersLib;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CreateRisersShield.MyDll
+namespace Libraries.ElectricsLib
 {
     /// <summary>
     /// объединяет обработку короба и соед.детали короба, возвращает список коннекторов

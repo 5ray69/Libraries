@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CreateRisersShield.MyDll
+namespace Libraries.ElectricsLib
 {
     /// <summary>
     /// <para>Класс, выполняющий поиск последних не подключенных коннекторов,</para>

@@ -3,7 +3,7 @@ using Autodesk.Revit.DB.Electrical;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CreateRisersShield.MyDll
+namespace Libraries.ElectricsLib
 {
     /// <summary>
     /// <para>Класс, выполняющий построение пути от панели до щита через соединённые элементы.</para>

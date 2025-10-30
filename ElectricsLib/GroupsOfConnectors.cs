@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CreateRisersShield.MyDll
+namespace Libraries.ElectricsLib
 {
     /// <summary>
     /// <para>Класс, представляющий коллекцию групп коннекторов</para>
