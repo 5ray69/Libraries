@@ -143,6 +143,7 @@
     <Compile Include="LocationLib\LocationAnyObject.cs" />
     <Compile Include="LocationLib\PointSpatialElementOrPointLocation.cs" />
     <Compile Include="LocationLib\UserWarningLocationLib\NoContainLocation.cs" />
+    <Compile Include="ElectricsLib\UserWarningElectricsLib\PanelNameIsNotInTheConduits.cs" />
     <Compile Include="ParametersLib\CopyValueParameter.cs" />
     <Compile Include="ParametersLib\ParameterValidatorForEmpty.cs" />
     <Compile Include="ParametersLib\ParameterValidatorIsMissing.cs" />
