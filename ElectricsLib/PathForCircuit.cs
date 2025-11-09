@@ -15,7 +15,7 @@ namespace Libraries.ElectricsLib
         /// <summary>
         /// Метод возвращает список узлов пути цепи.
         ///   currentCon - это один из 5 коннекторов щита.
-        ///   conPanel - это реальный коннектор панели, к которой подключаем, указанной пользователем.
+        ///   conPanel - это реальный коннектор панели ("точки подключений"), к которой подключаем, указанной пользователем .
         ///   firstAfterPanelCon - это конечный неподключенный коннектор пути для группы текущего щита, первый после "точки подключений".
         /// </summary>
         /// <param name="currentCon"></param>
@@ -37,7 +37,7 @@ namespace Libraries.ElectricsLib
             // И ТРЕТИЙ УЗЕЛ = проекция второго узла на осевую линию короба
             Connector startCon = null;
 
-            // ЕСЛИ БЛИЖАЙШИЙ К ПАНЕЛИ "ТОЧКА ПОДКЛЮЧЕНИЙ" ЭТО КОРОБ
+            // ЕСЛИ БЛИЖАЙШИЙ К ПАНЕЛИ, К "ТОЧКЕ ПОДКЛЮЧЕНИЙ") ЭТО КОРОБ
             if (firstAfterPanelCon.Owner is Conduit conduit)
             {
                 //первый после панели "точка подключений" коннектор
@@ -86,7 +86,61 @@ namespace Libraries.ElectricsLib
                     .FirstOrDefault(sCon => nextCon.Owner.Id != sCon.Owner.Id);
             }
 
-            // ЕСЛИ БЛИЖАЙШИЙ К ПАНЕЛИ "ТОЧКА ПОДКЛЮЧЕНИЙ" ЭТО СОЕДИНИТЕЛЬНАЯ ДЕТАЛЬ
+
+
+            // ЕСЛИ БЛИЖАЙШИЙ К ПАНЕЛИ, К "ТОЧКЕ ПОДКЛЮЧЕНИЙ") ЭТО КОРОБ ЭТО ОДИНОЧНЫЙ КОРОБ (нет подключенных коннекторов)
+            if (firstAfterPanelCon.Owner is Conduit singleConduit && !firstAfterPanelCon.IsConnected)
+            {
+                LocationCurve locationLine = singleConduit.Location as LocationCurve;
+                Line boundLine = locationLine.Curve as Line;
+                Line unboundLine = Line.CreateUnbound(boundLine.Origin, boundLine.Direction);
+
+                // ВТОРОЙ УЗЕЛ = над коннектором панели на уровне осевой линии короба
+                XYZ node2;
+                if (System.Math.Abs(boundLine.Direction.Z) < 0.003)
+                {
+                    // Горизонтальный короб — поднимаем по Z
+                    node2 = new XYZ(node1.X, node1.Y, boundLine.Origin.Z);
+                }
+                else
+                {
+                    // Вертикальный короб — совмещаем по оси X
+                    node2 = new XYZ(boundLine.Origin.X, node1.Y, node1.Z);
+                }
+
+                // ТРЕТИЙ УЗЕЛ = проекция второго узла на осевую линию короба
+                XYZ node3 = unboundLine.Project(node2).XYZPoint;
+
+                // КОНЕЧНЫЙ УЗЕЛ = коннектор щита
+                XYZ nodeEnd = currentCon.CoordinateSystem.Origin;
+
+                // Добавляем узлы в путь
+                listPath.Add(node2);
+                listPath.Add(node3);
+
+                // Добавляем узлы от короба к щиту
+                XYZ node4;
+                if (System.Math.Abs(boundLine.Direction.Z) < 0.003)
+                {
+                    node4 = new XYZ(nodeEnd.X, nodeEnd.Y, boundLine.Origin.Z);
+                }
+                else
+                {
+                    node4 = new XYZ(boundLine.Origin.X, nodeEnd.Y, nodeEnd.Z);
+                }
+                XYZ node5 = unboundLine.Project(node4).XYZPoint;
+
+                listPath.Add(node5);
+                listPath.Add(node4);
+                listPath.Add(nodeEnd);
+
+                // так как это одиночный короб — сразу выходим
+                return listPath;
+            }
+
+
+
+            // ЕСЛИ БЛИЖАЙШИЙ К ПАНЕЛИ, К "ТОЧКЕ ПОДКЛЮЧЕНИЙ", ЭТО СОЕДИНИТЕЛЬНАЯ ДЕТАЛЬ
             // то переходим к подключенному к нему коробу и получаем точку пересечения с осью короба
             if (firstAfterPanelCon.Owner.Category.Id == new ElementId(BuiltInCategory.OST_ConduitFitting))
             {
