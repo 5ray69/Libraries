@@ -13,15 +13,16 @@ namespace Libraries.ElectricsLib
     public class PathForCircuit
     {
         /// <summary>
-        /// Метод возвращает список узлов пути цепи.
-        ///   currentCon - это один из 5 коннекторов щита.
-        ///   conPanel - это реальный коннектор панели ("точки подключений"), к которой подключаем, указанной пользователем .
-        ///   firstAfterPanelCon - это конечный неподключенный коннектор пути для группы текущего щита, первый после "точки подключений".
+        /// <para>Возвращает список узлов пути цепи.</para>
         /// </summary>
-        /// <param name="currentCon"></param>
-        /// <param name="conPanel"></param>
-        /// <param name="firstAfterPanelCon"></param>
-        /// <returns></returns>
+        /// <param name="currentCon">
+        /// один из 5 коннекторов щита, от которого начинается построение пути.</param>
+        /// <param name="conPanel">
+        /// реальный коннектор панели ("точки подключений"), к которой подключаем, указанной пользователем</param>
+        /// <param name="firstAfterPanelCon">
+        /// первый неподключенный коннектор пути для группы текущего щита -
+        /// коннектор сразу после "точки подключения"</param>
+        /// <returns>Список точек пути (XYZ), представляющих узловые токчи пути цепи.</returns>
         public IList<XYZ> GetPath(Connector currentCon, Connector conPanel, Connector firstAfterPanelCon)
         {
             //УЗЛЫ ПУТИ
@@ -88,7 +89,7 @@ namespace Libraries.ElectricsLib
 
 
 
-            // ЕСЛИ БЛИЖАЙШИЙ К ПАНЕЛИ, К "ТОЧКЕ ПОДКЛЮЧЕНИЙ") ЭТО КОРОБ ЭТО ОДИНОЧНЫЙ КОРОБ (нет подключенных коннекторов)
+            // ЕСЛИ БЛИЖАЙШИЙ К ПАНЕЛИ, К "ТОЧКЕ ПОДКЛЮЧЕНИЙ") ЭТО ОДИНОЧНЫЙ КОРОБ (нет подключенных коннекторов)
             if (firstAfterPanelCon.Owner is Conduit singleConduit && !firstAfterPanelCon.IsConnected)
             {
                 LocationCurve locationLine = singleConduit.Location as LocationCurve;
