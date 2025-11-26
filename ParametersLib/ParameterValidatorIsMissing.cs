@@ -11,7 +11,7 @@ namespace Libraries.ParametersLib
 
         /// <summary>
         /// <para> проверяет существует ли параметр и что он не только для чтения </para>
-        /// <para> и присваиваем параметру значение, LookupParameter </para>
+        /// <para> и присваиваем параметру string значение, LookupParameter </para>
         /// </summary>
         /// <param name="element"></param>
         /// <param name="nameParameter"></param>
@@ -34,6 +34,34 @@ namespace Libraries.ParametersLib
 
             parameter.Set(value);
         }
+
+
+        /// <summary>
+        /// <para> проверяет существует ли параметр и что он не только для чтения </para>
+        /// <para> и присваиваем параметру double значение, LookupParameter </para>
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="nameParameter"></param>
+        /// <param name="value"></param>
+        public void ValidateAndSetParameter(Element element, string nameParameter, double value)
+        {
+            Parameter parameter = element.LookupParameter(nameParameter);
+
+            if (parameter == null)
+            {
+                _errorModel.UserWarning(new ParameterIsMissing().MessageForUser(element, nameParameter));
+                return; // Завершаем выполнение, если параметр не найден
+            }
+
+            if (parameter.IsReadOnly)
+            {
+                _errorModel.UserWarning(new ParameterIsReadOnly().MessageForUser(element, nameParameter));
+                return; // Завершаем выполнение, если параметр только для чтения
+            }
+
+            parameter.Set(value);
+        }
+
 
 
 
