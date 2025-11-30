@@ -1,11 +1,11 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Electrical;
-using CalculationGroups.MyDll.UserWarningCalculationGroups;
+using Libraries.ElectricsLib.UserWarningElectricsLib;
 using Libraries.ErrorModelLib;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CalculationGroups.MyDll.Work
+namespace Libraries.ElectricsLib.GroupService
 {
     /// <summary>
     /// цепь, которая питает панель

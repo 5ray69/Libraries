@@ -1,4 +1,4 @@
-﻿namespace CalculationGroups.MyDll.UserWarningCalculationGroups
+﻿namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {
     public class DuplicateGroups
     {

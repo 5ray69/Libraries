@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CalculationGroups.MyDll.Work
+namespace Libraries.ElectricsLib.GroupService
 {
     public class GroupPowers
     {

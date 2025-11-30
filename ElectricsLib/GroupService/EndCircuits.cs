@@ -2,7 +2,7 @@
 using Autodesk.Revit.DB.Electrical;
 using System.Collections.Generic;
 
-namespace CalculationGroups.MyDll.Test2
+namespace Libraries.ElectricsLib.GroupService
 {
     /// <summary>
     /// Конечные цепи

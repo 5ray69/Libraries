@@ -1,7 +1,7 @@
 ﻿using Autodesk.Revit.DB;
 using Libraries.LevelsLib;
 
-namespace CalculationGroups.MyDll.UserWarningCalculationGroups
+namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {
     public class FamilyIsNotMEP
     {

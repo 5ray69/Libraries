@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CalculationGroups.MyDll
+namespace Libraries.ElectricsLib.Sorting
 {
 
 

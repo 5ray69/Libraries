@@ -3,7 +3,7 @@ using Autodesk.Revit.DB.Electrical;
 using Libraries.ErrorModelLib;
 using System.Collections.Generic;
 
-namespace CalculationGroups.MyDll.Work
+namespace Libraries.ElectricsLib.GroupService
 {
     /// <summary>
     /// все полные пути каждой группы, состоящие из цепей

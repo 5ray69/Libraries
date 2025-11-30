@@ -1,4 +1,4 @@
-﻿namespace CreateRisersShield.UserWarningCreateRisersShield
+﻿namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {
     public class PanelNameIsNotInTheConduits
     {

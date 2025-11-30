@@ -1,4 +1,4 @@
-﻿namespace CalculationGroups.MyDll
+﻿namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {
     public class ActiveViewNotViewDrafting
     {

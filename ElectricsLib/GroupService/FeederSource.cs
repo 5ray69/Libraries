@@ -2,7 +2,7 @@
 using Autodesk.Revit.DB.Electrical;
 using Libraries.ErrorModelLib;
 
-namespace CalculationGroups.MyDll.Work
+namespace Libraries.ElectricsLib.GroupService
 {
     /// <summary>
     /// питающий источник

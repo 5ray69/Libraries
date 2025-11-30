@@ -1,13 +1,12 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Electrical;
-using CalculationGroups.MyDll.Work;
 using Libraries.ErrorModelLib;
 using Libraries.ParametersLib;
 using Libraries.ParametersLib.UserWarningParametersLib;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CalculationGroups.MyDll.Test2
+namespace Libraries.ElectricsLib.GroupService
 {
     public class GroupCircuits
     {

@@ -3,7 +3,7 @@ using Libraries.ErrorModelLib;
 using Libraries.ParametersLib.UserWarningParametersLib;
 using System;
 
-namespace CalculationGroups.MyDll.Work
+namespace Libraries.ElectricsLib.GroupService
 {
     /// <summary>
     /// <para>для получения Definition один раз,</para>

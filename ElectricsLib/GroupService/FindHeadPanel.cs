@@ -1,13 +1,12 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Electrical;
-using CalculationGroups.MyDll.UserWarningCalculationGroups;
 using Libraries.ElectricsLib.UserWarningElectricsLib;
 using Libraries.ErrorModelLib;
 using Libraries.ParametersLib;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CalculationGroups.MyDll.Work
+namespace Libraries.ElectricsLib.GroupService
 {
 
     public class FindHeadPanel(Document document, ErrorModel errorModel)

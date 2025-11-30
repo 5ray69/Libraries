@@ -1,12 +1,11 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Electrical;
-using CalculationGroups.MyDll.UserWarningCalculationGroups;
 using Libraries.ElectricsLib.UserWarningElectricsLib;
 using Libraries.ErrorModelLib;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CalculationGroups.MyDll.Work
+namespace Libraries.ElectricsLib.GroupService
 {
     public class FullPath(Document document, ErrorModel errorModel)
     {

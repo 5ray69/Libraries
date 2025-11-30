@@ -1,14 +1,13 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Electrical;
-using CalculationGroups.MyDll.UserWarningCalculationGroups;
-using CalculationGroups.MyDll.Work;
+using Libraries.ElectricsLib.UserWarningElectricsLib;
 using Libraries.ErrorModelLib;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 
-namespace CalculationGroups.MyDll
+namespace Libraries.ElectricsLib.GroupService
 {
     /// <summary>
     /// извлекает метрики, электрические величины цепи

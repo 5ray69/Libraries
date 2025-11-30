@@ -1,4 +1,4 @@
-﻿namespace CalculationGroups.MyDll.Work
+﻿namespace Libraries.ElectricsLib.GroupService
 {
     public class GroupData
     {

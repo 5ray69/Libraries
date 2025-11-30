@@ -1,6 +1,6 @@
 ﻿using Autodesk.Revit.DB;
 
-namespace CalculationGroups.MyDll.UserWarningCalculationGroups
+namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {
     public class NotConvertToNumber
     {
