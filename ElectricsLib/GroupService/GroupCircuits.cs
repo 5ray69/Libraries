@@ -80,6 +80,55 @@ namespace Libraries.ElectricsLib.GroupService
 
 
         /// <summary>
+        /// Для коллекции цепей, возвращает уникальные значения параметра "БУДОВА_Группа"
+        /// </summary>
+        /// <param name="elSystems">список цепей</param>
+        /// <returns>HashSet<string></returns>
+        public HashSet<string> GetUniqueNameGroups(ICollection<ElectricalSystem> elSystems)
+        {
+            ElectricalSystem firstSystem = elSystems.FirstOrDefault();
+
+            string nameParameter = "БУДОВА_Группа";
+
+            //записываем в поле Definition параметра один раз и проверяем существует ли параметр
+            _defGroup ??= _parameterDefinition.Get(firstSystem, nameParameter);
+
+            HashSet<string> uniqueNames = [];
+
+            foreach (ElectricalSystem elSystem in elSystems)
+            {
+                Parameter param = elSystem.get_Parameter(_defGroup);
+
+                //если у цепи нет параметра, то выведет предупреждение пользователю и завершит код
+                if (param == null)
+                {
+                    _errorModel.UserWarning(new ParameterIsMissing().MessageForUser(elSystem, nameParameter));
+                }
+
+                ////если у цепи параметр только для чтения, то выведет предупреждение пользователю и завершит код
+                //if (param.IsReadOnly)
+                //{
+                //    _errorModel.UserWarning(new ParameterIsReadOnly().MessageForUser(elSystem, nameParameter));
+                //}
+                string groupName = param.AsString();
+
+                if (string.IsNullOrWhiteSpace(groupName))  //если параметр цепи не заполнен, то выведет предупреждение пользователю и завершит код
+                {
+                    _errorModel.UserWarning(new ParameterElementAtLevelEmpty().MessageForUser(_doc, elSystem, _defGroup.Name));
+                }
+
+                uniqueNames.Add(groupName);
+            }
+
+            return uniqueNames;
+        }
+
+
+
+
+
+
+        /// <summary>
         /// <para> Формирует словарь ключ: имя группы = значение: список цепей, </para>
         /// <para> если значение параметра цепи "БУДОВА_Группа" содержит подстроку. </para>
         /// <para> Цепи дублирующихся групп здесь есть </para>
