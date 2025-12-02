@@ -111,8 +111,8 @@
     <Compile Include="ElectricsLib\GroupService\GroupSumMomentP.cs" />
     <Compile Include="ElectricsLib\GroupService\HeadPanels.cs" />
     <Compile Include="ElectricsLib\GroupService\HeadPanelsConnector.cs" />
-    <Compile Include="ElectricsLib\GroupService\ParameterDefinition.cs" />
-    <Compile Include="ElectricsLib\GroupService\ValidatorParameter.cs" />
+    <Compile Include="ParametersLib\ParameterDefinition.cs" />
+    <Compile Include="ParametersLib\ValidatorParameter.cs" />
     <Compile Include="ElectricsLib\GroupsOfConnectors.cs" />
     <Compile Include="ElectricsLib\LengthCircuit.cs" />
     <Compile Include="ElectricsLib\LoadCircuit.cs" />
