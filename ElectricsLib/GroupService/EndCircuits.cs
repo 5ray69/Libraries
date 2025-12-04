@@ -32,8 +32,8 @@ namespace Libraries.ElectricsLib.GroupService
 
                 foreach (ElectricalSystem circuit in circuits)
                 {
-                    bool hasOutgoingCircuits = false;
-                    bool containsSwitch = false;
+                    bool hasOutgoingCircuits = false;  // отходящие цепи
+                    bool containsSwitch = false;  // выключатель
 
                     //перебираем нагрузки цепи
                     foreach (object element in circuit.Elements)

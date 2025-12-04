@@ -164,5 +164,47 @@ namespace Libraries.ElectricsLib.GroupService
 
             return circuitGroups;
         }
+
+
+
+
+        /// <summary>
+        /// <para> Формирует словарь ключ: имя группы = значение: список цепей. </para>
+        /// <para> Имя группы из значение параметра цепи "БУДОВА_Группа". </para>
+        /// <para> Цепи дублирующихся групп здесь есть </para>
+        /// </summary>
+        /// <param name="elSystems">список цепей</param>
+        /// <returns>Dictionary<string, List<ElectricalSystem>></returns>
+        public Dictionary<string, List<ElectricalSystem>> GetCircuitsContainedInGroups(ICollection<ElectricalSystem> elSystems)
+        {
+            ElectricalSystem firstSystem = elSystems.FirstOrDefault();
+
+            string nameParameter = "БУДОВА_Группа";
+
+            //записываем в поле Definition параметра один раз и проверяем существует ли параметр
+            _defGroup ??= _parameterDefinition.Get(firstSystem, nameParameter);
+
+
+            Dictionary<string, List<ElectricalSystem>> circuitGroups = [];
+
+            foreach (ElectricalSystem elSystem in elSystems)
+            {
+                Parameter param = elSystem.get_Parameter(_defGroup);
+
+                string groupName = param.AsString();
+
+                if (string.IsNullOrWhiteSpace(groupName))  //если параметр цепи не заполнен, то выведет предупреждение пользователю и завершит код
+                {
+                    _errorModel.UserWarning(new ParameterElementAtLevelEmpty().MessageForUser(_doc, elSystem, _defGroup.Name));
+                }
+
+                if (!circuitGroups.ContainsKey(groupName))
+                    circuitGroups[groupName] = new List<ElectricalSystem>();
+
+                circuitGroups[groupName].Add(elSystem);
+            }
+
+            return circuitGroups;
+        }
     }
 }
