@@ -37,7 +37,13 @@ namespace Libraries.ElectricsLib.GroupService
                     //сумма dU всех цепей внутри пути
                     double sumDU = 0.0;
                     foreach (ElectricalSystem circuit in path.Value)
-                        sumDU += _circuitMetrics.GetDUfor220V(circuit);
+                    {
+                        double voltage = _circuitMetrics.GetVoltage(circuit);
+
+                        double dU = voltage > 300.0 ? _circuitMetrics.GetDUfor380V(circuit) : _circuitMetrics.GetDUfor220V(circuit);
+
+                        sumDU += dU;
+                    }
 
                     if (sumDU > maxDU)
                     {
