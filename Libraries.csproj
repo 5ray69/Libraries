@@ -111,6 +111,7 @@
     <Compile Include="ElectricsLib\GroupService\GroupSumMomentP.cs" />
     <Compile Include="ElectricsLib\GroupService\HeadPanels.cs" />
     <Compile Include="ElectricsLib\GroupService\HeadPanelsConnector.cs" />
+    <Compile Include="ElectricsLib\GroupService\PanelElectricalSystemBranches.cs" />
     <Compile Include="ParametersLib\ParameterDefinition.cs" />
     <Compile Include="ParametersLib\ValidatorParameter.cs" />
     <Compile Include="ElectricsLib\GroupsOfConnectors.cs" />
@@ -193,6 +194,10 @@
     <Compile Include="RoomsLib\UserWarningRoomsLib\NoConnectCircuit.cs" />
     <Compile Include="RoomsLib\UserWarningRoomsLib\NoContainLocation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewLib\UserWarningViewLib\ButtonIsPressedNoSelectUser.cs" />
+    <Compile Include="ViewLib\ViewDto.cs" />
+    <Compile Include="ViewLib\ViewDtoNameComparer.cs" />
+    <Compile Include="ViewLib\ViewService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="RoomsLib\app.config" />
