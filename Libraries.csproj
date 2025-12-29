@@ -112,6 +112,11 @@
     <Compile Include="ElectricsLib\GroupService\HeadPanels.cs" />
     <Compile Include="ElectricsLib\GroupService\HeadPanelsConnector.cs" />
     <Compile Include="ElectricsLib\GroupService\PanelElectricalSystemBranches.cs" />
+    <Compile Include="ElectricsLib\ShemPanel\AllElementsPanelProcessor.cs" />
+    <Compile Include="ElectricsLib\ShemPanel\AllElementsPanelResult.cs" />
+    <Compile Include="ElectricsLib\UserWarningElectricsLib\CosIsNull.cs" />
+    <Compile Include="ElectricsLib\UserWarningElectricsLib\MultiplePhases.cs" />
+    <Compile Include="ElectricsLib\UserWarningElectricsLib\SetPhasesIn380.cs" />
     <Compile Include="ParametersLib\ParameterDefinition.cs" />
     <Compile Include="ParametersLib\ValidatorParameter.cs" />
     <Compile Include="ElectricsLib\GroupsOfConnectors.cs" />
@@ -183,6 +188,7 @@
     <Compile Include="ParametersLib\UserWarningParametersLib\ParameterMissingInFamilyinstance.cs" />
     <Compile Include="ParametersLib\UserWarningParametersLib\ParameterMissingInScheduleKey.cs" />
     <Compile Include="ParametersLib\UserWarningParametersLib\ParameterWithoutValue.cs" />
+    <Compile Include="ParametersLib\ValueParameter.cs" />
     <Compile Include="RoomsLib\LocationAnyObject.cs" />
     <Compile Include="RoomsLib\BordersRoom.cs" />
     <Compile Include="RoomsLib\CountIntersectionsWithPolygon.cs" />

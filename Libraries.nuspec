@@ -2,14 +2,14 @@
 <package >
   <metadata>
     <id>5ray69.Libraries</id>
-    <version>3.0.0.33</version>
+    <version>3.0.0.34</version>
     <title>Libraries</title>
     <authors>5ray69</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
     <projectUrl>http://github.com/5ray69/Libraries.git/</projectUrl>
     <description>Библиотека вспомогательных классов Ревита 2022 в работе электрика</description>
-    <releaseNotes>Add methods in class CircuitMetrics and edit private method CalculateGroupMaxDU in class GroupMaxdU</releaseNotes>
+    <releaseNotes>Add classes PanelElectricalSystemBranches, ViewDto, ViewDtoNameComparer, ViewService</releaseNotes>
     <tags>C# package 5ray69 Libraries</tags>
     <readme>README.md</readme>
     <dependencies>
