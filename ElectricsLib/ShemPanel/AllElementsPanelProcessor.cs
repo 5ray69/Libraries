@@ -1,11 +1,11 @@
 ﻿using Autodesk.Revit.DB;
-using CreateShemPIcosf.MyDll.UserWarning;
+using Libraries.ElectricsLib.UserWarningElectricsLib;
 using Libraries.ErrorModelLib;
 using Libraries.ParametersLib;
 using System;
 using System.Collections.Generic;
 
-namespace CreateShemPIcosf.MyDll
+namespace Libraries.ElectricsLib.ShemPanel
 {
     public class AllElementsPanelProcessor
     {

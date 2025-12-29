@@ -2,7 +2,7 @@
 using Libraries.ErrorModelLib;
 using Libraries.ParametersLib.UserWarningParametersLib;
 
-namespace Libraries.ElectricsLib.GroupService
+namespace Libraries.ParametersLib
 {
     public class ValidatorParameter
     {

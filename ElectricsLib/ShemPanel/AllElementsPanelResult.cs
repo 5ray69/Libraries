@@ -1,7 +1,7 @@
 ﻿using Autodesk.Revit.DB;
 using System;
 
-namespace CreateShemPIcosf.MyDll
+namespace Libraries.ElectricsLib.ShemPanel
 {
     public class AllElementsPanelResult
     {
