@@ -2,6 +2,7 @@
 using Autodesk.Revit.DB.Electrical;
 using Libraries.ElectricsLib.UserWarningElectricsLib;
 using Libraries.ErrorModelLib;
+using Libraries.LevelsLib;
 using System;
 
 namespace Libraries.LevelsLib
@@ -33,7 +34,13 @@ namespace Libraries.LevelsLib
 
             // HostFace is null у тех семейств, у которых рабочая плоскость это уровень, а не на грани геометрии
             // Светильники, выключатели, розетки... и здесь полоса заземления, которая размещена на уровне
-            if (element is FamilyInstance familyInstance && familyInstance.HostFace is null)
+            if (
+                element is FamilyInstance familyInstance
+                && familyInstance.HostFace is null
+                && element.Category != null
+                && element.Category.Id.IntegerValue != (int)BuiltInCategory.OST_DetailComponents  // элементы узлов
+                && element.Category.Id.IntegerValue != (int)BuiltInCategory.OST_GenericAnnotation  // типовые аннотации (стрелка выносок)
+                )
             {
                 return familyInstance.Host as Level;
             }
@@ -103,8 +110,8 @@ namespace Libraries.LevelsLib
             // Проверка на наличие OwnerViewId, принадлежности виду и тем, что OwnerView это ViewPlan исключаем возможность,
             // что аннотация не находится на ViewDrafting, ViewSection или ViewSheet
 
-            //# текстовые примечания, линии детализации, марки электрооборудования, марки осветительных приборов,
-            //# марки помещений, марки нескольких категорий, марки коробов, типовые аннотации (стрелка выносок), размеры
+            // текстовые примечания, линии детализации, марки электрооборудования, марки осветительных приборов, марки помещений
+            // марки нескольких категорий, марки коробов, типовые аннотации (стрелка выносок), элементы узлов, размеры
             if (element.OwnerViewId != null && _doc.GetElement(element.OwnerViewId) is ViewPlan ownerView)
             {
                 return ownerView.GenLevel as Level;
@@ -148,32 +155,91 @@ namespace Libraries.LevelsLib
     }
 }
 
-///// <summary>
-///// Id уровня, на котором находится любой объект электрика
-///// </summary>
-///// <returns></returns>
-//public ElementId GetElementId(Element element)
+
+
+
+
+//public Level GetLevel(Element element)
 //{
-//    var level = GetLevel(element);
-//    return level?.Id;
+//    if (element == null)
+//        return null;
+
+//    // 1. Прямой LevelId (самый быстрый путь)
+//    if (element.LevelId != null && element.LevelId.IntegerValue != -1)
+//        return _doc.GetElement(element.LevelId) as Level;
+
+//    // 2. Type-based логика
+//    switch (element)
+//    {
+//        case FamilyInstance fi
+//            when fi.HostFace == null
+//            && fi.Category?.CategoryType == CategoryType.Model:
+//            return fi.Host as Level;
+
+//        case Conduit conduit
+//            when conduit.ReferenceLevel is Level refLevel:
+//            return refLevel;
+
+//        case CableTray tray
+//            when tray.ReferenceLevel is Level trayLevel:
+//            return trayLevel;
+
+//        case ElectricalSystem system:
+//            return GetElectricalSystemLevel(system);
+
+//        case FamilyInstance fi
+//            when fi.HostFace != null:
+//            return GetLevelFromElevation(fi);
+
+//        default:
+//            break;
+//    }
+
+//    // 3. View-specific элементы → ТОЛЬКО ViewPlan
+//    if (element.OwnerViewId != ElementId.InvalidElementId
+//        && _doc.GetElement(element.OwnerViewId) is ViewPlan viewPlan)
+//    {
+//        return viewPlan.GenLevel;
+//    }
+
+//    return null;
 //}
 
-///// <summary>
-///// Имя уровня, на котором находится любой объект электрика
-///// </summary>
-///// <returns></returns>
-//public string GetName(Element element)
+
+//private Level GetElectricalSystemLevel(ElectricalSystem system)
 //{
-//    var level = GetLevel(element);
-//    return level?.Name;
+//    var baseEquipment = system.BaseEquipment;
+
+//    if (baseEquipment == null)
+//    {
+//        new ErrorModel()
+//            .UserWarning(new NoConnectCircuit().MessageForUser(system));
+//        return null;
+//    }
+
+//    if (baseEquipment.LevelId != null && baseEquipment.LevelId.IntegerValue != -1)
+//        return _doc.GetElement(baseEquipment.LevelId) as Level;
+
+//    return baseEquipment.Host as Level;
 //}
 
-///// <summary>
-///// Высотная отметка уровня, на котором находится любой объект электрика
-///// </summary>
-///// <returns></returns>
-//public double? GetElevation(Element element)
+
+//private Level GetLevelFromElevation(FamilyInstance fi)
 //{
-//    var level = GetLevel(element);
-//    return level?.Elevation;
+//    double z = fi.Location switch
+//    {
+//        LocationCurve lc =>
+//            Math.Round(
+//                Math.Min(
+//                    lc.Curve.GetEndPoint(0).Z,
+//                    lc.Curve.GetEndPoint(1).Z),
+//                3, MidpointRounding.AwayFromZero),
+
+//        LocationPoint lp =>
+//            Math.Round(lp.Point.Z, 3, MidpointRounding.AwayFromZero),
+
+//        _ => 0
+//    };
+
+//    return new ElevationDouble(_doc, z).AboveLevel();
 //}

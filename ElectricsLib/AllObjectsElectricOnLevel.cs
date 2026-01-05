@@ -32,6 +32,7 @@ namespace Libraries.ElectricsLib
                 (int)BuiltInCategory.OST_MultiCategoryTags,  // марки нескольких категорий
                 (int)BuiltInCategory.OST_ConduitTags,  // марки коробов
                 (int)BuiltInCategory.OST_GenericAnnotation,  // типовые аннотации (стрелка выносок)
+                (int)BuiltInCategory.OST_DetailComponents,  // элементы узлов
                 (int)BuiltInCategory.OST_Dimensions,  // размеры
                 (int)BuiltInCategory.OST_IOSDetailGroups  // группы элементов узлов
             ];
