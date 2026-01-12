@@ -207,7 +207,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="RoomsLib\app.config" />
-    <None Include="RoomsLib\packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

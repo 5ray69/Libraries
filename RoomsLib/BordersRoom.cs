@@ -2,6 +2,7 @@
 using Autodesk.Revit.DB.Architecture;
 using System.Collections.Generic;
 
+
 namespace Libraries.RoomsLib
 {
     public class BordersRoom(Room room, Transform linkTransform)
@@ -14,7 +15,7 @@ namespace Libraries.RoomsLib
         /// <para>с учетом трансформации связи"""
         /// </summary>
         /// <returns></returns>
-        public ICollection<Line> GetBordersToCenter()
+        public List<Line> GetBordersToCenter()
         {
             //назначаем переменную на свойство
             SpatialElementBoundaryOptions roomoptions = new()
@@ -24,7 +25,7 @@ namespace Libraries.RoomsLib
             };
 
             //ГРАНИЦЫ ПОМЕЩЕНИЯ в уровне координаты Z того уровня, к которому привязано помещение
-            ICollection<Line> roomLines = [];
+            List<Line> roomLines = [];
             foreach (IList<BoundarySegment> segmentList in room.GetBoundarySegments(roomoptions))
             {
                 foreach (BoundarySegment boundarySegment in segmentList)

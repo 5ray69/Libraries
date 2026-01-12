@@ -184,38 +184,3 @@ namespace Libraries.RoomsLib
         }
     }
 }
-
-
-///// <summary>
-///// Возвращает замкнутый многоугольник.
-///// </summary>
-///// <param name="lines">Список линий, образующих многоугольник.</param>
-///// <returns>Замкнутый многоугольник.</returns>
-//public List<Line> GetClosedPolygon(List<Line> lines)
-//{
-//    if (IsClosed(lines))
-//    {
-//        // Многоугольник уже замкнут
-//        return lines;
-//    }
-
-//    // Перестраиваем многоугольник
-//    return BuildClosedPolygon(lines);
-//}
-
-///// <summary>
-///// Перестраивает многоугольник в замкнутый.
-///// </summary>
-///// <param name="lines">Список линий, образующих незамкнутый многоугольник.</param>
-///// <returns>Замкнутый многоугольник.</returns>
-//private List<Line> BuildClosedPolygon(List<Line> lines)
-//{
-//    // Логика построения замкнутого многоугольника
-//    List<Line> closedLines = new List<Line>(lines);
-
-//    // Ваш код для добавления недостающих линий
-//    // ...
-
-//    return closedLines;
-//}
-

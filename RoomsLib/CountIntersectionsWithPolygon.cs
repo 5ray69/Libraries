@@ -1,67 +1,133 @@
 ﻿using Autodesk.Revit.DB;
 using System;
 using System.Collections.Generic;
+using Line = Autodesk.Revit.DB.Line;
+
 
 namespace Libraries.RoomsLib
 {
     public class CountIntersectionsWithPolygon(ICollection<Line> roomBorders, Line projectLine)
     {
-        public readonly ICollection<Line> _roomBorders = roomBorders;
-        public readonly Line _projectLine = projectLine;
+        private readonly ICollection<Line> _roomBorders = roomBorders;
+        private readonly Line _projectLine = projectLine;
 
 
         /// <summary>
-        /// <para>ВОЗВРАЩАЕТ СЛОВАРЬ ДЛЯ ПОДСЧЕТА КОЛИЧЕСТВА ПЕРЕСЕЧЕНИЙ С МНОГОУГОЛЬНИКОМ ГРАНИЦ ПОМЕЩЕНИЯ
-        /// <para>количество пар ключ-значение равно количеству прохождений проекции линии через границу помещения
+        /// <para>КОЛИЧЕСТВО ПЕРЕСЕЧЕНИЙ С МНОГОУГОЛЬНИКОМ ГРАНИЦ ПОМЕЩЕНИЯ
+        /// <para>Возвращает HashSet, в котором количество значений -
+        /// <para>это количество пересечений, тестовой линией
         /// </summary>
         /// <returns></returns>
-        public Dictionary<string, int> GetDictionary()
+        public HashSet<double> GetHashSet()
         {
-            Dictionary<string, int> projectIntersect = [];
+            HashSet<double> projectIntersect = [];
+
+            XYZ projectStart = _projectLine.GetEndPoint(0);
+            XYZ projectEnd = _projectLine.GetEndPoint(1);
 
             foreach (Line roomLine in _roomBorders)
             {
 
+
+                // Проходя через вершину, линия пересекает две линии границы помещения сразу и дает 2 пересечения.
+                // Если такая вершина уже есть в GetHashSet, то второе пересечение ее же, но в другой линии,
+                // не будет добавлено в GetHashSet так как такая сумма координат точки пересечения
+                // уже есть и будет зачтено как одно пересечение
+
                 // если проекция линии пересекает границу помещения
-                if (_projectLine.Intersect(roomLine, out IntersectionResultArray resultArray) == SetComparisonResult.Overlap)
+                double? intersectionSum = GetIntersectionPointSum(_projectLine, roomLine);
+                // Проверяем, что intersectionSum не null
+                if (intersectionSum.HasValue)
                 {
-                    // Проходя через вершину, линия пересекает две линии границы помещения сразу и дает 2 пересечения.
-                    // Если такая вершина уже есть в словаре, то второе пересечение ее же, но в другой линии,
-                    // не будет добавлено в словарь и будет зачтено как одно пересечение
-                    XYZ startXYZ = roomLine.GetEndPoint(0);
-                    string sumStartXYZ = Math.Round(startXYZ.X + startXYZ.Y + startXYZ.Z, 7, MidpointRounding.AwayFromZero).ToString();  // округление до 7 знаков
-
-                    // если projectLine проходит через вершину = начальную точку линии границы
-                    if (_projectLine.Distance(startXYZ) == 0.0)
-                    {
-                        if (!projectIntersect.ContainsKey(sumStartXYZ))
-                            projectIntersect.Add(sumStartXYZ, 1);
-                    }
-
-                    XYZ endXYZ = roomLine.GetEndPoint(1);
-                    string sumEndXYZ = Math.Round(endXYZ.X + endXYZ.Y + endXYZ.Z, 7, MidpointRounding.AwayFromZero).ToString();  // округление до 7 знаков
-
-                    // если projectLine проходит через вершину = конечную точку линии границы
-                    if (_projectLine.Distance(endXYZ) == 0.0)
-                    {
-                        if (!projectIntersect.ContainsKey(sumEndXYZ))
-                            projectIntersect.Add(sumEndXYZ, 1);
-                    }
+                    projectIntersect.Add(intersectionSum.Value);
+                }
 
 
-                    // если projectLine не проходит
-                    // ни через вершину начальной точки линии границы,
-                    // ни через вершину конечной точки линии границы (пересекает где-то в другом месте линию границы)
-                    if (_projectLine.Distance(startXYZ) != 0.0 || _projectLine.Distance(endXYZ) != 0.0)
-                    {
-                        XYZ centerLineXYZ = roomLine.Evaluate(0.5, true);
-                        string currentKey = Math.Round(centerLineXYZ.X + centerLineXYZ.Y + centerLineXYZ.Z, 7, MidpointRounding.AwayFromZero).ToString();  // округление до 7 знаков
-                        if (!projectIntersect.ContainsKey(currentKey))
-                            projectIntersect.Add(currentKey, 1);
-                    }
+                XYZ roomStart = roomLine.GetEndPoint(0);
+                XYZ roomEnd = roomLine.GetEndPoint(1);
+
+                // Если начальная точка _projectLine находится на линии границы помещения
+                // Измеряем расстояние от точки до начала и конца отрезка. Точка лежит на отрезке, если сумма этих двух расстояний равна длине отрезка
+                if (IsPointOnLine(projectStart, roomStart, roomEnd) || IsPointOnLine(projectEnd, roomStart, roomEnd))
+                {
+                    //перед выходом из метода очистили HashSet
+                    projectIntersect.Clear();
+
+                    //перед выходом из метода и после очистки HashSet добавили любое число
+                    projectIntersect.Add(3);
+                    return projectIntersect;
+                }
+
+
+                // Если начальная точка _projectLine совпадает с начальной точкой roomLine
+                // если линия начинается в вершине многоугольника, то может быть два пересечения
+                if (projectStart.IsAlmostEqualTo(roomStart) ||
+                    projectEnd.IsAlmostEqualTo(roomStart) ||
+                    projectStart.IsAlmostEqualTo(roomEnd) ||
+                    projectEnd.IsAlmostEqualTo(roomEnd))
+                {
+                    //перед выходом из метода очистили HashSet
+                    projectIntersect.Clear();
+
+                    //перед выходом из метода и после очистки HashSet добавили любое число
+                    projectIntersect.Add(1);
+                    return projectIntersect;
                 }
             }
+
             return projectIntersect;
+        }
+
+
+        public double? GetIntersectionPointSum(Line line1, Line line2)
+        {
+            // Прямая проверка пересечения
+            IntersectionResultArray intersectionResult = null;
+            line1.Intersect(line2, out intersectionResult);
+
+            // Если есть пересечение, возвращаем сумму координат точки
+            if (intersectionResult != null && intersectionResult.Size > 0)
+            {
+                XYZ point = intersectionResult.get_Item(0).XYZPoint;
+
+                //округлили до 3 знаков после запятой и отбросили дробную часть
+                long endX = (long)(point.X * 1000);
+                long endY = (long)(point.Y * 1000);
+
+                //Побитовое соединение чисел endX и endY
+                //long combinedEnd = (endX << 32) | endY;
+                return (endX << 32) | endY;
+            }
+
+            // Пересечений нет
+            return null;
+        }
+
+
+        /// <summary>
+        /// Проверяет, лежит ли точка на отрезке (линии границы помещения).
+        /// </summary>
+        /// <param name="projectPoint">Проверяемая точка</param>
+        /// <param name="roomStartPoint">Начальная точка отрезка</param>
+        /// <param name="roomEndPoint">Конечная точка отрезка</param>
+        /// <param name="tolerance">Допустимая погрешность</param>
+        /// <returns>True, если точка лежит на отрезке</returns>
+
+        public bool IsPointOnLine(XYZ projectPoint, XYZ roomStartPoint, XYZ roomEndPoint, double tolerance = 0.001)
+        {
+
+            // длина линии границы помещения
+            double lengthLineRoom = roomStartPoint.DistanceTo(roomEndPoint);
+
+            //длина от точки до начала линии границы помещения
+            double distanceToStartLineRoom = projectPoint.DistanceTo(roomStartPoint);
+
+            //длина от точки до конца линии границы помещения
+            double distanceToEndLineRoom = projectPoint.DistanceTo(roomEndPoint);
+
+            // Измеряем расстояние от точки до начала и конца отрезка. Точка лежит на отрезке, если сумма этих двух расстояний равна длине отрезка
+            // Проверяем, равна ли сумма расстояний длине отрезка (с учетом допуска)
+            return Math.Abs((distanceToStartLineRoom + distanceToEndLineRoom) - lengthLineRoom) < tolerance;
         }
     }
 }
