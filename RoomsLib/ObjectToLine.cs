@@ -42,10 +42,22 @@ namespace Libraries.RoomsLib
                 //if (line.Direction.Normalize().Z == 1)
                 if (Math.Abs(line.Direction.Z) > 0.999)
                 {
-                    XYZ rotatedPoint = rotationDefault.OfPoint(
-                        projectedStart + translationDefault.OfVector(XYZ.BasisY)
-                    );
-                    return Line.CreateBound(projectedStart, rotatedPoint);
+                    XYZ start = projectedStart;
+
+                    Transform rotation = Transform.CreateRotation(XYZ.BasisZ, 3 * Math.PI / 180);
+
+                    XYZ directionXY = rotation.OfVector(XYZ.BasisY).Normalize();
+
+                    XYZ end = start + directionXY * _lengthOutLine;
+
+                    return Line.CreateBound(start, end);
+
+
+
+                    //XYZ rotatedPoint = rotationDefault.OfPoint(
+                    //    projectedStart + translationDefault.OfVector(XYZ.BasisY)
+                    //);
+                    //return Line.CreateBound(projectedStart, rotatedPoint);
                 }
                 else
                 {
