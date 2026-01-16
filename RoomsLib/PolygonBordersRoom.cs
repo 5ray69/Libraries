@@ -12,16 +12,38 @@ namespace Libraries.RoomsLib
     {
         private readonly double MinLineLength = uiapp.Application.ShortCurveTolerance; // Минимальная длина линии в единицах Revit
 
+
         /// <summary>
-        /// Создаем новый многоугольник, приведенный к координате Z уровня помещения,
-        /// замкнув линии, если были не замкнуты
+        /// <para>Создаем новый многоугольник, приведенный к координате Z уровня помещения,
+        /// <para>замкнув линии, если были не замкнуты
         /// </summary>
+        /// <param name="linesRoomBorders"> линии границ помещения</param>
+        /// <param name="room">помещение</param>
+        /// <returns></returns>
         public List<Line> CreateCopy(List<Line> linesRoomBorders, Room room)
         {
             double _levelZ = room.Level.Elevation;
 
             // Приводим линии к одной плоскости
             List<Line> linesToZ = LinesToPlane(linesRoomBorders, _levelZ);
+
+            // Проверяем, замкнут ли многоугольник
+            return IsClosed(linesRoomBorders) ? linesToZ : CloseLines(linesToZ);
+        }
+
+
+        /// <summary>
+        /// <para>Создаем новый многоугольник, приведенный
+        /// <para>к координате Z на уровне высотной отметки elevation.
+        /// <para>замкнув линии, если были не замкнуты.
+        /// </summary>
+        /// <param name="linesRoomBorders"> линии границ помещения</param>
+        /// <param name="elevation"> высотная отметка</param>
+        /// <returns></returns>
+        public List<Line> CreateCopy(List<Line> linesRoomBorders, double elevation)
+        {
+            // Приводим линии к одной плоскости расположенной на elevation по оси Z
+            List<Line> linesToZ = LinesToPlane(linesRoomBorders, elevation);
 
             // Проверяем, замкнут ли многоугольник
             return IsClosed(linesRoomBorders) ? linesToZ : CloseLines(linesToZ);
