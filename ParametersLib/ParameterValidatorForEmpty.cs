@@ -34,7 +34,7 @@ namespace Libraries.ParametersLib
                 return; // Завершаем выполнение, если параметр только для чтения
             }
 
-            if (string.IsNullOrEmpty(parameter.AsString())) // if (paramElemFlat.AsString() == null || paramElemFlat.As<para>() == "")
+            if (string.IsNullOrEmpty(parameter.AsString())) // if (paramElemFlat.AsString() == null || paramElemFlat.AsString() == "")
             {
                 parameter.Set(value); // Устанавливаем значение, если оно ещё не задано
             }

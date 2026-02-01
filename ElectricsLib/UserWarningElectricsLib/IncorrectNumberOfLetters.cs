@@ -3,7 +3,7 @@ using Libraries.LevelsLib;
 
 namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {
-    public class NotPointInPanelName
+    public class IncorrectNumberOfLetters
     {
         public string MessageForUser(Document doc, FamilyInstance baseEquipment)
         {
@@ -15,7 +15,9 @@ namespace Libraries.ElectricsLib.UserWarningElectricsLib
 с именем: {baseEquipment.Symbol.FamilyName}
 с Id: {baseEquipment.Id.IntegerValue}
 на уровне: {levelAnyObject.GetLevel(baseEquipment).Name}
-в параметре Имя панели отсутствует точка.
+в параметре Имя панели,
+после последней точки,
+больше или меньше двух сиволов.
 
 Имя панели должно содержать название группы точка этаж из двух цифр.
 Например, гр.1.01 здесь .01 это первый этаж.

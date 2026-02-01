@@ -2,7 +2,6 @@
 using Autodesk.Revit.DB.Electrical;
 using Libraries.ElectricsLib.UserWarningElectricsLib;
 using Libraries.ErrorModelLib;
-using Libraries.LevelsLib;
 using System;
 
 namespace Libraries.LevelsLib

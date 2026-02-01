@@ -4,6 +4,10 @@ using Libraries.ElectricsLib.UserWarningElectricsLib;
 
 namespace Libraries.ElectricsLib
 {
+    /// <summary>
+    /// валидатор правильности заполнения значения параметра Имя панели
+    /// </summary>
+    /// <param name="errorModel"></param>
     public class PanelNameValidator(ErrorModel errorModel)
     {
         private readonly ErrorModel _errorModel = errorModel;
@@ -17,24 +21,25 @@ namespace Libraries.ElectricsLib
         /// <returns></returns>
         public string GetGroupName(Document doc, FamilyInstance baseEquipment, string panelName)
         {
-            if (!string.IsNullOrEmpty(panelName))
-            {
-                int lastPointIndex = panelName.LastIndexOf('.'); // индекс последней точки
-
-                if (lastPointIndex == -1)
-                {
-                    _errorModel.UserWarning(new NotPointInPanelName().MessageForUser(doc, baseEquipment));
-                    return ""; // завершаем выполнение, если в строке нет точки
-                }
-                else
-                    return panelName.Substring(0, lastPointIndex);
-            }
-
-            else
+            if (string.IsNullOrEmpty(panelName))  // никогда не заполнялась или пустая строка
             {
                 _errorModel.UserWarning(new EmptyParameter().MessageForUser(doc, baseEquipment));
-                return ""; // завершаем выполнение, если строка пустая
             }
+
+            int lastPointIndex = panelName.LastIndexOf('.');
+
+            if (lastPointIndex == -1)  // в строке нет точки
+            {
+                _errorModel.UserWarning(new NotPointInPanelName().MessageForUser(doc, baseEquipment));
+            }
+
+            if (panelName.Length - lastPointIndex - 1 != 2)  // после последней точки больше или меньше двух символов
+            {
+                _errorModel.UserWarning(new IncorrectNumberOfLetters().MessageForUser(doc, baseEquipment));
+            }
+
+            return panelName.Substring(0, lastPointIndex);
+
         }
     }
 }
