@@ -122,7 +122,7 @@ namespace Libraries.RoomsLib
         /// <summary>
         /// Класс для сравнения объектов XYZ.
         /// </summary>
-        private class XyzEqualityComparer : IEqualityComparer<XYZ>
+        public class XyzEqualityComparer : IEqualityComparer<XYZ>
         {
             public bool Equals(XYZ x, XYZ y)
             {
