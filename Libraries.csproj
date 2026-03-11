@@ -201,6 +201,7 @@
     <Compile Include="RoomsLib\UserWarningRoomsLib\NoConnectCircuit.cs" />
     <Compile Include="RoomsLib\UserWarningRoomsLib\NoContainLocation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewLib\UserWarningViewLib\ActiveViewIsNotPlan.cs" />
     <Compile Include="ViewLib\UserWarningViewLib\ButtonIsPressedNoSelectUser.cs" />
     <Compile Include="ViewLib\ViewDto.cs" />
     <Compile Include="ViewLib\ViewDtoNameComparer.cs" />

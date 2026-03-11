@@ -28,8 +28,8 @@ namespace Libraries.ElectricsLib
             //УЗЛЫ ПУТИ
             List<XYZ> listPath = new List<XYZ>();
 
-            // ПЕРВЫЙ УЗЕЛ = xyz коннектора панели, к которой подключаем conPanel.Domain == DB.Domain.DomainElectrical
-            // Location.Point панели и положения коннектора не одно и тоже, пробуем положение коннектора.
+            // ПЕРВЫЙ УЗЕЛ = xyz размещения семейства питающей панели, к которой подключаем цепью нагрузку
+            // Location.Point панели и положения коннектора в ней - это не одно и тоже.
             LocationPoint locPoint = conPanel.Owner.Location as LocationPoint;
             XYZ node1 = locPoint.Point;
             listPath.Add(node1);

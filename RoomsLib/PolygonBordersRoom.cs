@@ -95,6 +95,7 @@ namespace Libraries.RoomsLib
         public bool IsClosed(List<Line> lines)
         {
             // Словарь для подсчета начальных и конечных точек
+            //new Dictionary<XYZ, int>(new XyzEqualityComparer()) словарь для сравнения объектов XYZ с учетом погрешности. Получая HashCod-ы каждого объекта XYZ не будут две разные точки с одинаковыми объектами считаться одним и тем же ключом
             Dictionary<XYZ, int> pointCounts = new Dictionary<XYZ, int>(new XyzEqualityComparer());
 
             foreach (var line in lines)
@@ -103,10 +104,10 @@ namespace Libraries.RoomsLib
                 XYZ end = line.GetEndPoint(1);
 
                 // Увеличиваем счётчики для начальной и конечной точек
-                if (pointCounts.ContainsKey(start))
-                    pointCounts[start]++;
+            if (pointCounts.ContainsKey(start))
+                pointCounts[start]++;  // если XYZ уже есть в словаре, значение на 1
                 else
-                    pointCounts[start] = 1;
+                    pointCounts[start] = 1;  // если XYZ нет в словаре, значение делаем равным 1
 
                 if (pointCounts.ContainsKey(end))
                     pointCounts[end]++;
