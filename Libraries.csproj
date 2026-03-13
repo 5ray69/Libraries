@@ -118,6 +118,10 @@
     <Compile Include="ElectricsLib\UserWarningElectricsLib\IncorrectNumberOfLetters.cs" />
     <Compile Include="ElectricsLib\UserWarningElectricsLib\MultiplePhases.cs" />
     <Compile Include="ElectricsLib\UserWarningElectricsLib\SetPhasesIn380.cs" />
+    <Compile Include="ErrorModelLib\WarningWindow.xaml.cs">
+      <DependentUpon>WarningWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorModelLib\WarningWindowService.cs" />
     <Compile Include="ParametersLib\ParameterDefinition.cs" />
     <Compile Include="ParametersLib\ValidatorParameter.cs" />
     <Compile Include="ElectricsLib\GroupsOfConnectors.cs" />
@@ -210,7 +214,12 @@
   <ItemGroup>
     <None Include="RoomsLib\app.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Page Include="ErrorModelLib\WarningWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
