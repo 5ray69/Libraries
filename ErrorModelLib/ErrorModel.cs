@@ -25,9 +25,8 @@ namespace Libraries.ErrorModelLib
         /// <exception cref="UserNotificationException"></exception>
         public void UserWarningWindow(string message, BitmapImage image = null)
         {
-            var windowService = new WarningWindowService();
-            windowService.Show(message, image);
-
+            WarningWindowService warningWindowService = new();
+            warningWindowService.Show(message, image);
             throw new UserNotificationException();  // Останавливает выполнение с исключением
         }
     }
