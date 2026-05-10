@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="ElectricsLib\GroupService\" />
+    <Folder Include="ElectricsLib\ShemPanel\" />
+    <Folder Include="ElectricsLib\Sorting\" />
+    <Folder Include="ElectricsLib\UserWarningElectricsLib\" />
+    <Folder Include="ErrorModelLib\" />
+    <Folder Include="LevelsLib\UserWarningLevelsLib\" />
+    <Folder Include="LinksLib\UserWarningLinksLib\" />
+    <Folder Include="LocationLib\UserWarningLocationLib\" />
+    <Folder Include="ParametersLib\UserWarningParametersLib\" />
+    <Folder Include="RoomsLib\UserWarningRoomsLib\" />
+    <Folder Include="ViewLib\UserWarningViewLib\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="RevitAPI">
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2025\RevitAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2025\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>
