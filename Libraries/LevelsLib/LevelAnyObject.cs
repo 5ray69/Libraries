@@ -6,16 +6,24 @@ using System;
 
 namespace Libraries.LevelsLib
 {
+
+    /// <summary>
+    /// Извлекает уровень любого объекта электрика
+    /// </summary>
+    /// <param name="doc"></param>
     public class LevelAnyObject(Document doc)
     {
         private readonly Document _doc = doc;
 
 
         /// <summary>
-        /// <para>извлекает уровень, на котором находится любой объект электрика,
-        /// <para>включая семейства на грани (не привязанные к уровню) и аннотации
+        /// <para>извлекает уровень, на котором находится любой объект электрика,</para>
+        /// <para>включая семейства на грани (не привязанные к уровню) и аннотации</para>
         /// </summary>
+        /// <param name="element"></param>
         /// <returns></returns>
+
+
         public Level GetLevel(Element element)
         {
             //НЕЛЬЗЯ МЕНЯТЬ ПОРЯДОК СЛЕДОВАНИЯ УСЛОВИЙ if
@@ -25,7 +33,8 @@ namespace Libraries.LevelsLib
             // Проверка на наличие свойства LevelId и извлечение его значения
             //familyinstance, соед.детали кабельных лотков, соед.детали коробов
             // LevelId у тех, у кого семейство НЕ на основе рабочей плоскости/НЕ на грани
-            if (element.LevelId != null && element.LevelId.IntegerValue != -1)
+            //if (element.LevelId != null && element.LevelId.IntegerValue != -1 )
+            if (element.LevelId != null && element.LevelId != ElementId.InvalidElementId)
             {
                 return _doc.GetElement(element.LevelId) as Level;
             }
@@ -37,8 +46,8 @@ namespace Libraries.LevelsLib
                 element is FamilyInstance familyInstance
                 && familyInstance.HostFace is null
                 && element.Category != null
-                && element.Category.Id.IntegerValue != (int)BuiltInCategory.OST_DetailComponents  // элементы узлов
-                && element.Category.Id.IntegerValue != (int)BuiltInCategory.OST_GenericAnnotation  // типовые аннотации (стрелка выносок)
+                && element.Category.Id != new ElementId(BuiltInCategory.OST_DetailComponents)  // элементы узлов
+                && element.Category.Id != new ElementId(BuiltInCategory.OST_GenericAnnotation)  // типовые аннотации (стрелка выносок)
                 )
             {
                 return familyInstance.Host as Level;
@@ -68,7 +77,7 @@ namespace Libraries.LevelsLib
                     errorModel.UserWarning(new NoConnectCircuit().MessageForUser(electricalSystem));
                 }
 
-                if (baseEquipment?.LevelId != null && baseEquipment.LevelId.IntegerValue != -1)
+                if (baseEquipment?.LevelId != null && baseEquipment.LevelId != ElementId.InvalidElementId)
                 {
                     return _doc.GetElement(baseEquipment.LevelId) as Level;
                 }
@@ -121,14 +130,13 @@ namespace Libraries.LevelsLib
         }
 
 
-
-
         /// <summary>
-        /// <para>над каким уровнем находится элемент
-        /// <para>у вертикальных объектов берется нижняя точка
+        /// <para>над каким уровнем находится элемент</para>
+        /// <para>у вертикальных объектов берется нижняя точка</para>
         /// </summary>
         /// <param name="element"></param>
         /// <returns></returns>
+
         public Level GetСlosestLevel(Element element)
         {
             double zElement = 0;

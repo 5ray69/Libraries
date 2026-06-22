@@ -3,17 +3,22 @@ using Autodesk.Revit.DB.Electrical;
 
 namespace Libraries.ElectricsLib
 {
-    public class FeederShield
+
+    /// <summary>
+    /// Питающая линия (фидер) щита
+    /// </summary>
+    public class FeederShield(Document doc)
     {
-        private readonly Document _doc;
-        private readonly ScheduleKey _scheduleKey;
+        private readonly Document _doc = doc;
+        private readonly ScheduleKey _scheduleKey = new ScheduleKey(doc, "Ключи спецификация кабелей");
 
-        public FeederShield(Document doc)
-        {
-            _doc = doc;
-            _scheduleKey = new ScheduleKey(doc, "Ключи спецификация кабелей");
-        }
-
+        /// <summary>
+        /// Назначает тип кабеля на питающую цепь
+        /// </summary>
+        /// <param name="shieldFloor"></param>
+        /// <param name="cable"></param>
+        /// <param name="penCable"></param>
+        /// <param name="rewriteParameters"></param>
         public void SetTypeCable(FamilyInstance shieldFloor, string cable, string penCable, bool rewriteParameters)
         {
             if (shieldFloor == null)

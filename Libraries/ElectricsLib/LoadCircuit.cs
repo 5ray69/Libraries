@@ -60,14 +60,16 @@ namespace Libraries.ElectricsLib
         /// <para>указанной категории</para>
         /// </summary>
         /// <param name="electricalSystem"></param>
+        /// <param name="builtInCategory"></param>
         /// <returns></returns>
         public bool IsCategory(ElectricalSystem electricalSystem, BuiltInCategory builtInCategory)
         {
-            int targetCategoryId = (int)builtInCategory;
+            //int targetCategoryId = (int)builtInCategory;
+            ElementId targetCategoryId = new ElementId(builtInCategory);
 
             foreach (var load in EnumerateLoads(electricalSystem))
             {
-                if (load.Category.Id.IntegerValue != targetCategoryId)
+                if (load.Category.Id != targetCategoryId)
                     return false;
             }
             return true;
@@ -80,16 +82,17 @@ namespace Libraries.ElectricsLib
         /// <para>Возвращается список не более 10 элементов</para>
         /// </summary>
         /// <param name="electricalSystem"></param>
+        /// <param name="builtInCategory"></param>
         /// <returns></returns>
         public List<FamilyInstance> LoadsMismatchCategory(ElectricalSystem electricalSystem, BuiltInCategory builtInCategory)
         {
             List<FamilyInstance> mismatchLoads = [];
 
-            int targetCategoryId = (int)builtInCategory;
+            ElementId targetCategoryId = new ElementId(builtInCategory);
 
             foreach (var load in EnumerateLoads(electricalSystem))
             {
-                if (load.Category.Id.IntegerValue != targetCategoryId)
+                if (load.Category.Id != targetCategoryId)
                     mismatchLoads.Add(load);
             }
             return mismatchLoads.Count < 10 ? mismatchLoads : mismatchLoads.Take(10).ToList();

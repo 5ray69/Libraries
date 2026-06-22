@@ -14,9 +14,9 @@ namespace Libraries.ElectricsLib
 
 
         /// <summary>
-        /// <para>из исходной строки возвращает подстроку,
-        /// <para>отбрасив все после последей точки в строке,
-        /// <para>включая саму точку
+        /// <para>из исходной строки возвращает подстроку,</para>
+        /// <para>отбрасив все после последей точки в строке,</para>
+        /// <para>включая саму точку</para>
         /// </summary>
         /// <returns></returns>
         public string GetGroupName(Document doc, FamilyInstance baseEquipment, string panelName)

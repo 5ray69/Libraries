@@ -1,15 +1,22 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Electrical;
 using Libraries.LevelsLib;
-using System.Collections.Generic;
 
 namespace Libraries.ElectricsLib
 {
+    /// <summary>
+    /// Все цепи проекта
+    /// </summary>
     public class AllCircuits
     {
         private readonly Document _doc;
         private readonly ICollection<ElectricalSystem> _electricalSystems;
 
+
+        /// <summary>
+        /// Возвращает все цепи проекта
+        /// </summary>
+        /// <param name="doc"></param>
         public AllCircuits(Document doc)
         {
             _doc = doc;
@@ -40,8 +47,8 @@ namespace Libraries.ElectricsLib
 
 
         /// <summary>
-        /// <para> возвращает уникальные имена групп на указанном
-        /// <para> уровне, получаемые из параметра "БУДОВА_Группа"
+        /// <para> возвращает уникальные имена групп на указанном</para>
+        /// <para> уровне, получаемые из параметра "БУДОВА_Группа"</para>
         /// </summary>
         /// <param name="level"></param>
         /// <returns></returns>

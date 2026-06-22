@@ -3,16 +3,15 @@ using Autodesk.Revit.DB.Electrical;
 using Libraries.ElectricsLib.UserWarningElectricsLib;
 using Libraries.ErrorModelLib;
 using Libraries.ParametersLib;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 
 namespace Libraries.ElectricsLib.GroupService
 {
-    public class GroupLength
+    /// <summary>
+    /// Длины всех цепей каждой группы
+    /// </summary>
+    public class GroupLength(Document doc, ErrorModel errorModel)
     {
-        private readonly Document _doc;
-        private readonly ErrorModel _errorModel;
 
         //Кэшируем Definition LookupParameter
         private Definition _defTypeCable;
@@ -20,26 +19,14 @@ namespace Libraries.ElectricsLib.GroupService
         private Definition _defCountOnSect;
         private Definition _defTypeInsulation;
 
-        private readonly ValidatorParameter _validatorParameter;
-        private readonly ParameterDefinition _parameterDefinition;
+        private readonly ValidatorParameter _validatorParameter = new(doc, errorModel);
+        private readonly ParameterDefinition _parameterDefinition = new(doc, errorModel);
 
-        private readonly CircuitMetrics _circuitMetrics;
+        private readonly CircuitMetrics _circuitMetrics = new CircuitMetrics(doc, errorModel);
 
         //CultureInfo.InvariantCulture инвариантная культура всегда ожидает точку
         //как разделитель десятичной части, и она никак не зависит от системных настроек языка или региона
         private readonly CultureInfo _inv = CultureInfo.InvariantCulture;
-
-
-        public GroupLength(Document doc, ErrorModel errorModel)
-        {
-            _doc = doc;
-            _errorModel = errorModel;
-
-            _validatorParameter = new(doc, errorModel);
-            _parameterDefinition = new(doc, errorModel);
-
-            _circuitMetrics = new CircuitMetrics(doc, errorModel);
-        }
 
 
         /// <summary>
@@ -47,9 +34,9 @@ namespace Libraries.ElectricsLib.GroupService
         /// </summary>
         /// <param name="groupCircuits">все цепи в каждой группе</param>
         /// <returns>Dictionary<string, Dictionary<int, double>></returns>
-        public Dictionary<string, Dictionary<int, CableInfo>> GetLength(Dictionary<string, List<ElectricalSystem>> groupCircuits)
+        public Dictionary<string, Dictionary<ElementId, CableInfo>> GetLength(Dictionary<string, List<ElectricalSystem>> groupCircuits)
         {
-            Dictionary<string, Dictionary<int, CableInfo>> result = [];
+            Dictionary<string, Dictionary<ElementId, CableInfo>> result = [];
 
             //перебираем каждую группу
             foreach (KeyValuePair<string, List<ElectricalSystem>> group in groupCircuits)
@@ -61,7 +48,7 @@ namespace Libraries.ElectricsLib.GroupService
                 List<ElectricalSystem> circuits = group.Value;
 
                 //словарь для каждой группы
-                Dictionary<int, CableInfo> typeCabInfo = [];
+                Dictionary<ElementId, CableInfo> typeCabInfo = [];
 
 
                 foreach (ElectricalSystem circuit in circuits)
@@ -76,18 +63,16 @@ namespace Libraries.ElectricsLib.GroupService
 
                     ElementId elementId = paramTypeCable.AsElementId();
 
-                    int id = elementId.IntegerValue;
-
                     double length = _circuitMetrics.GetLengthWithKoefUpRound(circuit);
 
                     // Получаем или создаём CableInfo
-                    bool created = !typeCabInfo.TryGetValue(id, out CableInfo info);
+                    bool created = !typeCabInfo.TryGetValue(elementId, out CableInfo info);
 
                     //если ключа нет в словаре, то typeCabInfo.TryGetValue(id, out CableInfo info) == false? а info = null
                     if (created)
                     {
                         info = new CableInfo();
-                        typeCabInfo[id] = info; // создаем новую пару ключ-значение
+                        typeCabInfo[elementId] = info; // создаем новую пару ключ-значение
                     }
 
                     // суммируем длину с имеющейся в экземпляре класса, в свойстве TotalLength
@@ -119,7 +104,7 @@ namespace Libraries.ElectricsLib.GroupService
                         else
                         {
                             // Если не удалось преобразовать в число, то выводим предупреждение пользователю и завершаем код
-                            _errorModel.UserWarning(new NotConvertToNumber().MessageForUser(circuit, nameParamSection));
+                            errorModel.UserWarning(new NotConvertToNumber().MessageForUser(circuit, nameParamSection));
                         }
 
 
@@ -156,12 +141,29 @@ namespace Libraries.ElectricsLib.GroupService
     }
 
 
-
+    /// <summary>
+    /// информация о кабелях
+    /// </summary>
     public class CableInfo
     {
+        /// <summary>
+        /// длина всех цепей одного типа кабеля в группе
+        /// </summary>
         public double TotalLength{get; set;}  // суммируется
+
+        /// <summary>
+        /// сечение кабеля
+        /// </summary>
         public double CableSection{get; set;}  // не суммируется
+        
+        /// <summary>
+        /// количество сечений в группе
+        /// </summary>
         public string CountOnSection{get; set;}  // не суммируется
+
+        /// <summary>
+        /// тип изоляции кабеля
+        /// </summary>
         public string TypeInsulation{get; set;}  // не суммируется
     }
 

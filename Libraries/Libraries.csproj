@@ -2,33 +2,42 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>disable</Nullable>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Platforms>x64</Platforms>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+    <!-- МЕТАДАННЫЕ ПАКЕТА (Заменяют блок <metadata>) -->
+    <PackageId>5ray69.Libraries</PackageId>
+    <Version>6.0.0.46</Version>
+    <Title>Libraries</Title>
+    <Authors>5ray69</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>http://github.com/5ray69/Libraries.git/</PackageProjectUrl>
+    <Description>Библиотека для Revit 2025 (.NET 8)</Description>
+    <PackageReleaseNotes>Migrated to .NET 8</PackageReleaseNotes>
+    <PackageTags>C#;package;Revit2025;net8</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    
+    <!-- Автоматизация упаковки -->
+    <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
+    <PackageOutputPath>$(SolutionDir)nupkg\</PackageOutputPath>
   </PropertyGroup>
 
+  <!-- ВКЛЮЧЕНИЕ README (Заменяет блок <files>) -->
   <ItemGroup>
-    <Folder Include="ElectricsLib\GroupService\" />
-    <Folder Include="ElectricsLib\ShemPanel\" />
-    <Folder Include="ElectricsLib\Sorting\" />
-    <Folder Include="ElectricsLib\UserWarningElectricsLib\" />
-    <Folder Include="ErrorModelLib\" />
-    <Folder Include="LevelsLib\UserWarningLevelsLib\" />
-    <Folder Include="LinksLib\UserWarningLinksLib\" />
-    <Folder Include="LocationLib\UserWarningLocationLib\" />
-    <Folder Include="ParametersLib\UserWarningParametersLib\" />
-    <Folder Include="RoomsLib\UserWarningRoomsLib\" />
-    <Folder Include="ViewLib\UserWarningViewLib\" />
+    <None Include="README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="RevitAPI">
-      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2025\RevitAPI.dll</HintPath>
+      <HintPath>C:\Program Files\Autodesk\Revit 2025\RevitAPI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="RevitAPIUI">
-      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2025\RevitAPIUI.dll</HintPath>
+      <HintPath>C:\Program Files\Autodesk\Revit 2025\RevitAPIUI.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>

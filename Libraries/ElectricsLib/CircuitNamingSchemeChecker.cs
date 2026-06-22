@@ -5,6 +5,11 @@ using Libraries.ElectricsLib.UserWarningElectricsLib;
 
 namespace Libraries.ElectricsLib
 {
+    /// <summary>
+    /// Проверяет наличие и правильность настройки схемы обозначения цепей "По проекту – схема обозн. цепей" в Revit
+    /// </summary>
+    /// <param name="doc"></param>
+    /// <param name="errorModel"></param>
     public class CircuitNamingSchemeChecker(Document doc, ErrorModel errorModel)
     {
         private readonly Document _doc = doc;
@@ -63,6 +68,7 @@ namespace Libraries.ElectricsLib
 //    string nameScheme = doc.GetElement(circuitNamingSchemeSettings.CircuitNamingSchemeId).Name;
 //    //elementIdSchE.Add(nameScheme);
 //    if (nameScheme == "Имя нагрузки эт_цепь")
+
 //        elementIdSchE.Add(nameScheme);
 //    else
 //        elementIdSchE.Add("не равно");

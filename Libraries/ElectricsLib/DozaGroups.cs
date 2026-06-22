@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 
 namespace Libraries.ElectricsLib
 {
@@ -10,6 +9,9 @@ namespace Libraries.ElectricsLib
     {
         private readonly List<DozaGroup> _groups;
 
+        /// <summary>
+        /// дозы/соединительные коробки одной группы
+        /// </summary>
         public DozaGroups()
         {
             _groups = new List<DozaGroup>();

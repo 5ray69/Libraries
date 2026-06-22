@@ -1,10 +1,14 @@
 ﻿using Autodesk.Revit.DB;
 using Libraries.LevelsLib;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Libraries.ElectricsLib
 {
+    /// <summary>
+    /// Все объекты электрики на уровне активного вида
+    /// </summary>
+    /// <param name="doc"></param>
+    /// <param name="userSelect"></param>
+    /// <param name="activeViewId"></param>
     public class AllObjectsElectricOnLevel(Document doc, List<string> userSelect, ElementId activeViewId)
     {
         private readonly Document _doc = doc;
@@ -15,6 +19,10 @@ namespace Libraries.ElectricsLib
                                                     .Select(lev => lev.Id)
                                                     .ToList();
 
+        /// <summary>
+        /// получает ElementId всех объектов электрики на уровне активного вида
+        /// </summary>
+        /// <returns></returns>
         public ICollection<ElementId> GetElementId()
         {
             ICollection<ElementId> elementIds = [];
@@ -22,19 +30,19 @@ namespace Libraries.ElectricsLib
 
             // HashSet<int> - исключение дублирующихся элементов автоматически
             // проверка пуш
-            HashSet<int> annotationCategories =
+            HashSet<ElementId> annotationCategories =
             [
-                (int)BuiltInCategory.OST_TextNotes,  // текстовые примечания
-                (int)BuiltInCategory.OST_Lines,  // линии детализации
-                (int)BuiltInCategory.OST_ElectricalEquipmentTags,  // марки электрооборудования
-                (int)BuiltInCategory.OST_LightingFixtureTags,  // марки осветительных приборов
-                (int)BuiltInCategory.OST_RoomTags,  // марки помещений
-                (int)BuiltInCategory.OST_MultiCategoryTags,  // марки нескольких категорий
-                (int)BuiltInCategory.OST_ConduitTags,  // марки коробов
-                (int)BuiltInCategory.OST_GenericAnnotation,  // типовые аннотации (стрелка выносок)
-                (int)BuiltInCategory.OST_DetailComponents,  // элементы узлов
-                (int)BuiltInCategory.OST_Dimensions,  // размеры
-                (int)BuiltInCategory.OST_IOSDetailGroups  // группы элементов узлов
+                new ElementId(BuiltInCategory.OST_TextNotes),  // текстовые примечания
+                new ElementId(BuiltInCategory.OST_Lines),  // линии детализации
+                new ElementId(BuiltInCategory.OST_ElectricalEquipmentTags),  // марки электрооборудования
+                new ElementId(BuiltInCategory.OST_LightingFixtureTags),  // марки осветительных приборов
+                new ElementId(BuiltInCategory.OST_RoomTags),  // марки помещений
+                new ElementId(BuiltInCategory.OST_MultiCategoryTags),  // марки нескольких категорий
+                new ElementId(BuiltInCategory.OST_ConduitTags),  // марки коробов
+                new ElementId(BuiltInCategory.OST_GenericAnnotation),  // типовые аннотации (стрелка выносок)
+                new ElementId(BuiltInCategory.OST_DetailComponents),  // элементы узлов
+                new ElementId(BuiltInCategory.OST_Dimensions),  // размеры
+                new ElementId(BuiltInCategory.OST_IOSDetailGroups)  // группы элементов узлов
             ];
 
             ICollection<BuiltInCategory> categories =
@@ -76,7 +84,7 @@ namespace Libraries.ElectricsLib
                 //Семейства принципиальных схем категории Типовые аннатации,
                 //тоже являются FamilyInstance и подпадают под другое условие
 
-                int categoryId = element.Category.Id.IntegerValue;
+                ElementId categoryId = element.Category.Id;
                 if (annotationCategories.Contains(categoryId))
                 {
                     // Для элементов аннотаций и др находящихся на четрежных видах и разрезах

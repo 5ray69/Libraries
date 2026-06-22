@@ -1,11 +1,13 @@
 ﻿using Autodesk.Revit.DB;
 using Libraries.ElectricsLib.UserWarningElectricsLib;
 using Libraries.ErrorModelLib;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Libraries.ElectricsLib
 {
+    /// <summary>
+    /// ключевые спецификацие
+    /// <param name="doc"></param>
+    /// <param name="nameSchedule"></param>
     public class ScheduleKey(Document doc, string nameSchedule)
     {
         private readonly Document _doc = doc;
@@ -21,8 +23,8 @@ namespace Libraries.ElectricsLib
         /// <summary>
         /// объект ключевой спецификации
         /// </summary>
-        /// <param name="nameSchedule"></param>
         /// <returns></returns>
+
         public ViewSchedule GetView()
         {
             if (_viewSchedule == null)

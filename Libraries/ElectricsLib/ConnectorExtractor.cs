@@ -1,8 +1,12 @@
 ﻿using Autodesk.Revit.DB;
-using System.Collections.Generic;
 
 namespace Libraries.ElectricsLib
 {
+
+
+    /// <summary>
+    /// Извлекает коннекторы
+    /// </summary>
     public class ConnectorExtractor
     {
         /// <summary>

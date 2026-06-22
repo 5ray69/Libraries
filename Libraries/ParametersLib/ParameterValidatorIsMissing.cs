@@ -4,6 +4,10 @@ using Libraries.ParametersLib.UserWarningParametersLib;
 
 namespace Libraries.ParametersLib
 {
+    /// <summary>
+    /// Существует ли параметр и что он не только для чтения, LookupParameter
+    /// </summary>
+    /// <param name="errorModel"></param>
     public class ParameterValidatorIsMissing(ErrorModel errorModel)
     {
         private readonly ErrorModel _errorModel = errorModel;

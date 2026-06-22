@@ -1,16 +1,24 @@
 ﻿using Autodesk.Revit.DB;
 using Libraries.LevelsLib;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Libraries.ElectricsLib
 {
+    /// <summary>
+    /// все объекты электрика на уровне текущего вида, являющегося планом
+    /// </summary>
+    /// <param name="doc"></param>
+    /// <param name="userSelect"></param>
     public class AllObjectsElectric(Document doc, List<string> userSelect)
     {
         private readonly Document _doc = doc;
         private readonly List<string> _levelNames = userSelect;
         private readonly LevelAnyObject _levelAnyObject = new(doc);
 
+        /// <summary>
+        /// <para>Id всех объектов электрика, на уровне текущего вида,</para>
+        /// <para>являющегося планом. Кроме дочерних семейств</para>
+        /// </summary>
+        /// <returns></returns>
         public ICollection<ElementId> GetElementId()
         {
             ICollection<ElementId> elementIds = [];
