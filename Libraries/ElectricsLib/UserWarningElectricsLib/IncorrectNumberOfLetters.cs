@@ -22,7 +22,7 @@ namespace Libraries.ElectricsLib.UserWarningElectricsLib
             string message = $@"
 У панели
 с именем: {baseEquipment.Symbol.FamilyName}
-с Id: {baseEquipment.Id.ToString}
+с Id: {baseEquipment.Id}
 на уровне: {levelAnyObject.GetLevel(baseEquipment).Name}
 в параметре Имя панели,
 после последней точки,

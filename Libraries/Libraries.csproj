@@ -11,7 +11,7 @@
 
     <!-- МЕТАДАННЫЕ ПАКЕТА (Заменяют блок <metadata>) -->
     <PackageId>5ray69.Libraries</PackageId>
-    <Version>6.0.0.48</Version>
+    <Version>6.0.0.50</Version>
     <Title>Libraries</Title>
     <Authors>5ray69</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

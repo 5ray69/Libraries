@@ -23,7 +23,7 @@ namespace Libraries.ParametersLib.UserWarningParametersLib
 {parameterName}
 
 у элемента: {element.Name}
-с Id: {element.Id.ToString}
+с Id: {element.Id}
 на уровне: {levelAnyObject.GetLevel(element)?.Name?? "уровень не определен"}
 
 Заполните параметр

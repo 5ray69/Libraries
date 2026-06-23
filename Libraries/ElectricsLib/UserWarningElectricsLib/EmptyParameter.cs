@@ -20,7 +20,7 @@ namespace Libraries.ElectricsLib.UserWarningElectricsLib
             string message = $@"
 Не заполнен параметер Имя панели
 у элемента: {familyInstance.Symbol.FamilyName}
-с Id: {familyInstance.Id.ToString}
+с Id: {familyInstance.Id}
 на уровне: {levelAnyObject.GetLevel(familyInstance).Name}
 
 Имя панели должно содержать название группы точка этаж из двух цифр.

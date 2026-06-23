@@ -23,7 +23,7 @@ namespace Libraries.ParametersLib.UserWarningParametersLib
 у копируемого элемента с именем:
 {sourceElement.Name}
 c Id элемента:
-{sourceElement.Id.ToString}
+{sourceElement.Id}
 категория элемента:
 {sourceElement.Category?.Name ?? "у элемента нет категории"}
 
@@ -31,7 +31,7 @@ c Id элемента:
 и у целевого элемента с именем:
 {targetElement.Name}
 c Id элемента:
-{targetElement.Id.ToString}
+{targetElement.Id}
 категория элемента:
 {targetElement.Category?.Name ?? "у элемента нет категории"}
 

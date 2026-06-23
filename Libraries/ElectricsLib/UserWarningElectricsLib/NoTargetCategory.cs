@@ -23,7 +23,7 @@ namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {familyInstance.Name}
 
 с Id
-{familyInstance.Id.ToString}
+{familyInstance.Id}
 
 размещенное на уровне
 {levelAnyObject.GetLevel(familyInstance)}

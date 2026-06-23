@@ -25,7 +25,7 @@ namespace Libraries.ElectricsLib.UserWarningElectricsLib
             string message1 = $@"
 У панели
 с именем: {baseEquipment.Symbol.FamilyName}
-с Id: {baseEquipment.Id.ToString}
+с Id: {baseEquipment.Id}
 на уровне: {levelAnyObject.GetLevel(baseEquipment).Name}
 в параметре Обозначение цепей установлено значение По проекту.
 
@@ -49,7 +49,7 @@ namespace Libraries.ElectricsLib.UserWarningElectricsLib
 
             foreach (var load in loadsMismatch)
             {
-                stringBuilder.AppendLine($"категория: {load.Category.Name}   Id: {load.Id.ToString}   уровень: {levelAnyObject.GetLevel(load).Name}");
+                stringBuilder.AppendLine($"категория: {load.Category.Name}   Id: {load.Id}   уровень: {levelAnyObject.GetLevel(load).Name}");
             }
 
             return stringBuilder.ToString();

@@ -23,7 +23,7 @@ namespace Libraries.ParametersLib.UserWarningParametersLib
 {el.Name}
 
 c Id элемента:
-{el.Id.ToString}
+{el.Id}
 
 категория элемента:
 {el.Category?.Name ?? "у элемента нет категории"}

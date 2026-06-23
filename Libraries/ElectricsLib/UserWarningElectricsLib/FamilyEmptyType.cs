@@ -22,7 +22,7 @@ namespace Libraries.ElectricsLib.UserWarningElectricsLib
 Имя семейства:
 {element.Name}
 
-Id семейства: {element.Id.ToString}
+Id семейства: {element.Id}
 
 Уровень элемента: {new LevelAnyObject(doc).GetLevel(element)?.Name ?? "у семейства нет уровня, есть только у размещенных экземпляров семейства"}
 

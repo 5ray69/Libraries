@@ -23,7 +23,7 @@ namespace Libraries.ElectricsLib.UserWarningElectricsLib
             string message = $@"
 У панели
 с именем: {baseEquipment.Name}
-с Id: {baseEquipment.Id.ToString}
+с Id: {baseEquipment.Id}
 на уровне: {levelAnyObject.GetLevel(baseEquipment).Name}
 Обозначением цепей установлено По проекту.
 
@@ -36,7 +36,7 @@ namespace Libraries.ElectricsLib.UserWarningElectricsLib
 Или замените Обзначение цепей на С префиксами,
 или подключите нагрузку
 с именем: {familyInstance.Name}
-с Id: {familyInstance.Id.ToString}
+с Id: {familyInstance.Id}
 на уровне: {levelAnyObject.GetLevel(familyInstance).Name}
 через соединительную коробку (дозу)
 и запустите код заново.

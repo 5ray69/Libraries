@@ -16,7 +16,7 @@ namespace Libraries.ElectricsLib.UserWarningElectricsLib
         {
             string message = $@"
 Электрическая цепь,
-Id которой {electricalSystem.Id.ToString}
+Id которой {electricalSystem.Id}
 не подключена.
 
 Удалите все неподключенные цепи или

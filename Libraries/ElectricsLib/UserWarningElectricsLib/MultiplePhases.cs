@@ -22,7 +22,7 @@ namespace Libraries.ElectricsLib.UserWarningElectricsLib
 
 с типоразмером: {familyInstance.Name}
 
-c Id: {familyInstance.Id.ToString}
+c Id: {familyInstance.Id}
 
 Уберите лишние галки в семействе
 и запустите код заново.";

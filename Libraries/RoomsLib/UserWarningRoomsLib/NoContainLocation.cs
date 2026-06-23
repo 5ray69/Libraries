@@ -19,7 +19,7 @@ namespace Libraries.RoomsLib.UserWarningRoomsLib
 У элемента с именем:
 {element.Name}
 
-Id этого элемента: {element.Id.ToString}
+Id этого элемента: {element.Id}
 
 нет свойства Location.
 

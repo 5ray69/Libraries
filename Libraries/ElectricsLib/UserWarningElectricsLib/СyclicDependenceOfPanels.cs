@@ -23,7 +23,7 @@ namespace Libraries.ElectricsLib.UserWarningElectricsLib
 в группе {groupStr}
 .
 у панели: {familyInstance.Symbol.FamilyName}
-с Id: {familyInstance.Id.ToString}
+с Id: {familyInstance.Id}
 на уровне: {levelAnyObject.GetLevel(familyInstance).Name}
 
 Разорвите закольованное соединение так,
@@ -51,7 +51,7 @@ namespace Libraries.ElectricsLib.UserWarningElectricsLib
 Обнаружена циклическая зависимость при построении цепей
 
 у панели: {familyInstance.Symbol.FamilyName}
-с Id: {familyInstance.Id.ToString}
+с Id: {familyInstance.Id}
 на уровне: {levelAnyObject.GetLevel(familyInstance).Name}
 
 Разорвите закольованное соединение так,

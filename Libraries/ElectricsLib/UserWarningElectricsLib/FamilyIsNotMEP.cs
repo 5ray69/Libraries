@@ -20,7 +20,7 @@ namespace Libraries.ElectricsLib.UserWarningElectricsLib
             string message = $@"
 Семейство: {familyInstance.Symbol.FamilyName}
 категории {familyInstance.Category?.Name ?? "у элемента нет категории"}
-с Id: {familyInstance.Id.ToString}
+с Id: {familyInstance.Id}
 на уровне: {levelAnyObject.GetLevel(familyInstance).Name}
 
 Семейство не является MEP оборудованием.

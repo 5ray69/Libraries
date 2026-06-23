@@ -18,7 +18,7 @@ namespace Libraries.ElectricsLib.UserWarningElectricsLib
 У семейства
 с именем {familyInstance.Name}
 категории {familyInstance.Category.Name}
-с Id {familyInstance.Id.ToString}
+с Id {familyInstance.Id}
 нет электрического соединителя.
 Оно не может быть подключено.
 

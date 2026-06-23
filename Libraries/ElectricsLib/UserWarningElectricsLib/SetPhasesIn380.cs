@@ -22,7 +22,7 @@ namespace Libraries.ElectricsLib.UserWarningElectricsLib
 
 с типоразмером: {familyInstance.Name}
 
-c Id: {familyInstance.Id.ToString}
+c Id: {familyInstance.Id}
 
 Уберите все галки у фазы А, фазы B и фазы C
 и запустите код заново.";

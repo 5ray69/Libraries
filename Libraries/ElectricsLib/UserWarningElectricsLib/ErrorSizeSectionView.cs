@@ -29,7 +29,7 @@ namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {familyInstance.Name}
 
 Id дозы
-{familyInstance.Id.ToString}
+{familyInstance.Id}
 
 доза размещенная на уровне
 {levelAnyObject.GetLevel(familyInstance).Name}

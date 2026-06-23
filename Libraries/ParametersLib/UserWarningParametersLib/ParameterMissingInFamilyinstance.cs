@@ -29,7 +29,7 @@ namespace Libraries.ParametersLib.UserWarningParametersLib
 имя семейства элемента:
 {familyInstance.Symbol.FamilyName}
 
-Id элемента: {familyInstance.Id.ToString}
+Id элемента: {familyInstance.Id}
 
 уровень элемента: {new LevelAnyObject(doc).GetLevel(familyInstance)?.Name ?? "у семейства нет уровня, оно или вложено в родительское или размещено на грани"}
 

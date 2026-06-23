@@ -18,7 +18,7 @@ namespace Libraries.ParametersLib.UserWarningParametersLib
             string message = $@"
 Не заполнен параметер {nameParameter}
 у элемента: {element.Name}
-с Id: {element.Id.ToString}
+с Id: {element.Id}
 
 Заполните значение параметра {nameParameter}
 и запустите код заново.

@@ -22,7 +22,7 @@ namespace Libraries.ElectricsLib.UserWarningElectricsLib
 У семейства
 с именем {familyInstance.Name}
 категории {familyInstance.Category?.Name ?? "у элемента нет категории"}
-с Id {familyInstance.Id.ToString}
+с Id {familyInstance.Id}
 на уровне {levelAnyObject.GetLevel(familyInstance).Name}
 
 в параметре Имя панели

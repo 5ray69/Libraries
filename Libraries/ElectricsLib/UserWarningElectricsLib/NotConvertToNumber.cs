@@ -17,7 +17,7 @@ namespace Libraries.ElectricsLib.UserWarningElectricsLib
         {
             string message = $@"
 У элемента: {element.Name}
-c Id элемента: {element.Id.ToString}
+c Id элемента: {element.Id}
 
 категория элемента:
 {element.Category?.Name ?? "у элемента нет категории"}

@@ -23,7 +23,7 @@ namespace Libraries.ParametersLib.UserWarningParametersLib
 {el.Name}
 
 c Id элемента:
-{el.Id.ToString}
+{el.Id}
 
 Обратитесь к координатору, чтоб параметры
 были добавлены в семейства.
