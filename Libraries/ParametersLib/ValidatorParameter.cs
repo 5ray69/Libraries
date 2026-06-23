@@ -4,16 +4,15 @@ using Libraries.ParametersLib.UserWarningParametersLib;
 
 namespace Libraries.ParametersLib
 {
-    public class ValidatorParameter
+    /// <summary>
+    /// Валидатор параметра
+    /// </summary>
+    /// <param name="doc"></param>
+    /// <param name="errorModel"></param>
+    public class ValidatorParameter(Document doc, ErrorModel errorModel)
     {
-        private readonly Document _doc;
-        private readonly ErrorModel _errorModel;
-
-        public ValidatorParameter(Document doc, ErrorModel errorModel)
-        {
-            _doc = doc;
-            _errorModel = errorModel;
-        }
+        private readonly Document _doc = doc;
+        private readonly ErrorModel _errorModel = errorModel;
 
 
         /// <summary>
@@ -92,16 +91,15 @@ namespace Libraries.ParametersLib
         }
 
 
-
         /// <summary>
         /// <para> Использует Definition </para>
         /// <para> Проверяет: 1.существует ли параметр и 2.что у него есть значение. </para>
         /// <para> В каждом соответствующем случае выводит </para>
         /// <para> предупреждение пользователю и завершает код. </para>
         /// </summary>
-        /// <param name="element">элемент у которого извлекается параметр</param>
-        /// <param name="nameParameter"> имя параметра</param>
-        /// <returns>Parameter</returns>
+        /// <param name="element"></param>
+        /// <param name="paramDefinition"></param>
+        /// <returns></returns>
         public Parameter MissingAndEmptyWarning(Element element, Definition paramDefinition)
         {
             Parameter param = element.get_Parameter(paramDefinition);

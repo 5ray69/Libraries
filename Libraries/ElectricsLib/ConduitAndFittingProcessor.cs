@@ -1,8 +1,6 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Electrical;
 using Libraries.ParametersLib;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Libraries.ElectricsLib
 {
@@ -17,6 +15,15 @@ namespace Libraries.ElectricsLib
         public string GroupName { get; private set; } = string.Empty;
 
 
+        /// <summary>
+        /// Обрабатывает элемент (короб или соед.деталь короба) и возвращает список коннекторов.
+        /// </summary>
+        /// <param name="elem"></param>
+        /// <param name="doc"></param>
+        /// <param name="paramValidator"></param>
+        /// <param name="connectorExtractor"></param>
+        /// <param name="uniqGroupsShields"></param>
+        /// <returns></returns>
         public List<Connector> ProcessElement(
                                                 Element elem,
                                                 Document doc,
@@ -55,7 +62,7 @@ namespace Libraries.ElectricsLib
         }
 
         /// <summary>
-        /// процессинг над коробом
+        /// обработка короба
         /// </summary>
         /// <param name="conduit"></param>
         /// <param name="results"></param>
@@ -79,7 +86,7 @@ namespace Libraries.ElectricsLib
         }
 
         /// <summary>
-        /// процессинг над соед.деталью короба
+        /// обработка соед.детали короба
         /// </summary>
         /// <param name="familyInstance"></param>
         /// <param name="results"></param>

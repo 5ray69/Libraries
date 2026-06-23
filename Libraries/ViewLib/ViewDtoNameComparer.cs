@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 
 namespace Libraries.ViewLib
 {
+    /// <summary>
+    /// Сравнение двух ViewDto
+    /// </summary>
     public class ViewDtoNameComparer : IComparer, IComparer<ViewDto>
     {
         /// <summary>

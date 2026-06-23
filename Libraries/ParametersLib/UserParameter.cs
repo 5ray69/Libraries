@@ -4,8 +4,16 @@ using Libraries.ParametersLib.UserWarningParametersLib;
 
 namespace Libraries.ParametersLib
 {
+    /// <summary>
+    /// Пользовательский параметр
+    /// </summary>
     public class UserParameter
     {
+        /// <summary>
+        /// Значение разных типов параметра в нуль
+        /// </summary>
+        /// <param name="el"></param>
+        /// <param name="str"></param>
         public void ValueToNull(Element el, string str)
         {
             Parameter parameter = el.LookupParameter(str);
@@ -21,7 +29,7 @@ namespace Libraries.ParametersLib
                 if (storageType == StorageType.String)
                     parameter.Set("");
                 if (storageType == StorageType.ElementId)
-                    parameter.Set(new ElementId(-1));
+                    parameter.Set(ElementId.InvalidElementId);
             }
 
             else

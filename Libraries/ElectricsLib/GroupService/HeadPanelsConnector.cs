@@ -4,19 +4,36 @@ using Libraries.ElectricsLib.UserWarningElectricsLib;
 using Libraries.ErrorModelLib;
 using Libraries.ParametersLib;
 using Libraries.ParametersLib.UserWarningParametersLib;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Libraries.ElectricsLib.GroupService
 {
-    public class HeadPanelsConnector(Document document, ErrorModel errorModel)
+    /// <summary>
+    /// Соединитель головной панели
+    /// </summary>
+    public class HeadPanelsConnector
     {
-        private readonly Document _doc = document;
-        private readonly ErrorModel _errorModel = errorModel;
-        private readonly ParameterValidatorMissingOrEmpty _parameterValidatorMissingOrEmpty = new(document, errorModel);
+        private readonly Document _doc;
+        private readonly ErrorModel _errorModel;
+        private readonly ParameterValidatorMissingOrEmpty _parameterValidatorMissingOrEmpty;
+
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="document"></param>
+        /// <param name="errorModel"></param>
+        public HeadPanelsConnector(Document document, ErrorModel errorModel)
+        {
+            _doc = document;
+            _errorModel = errorModel;
+            _parameterValidatorMissingOrEmpty = new ParameterValidatorMissingOrEmpty(document, errorModel);
+        }
 
 
+        /// <summary>
+        /// ElementId головной панели группы
+        /// </summary>
+        /// <param name="endCircuitGroups"></param>
+        /// <returns></returns>
         public Dictionary<string, ElementId> GetPanelOfCircuitGroups(Dictionary<string, List<ElectricalSystem>> endCircuitGroups)
         {
             Dictionary<string, HashSet<ElementId>> headPanelOfGroups = new();
@@ -155,7 +172,7 @@ namespace Libraries.ElectricsLib.GroupService
             {
                 if (kvpW.Value.Count > 1)
                 {
-                    stringWarning += $"Имя группы: {kvpW.Key} - Id головных панелей: {string.Join(", ", kvpW.Value.Select(id => id.IntegerValue))}\n";
+                    stringWarning += $"Имя группы: {kvpW.Key} - Id головных панелей: {string.Join(", ", kvpW.Value.Select(id => id))}\n";
                 }
             }
 
@@ -170,9 +187,6 @@ namespace Libraries.ElectricsLib.GroupService
             //return headPanelOfGroups.ToDictionary(k => k.Key, v => v.Value.ToList());
 
         }
-
-
-
 
 
         /// <summary>
@@ -195,7 +209,13 @@ namespace Libraries.ElectricsLib.GroupService
             return param.Definition;
         }
 
-
+       
+        /// <summary>
+        /// Значение параметра "БУДОВА_Группа"
+        /// </summary>
+        /// <param name="elSystem"></param>
+        /// <param name="paramDefinition"></param>
+        /// <returns></returns>
         private string GetValuePramGroup(ElectricalSystem elSystem, Definition paramDefinition)
         {
             Parameter param = elSystem.get_Parameter(paramDefinition);

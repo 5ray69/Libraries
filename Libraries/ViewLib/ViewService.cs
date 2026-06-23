@@ -1,16 +1,18 @@
 ﻿using Autodesk.Revit.DB;
-using System.Collections.Generic;
 using View = Autodesk.Revit.DB.View;
 
 namespace Libraries.ViewLib
 {
+    /// <summary>
+    /// Создает список DTO видов из коллекции видов
+    /// </summary>
     public class ViewService
     {
         /// <summary>
         /// Создает список DTO видов из коллекции видов
         /// </summary>
         /// <param name="views"></param>
-        /// <returns>List<ViewDto> список DTO видов</returns>
+        /// <returns></returns>
         public List<ViewDto> GetViewDto(ICollection<View> views)
         {
             List<ViewDto> viewDtos = [];

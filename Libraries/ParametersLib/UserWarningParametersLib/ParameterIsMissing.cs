@@ -2,8 +2,17 @@
 
 namespace Libraries.ParametersLib.UserWarningParametersLib
 {
+    /// <summary>
+    /// Отсутствует параметр
+    /// </summary>
     public class ParameterIsMissing
     {
+        /// <summary>
+        /// Сообщение пользователю
+        /// </summary>
+        /// <param name="el"></param>
+        /// <param name="nameParameter"></param>
+        /// <returns></returns>
         public string MessageForUser(Element el, string nameParameter)
         {
             string message = $@"
@@ -14,7 +23,7 @@ namespace Libraries.ParametersLib.UserWarningParametersLib
 {el.Name}
 
 c Id элемента:
-{el.Id.IntegerValue}
+{el.Id.ToString}
 
 категория элемента:
 {el.Category?.Name ?? "у элемента нет категории"}

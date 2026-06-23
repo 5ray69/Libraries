@@ -1,11 +1,15 @@
 ﻿using Autodesk.Revit.DB;
-using System;
-using System.Collections.Generic;
 using Line = Autodesk.Revit.DB.Line;
 
 
 namespace Libraries.RoomsLib
 {
+
+    /// <summary>
+    /// Количество пересечений с многоугольником границ помещения
+    /// </summary>
+    /// <param name="roomBorders"></param>
+    /// <param name="projectLine"></param>
     public class CountIntersectionsWithPolygon(ICollection<Line> roomBorders, Line projectLine)
     {
         private readonly ICollection<Line> _roomBorders = roomBorders;
@@ -13,9 +17,9 @@ namespace Libraries.RoomsLib
 
 
         /// <summary>
-        /// <para>КОЛИЧЕСТВО ПЕРЕСЕЧЕНИЙ С МНОГОУГОЛЬНИКОМ ГРАНИЦ ПОМЕЩЕНИЯ
-        /// <para>Возвращает HashSet, в котором количество значений -
-        /// <para>это количество пересечений, тестовой линией
+        /// <para>КОЛИЧЕСТВО ПЕРЕСЕЧЕНИЙ С МНОГОУГОЛЬНИКОМ ГРАНИЦ ПОМЕЩЕНИЯ</para>
+        /// <para>Возвращает HashSet, в котором количество значений -</para>
+        /// <para>это количество пересечений, тестовой линией</para>
         /// </summary>
         /// <returns></returns>
         public HashSet<double> GetHashSet()
@@ -79,6 +83,12 @@ namespace Libraries.RoomsLib
         }
 
 
+        /// <summary>
+        /// сумма координат точки пересечения
+        /// </summary>
+        /// <param name="line1"></param>
+        /// <param name="line2"></param>
+        /// <returns></returns>
         public double? GetIntersectionPointSum(Line line1, Line line2)
         {
             // Прямая проверка пересечения

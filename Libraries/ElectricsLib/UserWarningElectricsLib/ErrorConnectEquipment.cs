@@ -1,12 +1,21 @@
 ﻿using Autodesk.Revit.DB;
 using Libraries.LevelsLib;
-using System.Collections.Generic;
 using System.Text;
 
 namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {
+    /// <summary>
+    /// Нарушено правило подключений для обозначения цепей "По проекту".
+    /// </summary>
     public class ErrorConnectEquipment
     {
+        /// <summary>
+        /// Сообщение пользователю
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <param name="baseEquipment"></param>
+        /// <param name="loadsMismatch"></param>
+        /// <returns></returns>
         public string MessageForUser(Document doc, FamilyInstance baseEquipment, List<FamilyInstance> loadsMismatch)
         {
             LevelAnyObject levelAnyObject = new(doc);
@@ -16,7 +25,7 @@ namespace Libraries.ElectricsLib.UserWarningElectricsLib
             string message1 = $@"
 У панели
 с именем: {baseEquipment.Symbol.FamilyName}
-с Id: {baseEquipment.Id.IntegerValue}
+с Id: {baseEquipment.Id.ToString}
 на уровне: {levelAnyObject.GetLevel(baseEquipment).Name}
 в параметре Обозначение цепей установлено значение По проекту.
 
@@ -40,7 +49,7 @@ namespace Libraries.ElectricsLib.UserWarningElectricsLib
 
             foreach (var load in loadsMismatch)
             {
-                stringBuilder.AppendLine($"категория: {load.Category.Name}   Id: {load.Id.IntegerValue}   уровень: {levelAnyObject.GetLevel(load).Name}");
+                stringBuilder.AppendLine($"категория: {load.Category.Name}   Id: {load.Id.ToString}   уровень: {levelAnyObject.GetLevel(load).Name}");
             }
 
             return stringBuilder.ToString();

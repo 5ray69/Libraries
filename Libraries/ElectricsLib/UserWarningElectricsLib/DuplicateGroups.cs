@@ -1,7 +1,15 @@
 ﻿namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {
+    /// <summary>
+    /// Группы с одинаковым именем
+    /// </summary>
     public class DuplicateGroups
     {
+        /// <summary>
+        /// Сообщение пользователю
+        /// </summary>
+        /// <param name="stringWarning"></param>
+        /// <returns></returns>
         public string MessageForUser(string stringWarning)
         {
             string message = $@"

@@ -7,17 +7,10 @@ namespace Libraries.ParametersLib
     /// <summary>
     /// Проверяет существует ли параметр и есть ли у него значение
     /// </summary>
-    public class ParameterValidatorMissingOrEmpty
+    public class ParameterValidatorMissingOrEmpty(Document doc, ErrorModel errorModel)
     {
-        private readonly Document _doc;
-        private readonly ErrorModel _errorModel;
-
-
-        public ParameterValidatorMissingOrEmpty(Document doc, ErrorModel errorModel)
-        {
-            _doc = doc;
-            _errorModel = errorModel;
-        }
+        private readonly Document _doc = doc;
+        private readonly ErrorModel _errorModel = errorModel;
 
 
         /// <summary>

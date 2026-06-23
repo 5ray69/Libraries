@@ -1,7 +1,15 @@
 ﻿namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {
+    /// <summary>
+    /// Семейства нет в проекте
+    /// </summary>
     public class FamilySymbolNameNotInProject
     {
+        /// <summary>
+        /// Сообщение пользователю
+        /// </summary>
+        /// <param name="nameFamilySymbol"></param>
+        /// <returns></returns>
         public string MessageForUser(string nameFamilySymbol)
         {
             string message = $@"

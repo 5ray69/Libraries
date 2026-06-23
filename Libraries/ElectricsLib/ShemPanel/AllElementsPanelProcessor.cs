@@ -2,25 +2,25 @@
 using Libraries.ElectricsLib.UserWarningElectricsLib;
 using Libraries.ErrorModelLib;
 using Libraries.ParametersLib;
-using System;
-using System.Collections.Generic;
 
 namespace Libraries.ElectricsLib.ShemPanel
 {
-    public class AllElementsPanelProcessor
+    /// <summary>
+    /// Все элементы сборки в щите
+    /// </summary>
+    /// <param name="errorModel"></param>
+    public class AllElementsPanelProcessor(ErrorModel errorModel)
     {
-        private readonly ErrorModel _errorModel;
-        private readonly ParameterValidatorIsMissing _parameterValidatorIsMissing;
+        private readonly ErrorModel _errorModel = errorModel;
+        private readonly ParameterValidatorIsMissing _parameterValidatorIsMissing = new(errorModel);
 
         private readonly double offsetForY = 2800;
 
-        public AllElementsPanelProcessor(ErrorModel errorModel)
-        {
-            _errorModel = errorModel;
-            _parameterValidatorIsMissing = new(_errorModel);
-        }
-
-
+        /// <summary>
+        /// Наполнение всех семейств в сборке
+        /// </summary>
+        /// <param name="elements"></param>
+        /// <returns></returns>
         public AllElementsPanelResult Process(IList<FamilyInstance> elements)
         {
 

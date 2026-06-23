@@ -1,14 +1,16 @@
-﻿using System.Collections.Generic;
-using Line = Autodesk.Revit.DB.Line;
+﻿using Line = Autodesk.Revit.DB.Line;
 
 namespace Libraries.RoomsLib
 {
+    /// <summary>
+    /// ВОЗВРАЩАЕТ TRUE ЕСЛИ ОБЪЕКТ В ПОМЕЩЕНИИ
+    /// </summary>
     public class IsLocated
     {
         /// <summary>
-        /// <para>ВОЗВРАЩАЕТ TRUE ЕСЛИ ОБЪЕКТ В ПОМЕЩЕНИИ.
-        /// <para>Принимает преобразованную Line из ObjectToLine.
-        /// <para>Даже если одна точка/край линии лежит на границе помещения, а вся остальная часть линии вне.
+        /// <para>ВОЗВРАЩАЕТ TRUE ЕСЛИ ОБЪЕКТ В ПОМЕЩЕНИИ.</para>
+        /// <para>Принимает преобразованную Line из ObjectToLine.</para>
+        /// <para>Даже если одна точка/край линии лежит на границе помещения, а вся остальная часть линии вне.</para>
         /// </summary>
         /// <returns></returns>
         public bool InsideTheBorders(List<Line> linesRoomBordersToZ, Line projectLine)

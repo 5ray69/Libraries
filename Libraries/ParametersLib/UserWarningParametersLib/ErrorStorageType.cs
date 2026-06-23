@@ -2,8 +2,18 @@
 
 namespace Libraries.ParametersLib.UserWarningParametersLib
 {
+    /// <summary>
+    /// Не соответствует тип данных параметра у копируемого и у целевого элемента
+    /// </summary>
     public class ErrorStorageType
     {
+        /// <summary>
+        /// Сообщение пользователю
+        /// </summary>
+        /// <param name="sourceElement"></param>
+        /// <param name="targetElement"></param>
+        /// <param name="parameterName"></param>
+        /// <returns></returns>
         public string MessageForUser(Element sourceElement, Element targetElement, string parameterName)
         {
             string message = $@"
@@ -13,7 +23,7 @@ namespace Libraries.ParametersLib.UserWarningParametersLib
 у копируемого элемента с именем:
 {sourceElement.Name}
 c Id элемента:
-{sourceElement.Id.IntegerValue}
+{sourceElement.Id.ToString}
 категория элемента:
 {sourceElement.Category?.Name ?? "у элемента нет категории"}
 
@@ -21,7 +31,7 @@ c Id элемента:
 и у целевого элемента с именем:
 {targetElement.Name}
 c Id элемента:
-{targetElement.Id.IntegerValue}
+{targetElement.Id.ToString}
 категория элемента:
 {targetElement.Category?.Name ?? "у элемента нет категории"}
 

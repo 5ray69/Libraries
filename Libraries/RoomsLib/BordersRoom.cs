@@ -1,18 +1,26 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Architecture;
-using System.Collections.Generic;
 
 
 namespace Libraries.RoomsLib
 {
+    /// <summary>
+    /// Границы помещения на уровне координаты Z уровня помещения с учетом трансформации связи
+    /// </summary>
+    /// <param name="room"></param>
+    /// <param name="linkTransform"></param>
     public class BordersRoom(Room room, Transform linkTransform)
     {
+
+        /// <summary>
+        /// Высотная отметка координаты Z уровня, к которому привязано помещение
+        /// </summary>
         public readonly double _levelZ = room.Level.Elevation;
 
         /// <summary>
-        /// <para>ЛИНИИ ГРАНИЦ ПОМЕЩЕНИЯ
-        /// <para>на уровне координаты Z уровня помещения
-        /// <para>с учетом трансформации связи"""
+        /// <para>ЛИНИИ ГРАНИЦ ПОМЕЩЕНИЯ</para>
+        /// <para>на уровне координаты Z уровня помещения</para>
+        /// <para>с учетом трансформации связи</para>
         /// </summary>
         /// <returns></returns>
         public List<Line> GetBordersToCenter()
@@ -46,10 +54,10 @@ namespace Libraries.RoomsLib
 
 
         /// <summary>
-        /// <para>XYZ ВЕРШИН УГЛОВ ГРАНИЦ ПОМЕЩЕНИЯ
-        /// <para>образованы только началами линий
-        /// <para>на уровне координаты Z уровня помещения
-        /// <para>с учетом трансформации связи
+        /// <para>XYZ ВЕРШИН УГЛОВ ГРАНИЦ ПОМЕЩЕНИЯ</para>
+        /// <para>образованы только началами линий</para>
+        /// <para>на уровне координаты Z уровня помещения</para>
+        /// <para>с учетом трансформации связи</para>
         /// </summary>
         /// <returns></returns>
         public ICollection<XYZ> GetXYZVerticesBorders()

@@ -1,6 +1,5 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Electrical;
-using System.Collections.Generic;
 
 namespace Libraries.ElectricsLib.GroupService
 {

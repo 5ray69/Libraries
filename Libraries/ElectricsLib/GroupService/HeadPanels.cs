@@ -4,28 +4,26 @@ using Libraries.ElectricsLib.UserWarningElectricsLib;
 using Libraries.ErrorModelLib;
 using Libraries.ParametersLib;
 using Libraries.ParametersLib.UserWarningParametersLib;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Libraries.ElectricsLib.GroupService
 {
-    public class HeadPanels
+    /// <summary>
+    /// Головные панели групп
+    /// </summary>
+    /// <param name="document"></param>
+    /// <param name="errorModel"></param>
+    public class HeadPanels(Document document, ErrorModel errorModel)
     {
-        private readonly Document _doc;
-        private readonly ErrorModel _errorModel;
-        private readonly ParameterValidatorMissingOrEmpty _parameterValidatorMissingOrEmpty;
-
-        public HeadPanels(Document document, ErrorModel errorModel)
-        {
-            _doc = document;
-            _errorModel = errorModel;
-            _parameterValidatorMissingOrEmpty = new(document, errorModel);
+        private readonly Document _doc = document;
+        private readonly ErrorModel _errorModel = errorModel;
+        private readonly ParameterValidatorMissingOrEmpty _parameterValidatorMissingOrEmpty = new(document, errorModel);
 
 
-        }
-
-
+        /// <summary>
+        /// получаем словарь, где ключ - имя группы, а значение - Id головной панели этой группы
+        /// </summary>
+        /// <param name="endCircuitGroups"></param>
+        /// <returns></returns>
         public Dictionary<string, ElementId> GetPanelOfCircuitGroups(Dictionary<string, List<ElectricalSystem>> endCircuitGroups)
         {
             Dictionary<string, HashSet<ElementId>> headPanelOfGroups = new();
@@ -163,7 +161,7 @@ namespace Libraries.ElectricsLib.GroupService
             {
                 if (kvpW.Value.Count > 1)
                 {
-                    stringWarning += $"Имя группы: {kvpW.Key} - Id головных панелей: {string.Join(", ", kvpW.Value.Select(id => id.IntegerValue))}\n";
+                    stringWarning += $"Имя группы: {kvpW.Key} - Id головных панелей: {string.Join(", ", kvpW.Value.Select(id => id))}\n";
                 }
             }
 
@@ -176,7 +174,6 @@ namespace Libraries.ElectricsLib.GroupService
 
             return resultDict;
             //return headPanelOfGroups.ToDictionary(k => k.Key, v => v.Value.ToList());
-
         }
 
 
@@ -226,9 +223,6 @@ namespace Libraries.ElectricsLib.GroupService
 
             return groupName;
         }
-
-
-
     }
 }
 

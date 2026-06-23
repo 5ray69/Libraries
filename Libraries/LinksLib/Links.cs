@@ -1,16 +1,23 @@
 ﻿using Autodesk.Revit.DB;
 using Libraries.ErrorModelLib;
 using Libraries.LinksLib.UserWarningLinksLib;
-using System.Collections.Generic;
 
 namespace Libraries.LinksLib
 {
+    /// <summary>
+    /// Связанные файлы
+    /// </summary>
+    /// <param name="doc"></param>
     public class Links(Document doc)
     {
         private readonly Document _doc = doc;
         private ICollection<string> _instancesNames = null;
         private Dictionary<string, RevitLinkInstance> _linkInstancesMap = null;
 
+        /// <summary>
+        /// Имена связей
+        /// </summary>
+        /// <returns></returns>
         public ICollection<string> GetLinksNames()
         {
             if (_instancesNames == null)
@@ -19,6 +26,11 @@ namespace Libraries.LinksLib
             return _instancesNames;
         }
 
+        /// <summary>
+        /// Связь по имени
+        /// </summary>
+        /// <param name="linkName"></param>
+        /// <returns></returns>
         public RevitLinkInstance GetLinkByName(string linkName)
         {
             if (_linkInstancesMap == null)

@@ -2,13 +2,22 @@
 
 namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {
+    /// <summary>
+    /// Не удалось привести к числовому типу данных
+    /// </summary>
     public class NotConvertToNumber
     {
+        /// <summary>
+        /// Сообщение пользователю
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="parameterName"></param>
+        /// <returns></returns>
         public string MessageForUser(Element element, string parameterName)
         {
             string message = $@"
 У элемента: {element.Name}
-c Id элемента: {element.Id.IntegerValue}
+c Id элемента: {element.Id.ToString}
 
 категория элемента:
 {element.Category?.Name ?? "у элемента нет категории"}

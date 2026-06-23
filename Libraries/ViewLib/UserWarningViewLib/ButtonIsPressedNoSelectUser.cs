@@ -1,7 +1,14 @@
 ﻿namespace Libraries.ViewLib.UserWarningViewLib
 {
+    /// <summary>
+    /// Пользователь нажал кнопку Выбрать, не сделав выбор
+    /// </summary>
     public class ButtonIsPressedNoSelectUser
     {
+        /// <summary>
+        /// Сообщение пользователю
+        /// </summary>
+        /// <returns></returns>
         public string MessageForUser()
         {
             string message = $@"

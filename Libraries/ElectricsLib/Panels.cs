@@ -4,8 +4,6 @@ using Autodesk.Revit.UI;
 using Libraries.ElectricsLib.UserWarningElectricsLib;
 using Libraries.ErrorModelLib;
 using Libraries.LevelsLib;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Libraries.ElectricsLib
 {
@@ -18,6 +16,11 @@ namespace Libraries.ElectricsLib
         private readonly UIApplication _uiApp;
         private List<FamilyInstance> _cachedPanels;
 
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <param name="uiApp"></param>
         public Panels(Document doc, UIApplication uiApp)
         {
             _doc = doc;
@@ -30,7 +33,6 @@ namespace Libraries.ElectricsLib
         /// <summary>
         /// После использования класса нужно отписаться от события, чтобы избежать утечек памяти.
         /// </summary>
-        /// <param name="uiApp"></param>
         public void UnsubscribeEvent()
         {
             _uiApp.Application.DocumentChanged -= OnDocumentChanged;
@@ -150,7 +152,7 @@ namespace Libraries.ElectricsLib
             {
                 Element elem = _doc.GetElement(id);
                 if (elem != null && elem.Category != null &&
-                    elem.Category.Id.IntegerValue == (int)BuiltInCategory.OST_ElectricalEquipment)
+                    elem.Category.Id == new ElementId(BuiltInCategory.OST_ElectricalEquipment))
                 {
                     InvalidateCache(); // сбрасываем кэш
                     break; // достаточно найти хотя бы один

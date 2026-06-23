@@ -1,7 +1,14 @@
 ﻿namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {
+    /// <summary>
+    /// Активный вид не является разрезом
+    /// </summary>
     public class ActiveViewNotViewSection
     {
+        /// <summary>
+        /// Сообщение пользователю
+        /// </summary>
+        /// <returns></returns>
         public string MessageForUser()
         {
             string message = $@"

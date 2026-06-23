@@ -2,7 +2,6 @@
 using Autodesk.Revit.DB.Electrical;
 using Libraries.ElectricsLib.UserWarningElectricsLib;
 using Libraries.ErrorModelLib;
-using System.Collections.Generic;
 
 namespace Libraries.ElectricsLib
 {
@@ -29,7 +28,7 @@ namespace Libraries.ElectricsLib
             if (panel == null || load == null)
                 return false;
 
-            if (panel.Category.Id.IntegerValue != (int)BuiltInCategory.OST_ElectricalEquipment)
+            if (panel.Category.Id != new ElementId (BuiltInCategory.OST_ElectricalEquipment))
             {
                 errorModel.UserWarning(new NoTargetCategory().MessageForUser(doc, panel));
             }

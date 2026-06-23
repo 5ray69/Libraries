@@ -1,16 +1,20 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Architecture;
-using System;
 using Line = Autodesk.Revit.DB.Line;
 
 
 
 namespace Libraries.RoomsLib
 {
+    /// <summary>
+    /// Объект в линию
+    /// </summary>
+    /// <param name="lengthOutLine"></param>
     public class ObjectToLine(double lengthOutLine = 100000)
     {
-        //lengthOutLine = 100000, длина здания около 60000мм (длинный коридор)
-        //public readonly double _lengthOutLine = UnitUtils.ConvertToInternalUnits(lengthOutLine, UnitTypeId.Millimeters);
+        /// <summary>
+        /// длина тестовой линии lengthOutLine = 100000, длина здания около 60000мм (длинный коридор)
+        /// </summary>
         public readonly double _lengthOutLine = lengthOutLine / 304.8;
 
         private const double RotationAngleRad = 3 * Math.PI / 180;
@@ -20,9 +24,9 @@ namespace Libraries.RoomsLib
         // ---------------- PUBLIC API ----------------
 
         /// <summary>
-        /// <para>Создает линию из Line, или из XYZ,
-        /// <para>длиной 100 метров, по умолчанию,
-        /// <para>на уровне координаты Z уровня помещения
+        /// <para>Создает линию из Line, или из XYZ,</para>
+        /// <para>длиной 100 метров, по умолчанию,</para>
+        /// <para>на уровне координаты Z уровня помещения</para>
         /// </summary>
         /// <param name="lineOrXYZ">точка или линия</param>
         /// <param name="room">помещение</param>
@@ -35,9 +39,9 @@ namespace Libraries.RoomsLib
 
 
         /// <summary>
-        /// <para>Создает линию из Line, или из XYZ,
-        /// <para>длиной 100 метров, по умолчанию,
-        /// <para>на уровне координаты Z уровня высотной отметки elevation.
+        /// <para>Создает линию из Line, или из XYZ,</para>
+        /// <para>длиной 100 метров, по умолчанию,</para>
+        /// <para>на уровне координаты Z уровня высотной отметки elevation.</para>
         /// </summary>
         /// <param name="lineOrXYZ">точка или линия</param>
         /// <param name="elevation">высотная отметка</param>
@@ -52,9 +56,10 @@ namespace Libraries.RoomsLib
         // ---------------- CORE LOGIC ----------------
 
         /// <summary>
-        /// <para>создает линию из Line, или из XYZ,
-        /// <para>длиной 100 метров,
-        /// <para>на уровне координаты Z уровня помещения
+        /// <para>создает линию из Line, или из XYZ,</para>
+        /// <para>длиной 100 метров,</para>
+        /// <para>на уровне координаты Z уровня помещения</para>
+        /// </summary>
         /// <param name="lineOrXYZ"></param>
         /// <param name="levelZ"></param>
         /// <returns></returns>
@@ -82,7 +87,7 @@ namespace Libraries.RoomsLib
         // ---------------- HELPERS ----------------
 
         /// <summary>
-        /// /// Создает линию из Line на уровне levelZ с применением трансформации rotation
+        /// Создает линию из Line на уровне levelZ с применением трансформации rotation
         /// </summary>
         /// <param name="line">линия</param>
         /// <param name="levelZ">высотная отметка</param>
@@ -138,6 +143,12 @@ namespace Libraries.RoomsLib
 
         // ---------------- INTERSECTION ----------------
 
+        /// <summary>
+        /// Сумма координат точки пересечения
+        /// </summary>
+        /// <param name="projLine"></param>
+        /// <param name="lineRoom"></param>
+        /// <returns></returns>
         public double? GetIntersectionPointSum(Line projLine, Line lineRoom)
         {
             // Используем метод Intersect для определения пересечения

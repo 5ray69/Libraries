@@ -2,13 +2,21 @@
 
 namespace Libraries.RoomsLib.UserWarningRoomsLib
 {
+    /// <summary>
+    /// Цепь не подключена
+    /// </summary>
     public class NoConnectCircuit
     {
+        /// <summary>
+        /// Сообщение пользователю
+        /// </summary>
+        /// <param name="electricalSystem"></param>
+        /// <returns></returns>
         public string MessageForUser(ElectricalSystem electricalSystem)
         {
             string message = $@"
 Электрическая цепь,
-Id которой {electricalSystem.Id.IntegerValue}
+Id которой {electricalSystem.Id.ToString}
 не подключена.
 
 Удалите все неподключенные цепи или

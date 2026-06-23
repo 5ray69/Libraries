@@ -2,8 +2,17 @@
 
 namespace Libraries.ParametersLib.UserWarningParametersLib
 {
+    /// <summary>
+    /// Отсутствует параметр
+    /// </summary>
     public class ParameterElementMissing
     {
+        /// <summary>
+        /// Сообщение пользователю
+        /// </summary>
+        /// <param name="el"></param>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public string MessageForUser(Element el, string str)
         {
             string message = $@"
@@ -14,7 +23,7 @@ namespace Libraries.ParametersLib.UserWarningParametersLib
 {el.Name}
 
 c Id элемента:
-{el.Id.IntegerValue}
+{el.Id.ToString}
 
 Обратитесь к координатору, чтоб параметры
 были добавлены в семейства.

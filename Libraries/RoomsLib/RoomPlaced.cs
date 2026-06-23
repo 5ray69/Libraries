@@ -1,9 +1,12 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Architecture;
-using System.Collections.Generic;
 
 namespace Libraries.RoomsLib
 {
+    /// <summary>
+    /// Определяет состояние помещения: размещено, не размещено, не окружено, избыточное
+    /// </summary>
+    /// <param name="room"></param>
     public class RoomPlaced(Room room)
     {
         private readonly Room _room = room;

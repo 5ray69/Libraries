@@ -1,9 +1,11 @@
-﻿using Autodesk.Revit.UI;
-using System.Windows.Media.Imaging;
+﻿using System.Windows.Media.Imaging;
 using TaskDialog = Autodesk.Revit.UI.TaskDialog;
 
 namespace Libraries.ErrorModelLib
 {
+    /// <summary>
+    /// Вывод сообщений о ошибках
+    /// </summary>
     public class ErrorModel
     {
         /// <summary>

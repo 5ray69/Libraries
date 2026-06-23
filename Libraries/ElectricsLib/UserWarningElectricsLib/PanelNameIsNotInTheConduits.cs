@@ -1,7 +1,15 @@
 ﻿namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {
+    /// <summary>
+    /// Имя панели без точка этаж отсутствует у коробов в параметре 'БУДОВА_Группа'
+    /// </summary>
     public class PanelNameIsNotInTheConduits
     {
+        /// <summary>
+        /// Сообщение пользователю
+        /// </summary>
+        /// <param name="groupName"></param>
+        /// <returns></returns>
         public string MessageForUser(string groupName)
         {
             string message = $@"

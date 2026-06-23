@@ -1,11 +1,14 @@
 ﻿namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {
+    /// <summary>
+    /// Нет типоразмера в семействе
+    /// </summary>
     public class NoFoundConduitType
     {
-
         /// <summary>
-        /// в качестве аргумента метода - имя типоразмера
+        /// Сообщение пользователю
         /// </summary>
+        /// <param name="familyName"></param>
         /// <param name="conduitTypeName"></param>
         /// <returns></returns>
         public string MessageForUser(string familyName, string conduitTypeName)

@@ -1,33 +1,110 @@
 ﻿using Autodesk.Revit.DB;
-using System;
 
 namespace Libraries.ElectricsLib.ShemPanel
 {
+    /// <summary>
+    /// Все параметры сборки
+    /// </summary>
     public class AllElementsPanelResult
     {
-        public double ActivPowA{get;}  // активная мощность фазы А панели
-        public double ActivPowB{get;}  // активная мощность фазы В панели
-        public double ActivPowC{get;}  // активная мощность фазы С панели
+        /// <summary>
+        /// активная мощность фазы А панели
+        /// </summary>
+        public double ActivPowA{get;}
+        
+        /// <summary>
+        /// активная мощность фазы В панели
+        /// </summary>
+        public double ActivPowB{get;} 
+        
+        /// <summary>
+        /// активная мощность фазы С панели
+        /// </summary>
+        public double ActivPowC{get;}
 
-        public double TokA{get;}  // ток фазы А панели
-        public double TokB{get;}  // ток фазы В панели
-        public double TokC{get;}  // ток фазы С панели
+        /// <summary>
+        /// ток фазы А панели
+        /// </summary>
+        public double TokA{get;}
+        
+        /// <summary>
+        /// ток фазы В панели
+        /// </summary>
+        public double TokB{get;}
+        
+        /// <summary>
+        /// ток фазы С панели
+        /// </summary>
+        public double TokC{get;}
 
 
-        public double ApparentPowerSum{get;} // суммарная полная/кажущаяся мощность всех одно и трехфазных элементов одной панели
-        public double ActivPowerSum{get;}  // суммарная активная мощность всех одно и трехфазных элементов одной панели
-        public double CosSum{get;}  // cos всей панели, как отношение суммарной активной мощности к суммарной полной мощности
-        public double TgSum{get;}  // tg всей панели, полученный из CosSum
-        public double ReactivPowerSum{get;}  // суммарная реактивная мощность всех одно и трехфазных элементов одной панели
+        /// <summary>
+        /// суммарная полная/кажущаяся мощность всех одно и трехфазных элементов одной панели
+        /// </summary>
+        public double ApparentPowerSum{get;}
+        
+        /// <summary>
+        /// суммарная активная мощность всех одно и трехфазных элементов одной панели
+        /// </summary>
+        public double ActivPowerSum{get;}
+        
+        /// <summary>
+        /// cos всей панели, как отношение суммарной активной мощности к суммарной полной мощности
+        /// </summary>
+        public double CosSum{get;}
+        
+        /// <summary>
+        /// tg всей панели, полученный из CosSum
+        /// </summary>
+        public double TgSum{get;}
+        
+        /// <summary>
+        /// суммарная реактивная мощность всех одно и трехфазных элементов одной панели
+        /// </summary>
+        public double ReactivPowerSum{get;}
 
-        public double TokFromMaxFaz{get;}  // трехфазный ток по максимально загруженной фазе всех одно и трехфазных элементов одной панели
-        public XYZ LocationXYZ{get;}  // XYZ под семейством с минимальной координатой X в панели
+       /// <summary>
+       /// трехфазный ток по максимально загруженной фазе всех одно и трехфазных элементов одной панели
+       /// </summary>
+        public double TokFromMaxFaz{get;}
+        
+        /// <summary>
+        /// XYZ под семейством с минимальной координатой X в панели
+        /// </summary>
+        public XYZ LocationXYZ{get;}
+
+        /// <summary>
+        /// процентное соотношение токов фаз А и В
+        /// </summary>
+        public double PercentAB{get;}
+        
+        /// <summary>
+        /// процентное соотношение токов фаз А и С
+        /// </summary>
+        public double PercentAC{get;}
+        
+        /// <summary>
+        /// процентное соотношение токов фаз В и С
+        /// </summary>
+        public double PercentBC{get;}
 
 
-        public double PercentAB{get;}  // процентное соотношение токов фаз А и В
-        public double PercentAC{get;}  // процентное соотношение токов фаз А и С
-        public double PercentBC{get;}  // процентное соотношение токов фаз В и С
-
+        /// <summary>
+        /// Результат расчета всех параметров сборки панели
+        /// </summary>
+        /// <param name="pA"></param>
+        /// <param name="pB"></param>
+        /// <param name="pC"></param>
+        /// <param name="tA"></param>
+        /// <param name="tB"></param>
+        /// <param name="tC"></param>
+        /// <param name="apparent"></param>
+        /// <param name="active"></param>
+        /// <param name="cos"></param>
+        /// <param name="tg"></param>
+        /// <param name="reactive"></param>
+        /// <param name="maxTok"></param>
+        /// <param name="location"></param>
         public AllElementsPanelResult(
             double pA, double pB, double pC,
             double tA, double tB, double tC,

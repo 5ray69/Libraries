@@ -1,10 +1,10 @@
 ﻿using Autodesk.Revit.DB;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Libraries.LevelsLib
 {
+    /// <summary>
+    /// Кэш уровней
+    /// </summary>
     public class LevelCache
     {
         private static List<Level> _cachedLevels;

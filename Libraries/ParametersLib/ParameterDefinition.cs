@@ -1,7 +1,5 @@
 ﻿using Autodesk.Revit.DB;
 using Libraries.ErrorModelLib;
-using Libraries.ParametersLib.UserWarningParametersLib;
-using System;
 
 namespace Libraries.ParametersLib
 {
@@ -9,20 +7,11 @@ namespace Libraries.ParametersLib
     /// <para>для получения Definition один раз,</para>
     /// <para>чтоб не получать значение параметра по LookupParameter</para>
     /// </summary>
-    /// <param name="document"></param>
-    /// <param name="errorModel"></param>
-    public class ParameterDefinition
+    public class ParameterDefinition(Document doc, ErrorModel errorModel)
     {
         //private readonly Document _doc = doc;
         //private readonly ErrorModel _errorModel = errorModel;
-        private readonly ValidatorParameter _validatorParameter;
-
-        public ParameterDefinition(Document doc, ErrorModel errorModel)
-        {
-            //_doc = doc;
-            //_errorModel = errorModel;
-            _validatorParameter = new ValidatorParameter(doc, errorModel);
-        }
+        private readonly ValidatorParameter _validatorParameter = new(doc, errorModel);
 
 
 
@@ -72,6 +61,5 @@ namespace Libraries.ParametersLib
             return param.Definition;
 
         }
-
     }
 }

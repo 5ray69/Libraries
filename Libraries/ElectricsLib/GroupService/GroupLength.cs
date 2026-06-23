@@ -28,12 +28,12 @@ namespace Libraries.ElectricsLib.GroupService
         //как разделитель десятичной части, и она никак не зависит от системных настроек языка или региона
         private readonly CultureInfo _inv = CultureInfo.InvariantCulture;
 
-
+        
         /// <summary>
         /// получить длины всех цепей каждой группы
         /// </summary>
         /// <param name="groupCircuits">все цепи в каждой группе</param>
-        /// <returns>Dictionary<string, Dictionary<int, double>></returns>
+        /// <returns></returns>
         public Dictionary<string, Dictionary<ElementId, CableInfo>> GetLength(Dictionary<string, List<ElectricalSystem>> groupCircuits)
         {
             Dictionary<string, Dictionary<ElementId, CableInfo>> result = [];

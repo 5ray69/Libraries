@@ -2,29 +2,23 @@
 using Autodesk.Revit.DB.Electrical;
 using Libraries.ElectricsLib.UserWarningElectricsLib;
 using Libraries.ErrorModelLib;
-using System.Collections.Generic;
 
 namespace Libraries.ElectricsLib.GroupService
 {
     /// <summary>
     /// класс для получения всех ветвлений отходящих цепей от заданной панели
     /// </summary>
-    public class PanelElectricalSystemBranches
+    public class PanelElectricalSystemBranches(Document doc, ErrorModel errorModel)
     {
-        private readonly Document _doc;
-        private readonly ErrorModel _errorModel;
-        public PanelElectricalSystemBranches(Document doc, ErrorModel errorModel)
-        {
-            _doc = doc;
-            _errorModel = errorModel;
-        }
+        private readonly Document _doc = doc;
+        private readonly ErrorModel _errorModel = errorModel;
 
 
         /// <summary>
         /// Получаем все ветвления отходящих цепей от заданной панели
         /// </summary>
-        /// <param name="panel">панель, отходящие ветвления от которой нужно получить</param>
-        /// <returns>List<ElectricalSystem> все цепи, которые составляют ветвления, отходящие от заданной панели</returns>
+        /// <param name="panel"></param>
+        /// <returns></returns>
         public List<ElectricalSystem> GetAllFrom(FamilyInstance panel)
         {
             List<ElectricalSystem> result = [];
@@ -74,8 +68,7 @@ namespace Libraries.ElectricsLib.GroupService
                         //если нагрузка цепи это панель = объект категории Электрооборудование
                         if (element is FamilyInstance fi &&
                             fi.Category != null &&
-                            fi.Category.Id.IntegerValue ==
-                            (int)BuiltInCategory.OST_ElectricalEquipment)
+                            fi.Category.Id == new ElementId(BuiltInCategory.OST_ElectricalEquipment))
                         {
                             // если новая панель, если ее не было в HashSet, метод .Add вернет true
                             if (processedPanels.Add(fi.Id))

@@ -3,8 +3,18 @@ using Libraries.LevelsLib;
 
 namespace Libraries.ParametersLib.UserWarningParametersLib
 {
+    /// <summary>
+    /// Не заполнен параметер
+    /// </summary>
     public class ParameterElementAtLevelEmpty
     {
+        /// <summary>
+        /// Сообщение пользователю
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <param name="element"></param>
+        /// <param name="parameterName"></param>
+        /// <returns></returns>
         public string MessageForUser(Document doc, Element element, string parameterName)
         {
             LevelAnyObject levelAnyObject = new(doc);

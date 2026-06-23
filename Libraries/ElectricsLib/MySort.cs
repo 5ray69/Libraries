@@ -1,11 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Libraries.ElectricsLib
+﻿namespace Libraries.ElectricsLib
 {
+    /// <summary>
+    /// Сортировака списка имен уровней
+    /// </summary>
     public class MySort
     {
+        /// <summary>
+        /// сортировка списка имен уровней по участкам: LU, L, LT, LR
+        /// </summary>
+        /// <param name="levelNames"></param>
+        /// <returns></returns>
         public List<string> LevelNames(List<string> levelNames)
         {
             // Первый участок: строки с содержанием LU

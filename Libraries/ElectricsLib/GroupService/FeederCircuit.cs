@@ -2,8 +2,6 @@
 using Autodesk.Revit.DB.Electrical;
 using Libraries.ElectricsLib.UserWarningElectricsLib;
 using Libraries.ErrorModelLib;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Libraries.ElectricsLib.GroupService
 {

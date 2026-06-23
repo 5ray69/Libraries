@@ -11,15 +11,28 @@ namespace Libraries.ElectricsLib
     public class DozaGroup
     {
         private readonly Document _doc;
+
+        /// <summary>
+        /// имя группы доз (имя до точки)
+        /// </summary>
         public string Name
         {
             get; private set;
         }
+
+        /// <summary>
+        /// список элементов группы доз (FamilyInstance)
+        /// </summary>
         public List<FamilyInstance> Elements
         {
             get; private set;
         }
 
+
+        /// <summary>
+        /// <para>Конструктор класса DozaGroup.</para>
+        /// </summary>
+        /// <param name="doc"></param>
         public DozaGroup(Document doc)
         {
             _doc = doc;

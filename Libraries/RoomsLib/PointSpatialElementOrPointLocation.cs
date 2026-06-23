@@ -2,6 +2,10 @@
 
 namespace Libraries.RoomsLib
 {
+    /// <summary>
+    /// Точка размещения в помещении или точка размещения семейства
+    /// </summary>
+    /// <param name="elem"></param>
     public class PointSpatialElementOrPointLocation(FamilyInstance elem)
     {
         private readonly FamilyInstance _elem = elem;

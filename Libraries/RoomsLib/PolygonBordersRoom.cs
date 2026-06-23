@@ -1,21 +1,22 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Architecture;
 using Autodesk.Revit.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Line = Autodesk.Revit.DB.Line;
 
 namespace Libraries.RoomsLib
 {
+    /// <summary>
+    /// Многоугольник границ помещения. Приводим все линии к координате Z уровня помещения, замыкаем линии, если были не замкнуты
+    /// </summary>
+    /// <param name="uiapp"></param>
     public class PolygonBordersRoom(UIApplication uiapp)
     {
         private readonly double MinLineLength = uiapp.Application.ShortCurveTolerance; // Минимальная длина линии в единицах Revit
 
 
         /// <summary>
-        /// <para>Создаем новый многоугольник, приведенный к координате Z уровня помещения,
-        /// <para>замкнув линии, если были не замкнуты
+        /// <para>Создаем новый многоугольник, приведенный к координате Z уровня помещения,</para>
+        /// <para>замкнув линии, если были не замкнуты</para>
         /// </summary>
         /// <param name="linesRoomBorders"> линии границ помещения</param>
         /// <param name="room">помещение</param>
@@ -33,9 +34,9 @@ namespace Libraries.RoomsLib
 
 
         /// <summary>
-        /// <para>Создаем новый многоугольник, приведенный
-        /// <para>к координате Z на уровне высотной отметки elevation.
-        /// <para>замкнув линии, если были не замкнуты.
+        /// <para>Создаем новый многоугольник, приведенный</para>
+        /// <para>к координате Z на уровне высотной отметки elevation.</para>
+        /// <para>замкнув линии, если были не замкнуты.</para>
         /// </summary>
         /// <param name="linesRoomBorders"> линии границ помещения</param>
         /// <param name="elevation"> высотная отметка</param>
@@ -125,11 +126,22 @@ namespace Libraries.RoomsLib
         /// </summary>
         public class XyzEqualityComparer : IEqualityComparer<XYZ>
         {
+            /// <summary>
+            /// сравнение объектов XYZ
+            /// </summary>
+            /// <param name="x"></param>
+            /// <param name="y"></param>
+            /// <returns></returns>
             public bool Equals(XYZ x, XYZ y)
             {
                 return x.IsAlmostEqualTo(y);
             }
 
+            /// <summary>
+            /// HashCode
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <returns></returns>
             public int GetHashCode(XYZ obj)
             {
                 return obj.GetHashCode();

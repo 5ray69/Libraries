@@ -3,9 +3,18 @@ using Libraries.LevelsLib;
 
 namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {
+    /// <summary>
+    /// Не соответсвие обозначению цепей
+    /// </summary>
     public class ByProjectCircuitNaming
     {
-
+        /// <summary>
+        /// Сообщение пользователю
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <param name="baseEquipment"></param>
+        /// <param name="familyInstance"></param>
+        /// <returns></returns>
         public string MessageForUser(Document doc, FamilyInstance baseEquipment, FamilyInstance familyInstance)
         {
             LevelAnyObject levelAnyObject = new(doc);
@@ -14,7 +23,7 @@ namespace Libraries.ElectricsLib.UserWarningElectricsLib
             string message = $@"
 У панели
 с именем: {baseEquipment.Name}
-с Id: {baseEquipment.Id.IntegerValue}
+с Id: {baseEquipment.Id.ToString}
 на уровне: {levelAnyObject.GetLevel(baseEquipment).Name}
 Обозначением цепей установлено По проекту.
 
@@ -27,7 +36,7 @@ namespace Libraries.ElectricsLib.UserWarningElectricsLib
 Или замените Обзначение цепей на С префиксами,
 или подключите нагрузку
 с именем: {familyInstance.Name}
-с Id: {familyInstance.Id.IntegerValue}
+с Id: {familyInstance.Id.ToString}
 на уровне: {levelAnyObject.GetLevel(familyInstance).Name}
 через соединительную коробку (дозу)
 и запустите код заново.
@@ -35,6 +44,5 @@ namespace Libraries.ElectricsLib.UserWarningElectricsLib
 
             return message;
         }
-
     }
 }

@@ -1,7 +1,15 @@
 ﻿namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {
+    /// <summary>
+    /// БОЛЬШЕ ДВУХ различных значений В ОДНОЙ ГРУППЕ
+    /// </summary>
     public class MoreTwoSecheniy
     {
+        /// <summary>
+        /// Сообщение пользователю
+        /// </summary>
+        /// <param name="nameGroup"></param>
+        /// <returns></returns>
         public string MessageForUser(string nameGroup)
         {
             string message = $@"

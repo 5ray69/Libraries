@@ -52,6 +52,12 @@ namespace Libraries.ElectricsLib
                 return 1;
         }
 
+        /// <summary>
+        /// ElementId кабеля в зависимости от длины
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <param name="leng"></param>
+        /// <returns></returns>
         public ElementId ElementIdCableForLength(Document doc, double leng)
         {
             ScheduleKey scheduleKeyInMethod = new(doc, "Ключи спецификация кабелей");

@@ -2,8 +2,16 @@
 
 namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {
+    /// <summary>
+    /// cosφ равен нулю в семействе
+    /// </summary>
     public class CosIsNull
     {
+        /// <summary>
+        /// Сообщение пользователю
+        /// </summary>
+        /// <param name="familyInstance"></param>
+        /// <returns></returns>
         public string MessageForUser(FamilyInstance familyInstance)
         {
             string message = $@"
@@ -13,7 +21,7 @@ BDV_E000_cosφ равен нулю в семействе:
 
 с типоразмером: {familyInstance.Name}
 
-c Id: {familyInstance.Id.IntegerValue}
+c Id: {familyInstance.Id.ToString}
 
 Установите значение BDV_E000_cosφ отличное от нуля
 и запустите код заново.";

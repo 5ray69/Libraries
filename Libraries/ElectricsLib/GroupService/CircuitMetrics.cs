@@ -3,10 +3,7 @@ using Autodesk.Revit.DB.Electrical;
 using Libraries.ElectricsLib.UserWarningElectricsLib;
 using Libraries.ErrorModelLib;
 using Libraries.ParametersLib;
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 
 namespace Libraries.ElectricsLib.GroupService
 {
@@ -54,6 +51,12 @@ namespace Libraries.ElectricsLib.GroupService
         private const double Cпэ = 1.0;  // Коэффициент поверхностного эффекта начинается для 150 мм кв с Cпэ = 1.01 и выше (не значительный), таблица 4-75
 
 
+
+        /// <summary>
+        /// метрики цепи, извлекает электрические величины цепи
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <param name="errorModel"></param>
         public CircuitMetrics(Autodesk.Revit.DB.Document doc, ErrorModel errorModel)
         {
             _errorModel = errorModel;
@@ -229,6 +232,11 @@ namespace Libraries.ElectricsLib.GroupService
         }
 
 
+        /// <summary>
+        /// материал фазного проводника кабеля
+        /// </summary>
+        /// <param name="circuit"></param>
+        /// <returns></returns>
         public string GetMaterial(ElectricalSystem circuit)
         {
             string nameParameter = "кабМатериал";

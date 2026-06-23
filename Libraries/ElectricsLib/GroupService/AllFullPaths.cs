@@ -1,7 +1,6 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Electrical;
 using Libraries.ErrorModelLib;
-using System.Collections.Generic;
 
 namespace Libraries.ElectricsLib.GroupService
 {

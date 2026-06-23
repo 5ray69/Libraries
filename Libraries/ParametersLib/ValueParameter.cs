@@ -2,8 +2,16 @@
 
 namespace Libraries.ParametersLib
 {
+    /// <summary>
+    /// Получить значение параметра любого типа данных 
+    /// </summary>
     public class ValueParameter
     {
+        /// <summary>
+        /// Получить значение параметра любого типа данных
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
         public object Get(Parameter parameter)
         {
             if (parameter == null)

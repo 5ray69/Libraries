@@ -4,6 +4,10 @@ using Libraries.ParametersLib.UserWarningParametersLib;
 
 namespace Libraries.ParametersLib
 {
+    /// <summary>
+    /// Валидация параметра
+    /// </summary>
+    /// <param name="errorModel"></param>
     public class ParameterValidatorForEmpty(ErrorModel errorModel)
     {
         private readonly ErrorModel _errorModel = errorModel;
@@ -11,9 +15,9 @@ namespace Libraries.ParametersLib
 
 
         /// <summary>
-        /// <para>LookupParameter, тип данных параметра string
-        /// <para>проверяет существует ли параметр и что он не только для чтения
-        /// <para>и присваивает параметру значение в том случае, если параметр не заполнен
+        /// <para>LookupParameter, тип данных параметра string</para>
+        /// <para>проверяет существует ли параметр и что он не только для чтения</para>
+        /// <para>и присваивает параметру значение в том случае, если параметр не заполнен</para>
         /// </summary>
         /// <param name="element"></param>
         /// <param name="nameParameter"></param>
@@ -41,14 +45,12 @@ namespace Libraries.ParametersLib
         }
 
 
-
-
         /// <summary>
-        /// <para>LookupParameter
-        /// <para>проверяет заполнен ли параметр
-        /// <para>и если не заполнен, то выводит ошибку
-        /// <para>с указанием элемента и этажа
-        /// <para>и завершает код
+        /// <para>LookupParameter</para>
+        /// <para>проверяет заполнен ли параметр</para>
+        /// <para>и если не заполнен, то выводит ошибку</para>
+        /// <para>с указанием элемента и этажа</para>
+        /// <para>и завершает код</para>
         /// </summary>
         /// <param name="doc"></param>
         /// <param name="element"></param>

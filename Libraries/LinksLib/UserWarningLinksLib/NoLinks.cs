@@ -1,7 +1,14 @@
 ﻿namespace Libraries.LinksLib.UserWarningLinksLib
 {
+    /// <summary>
+    /// В проекте нет ни одного экземпляра связи
+    /// </summary>
     public class NoLinks
     {
+        /// <summary>
+        /// Сообщение пользователю
+        /// </summary>
+        /// <returns></returns>
         public string MessageForUser()
         {
             string message = $@"

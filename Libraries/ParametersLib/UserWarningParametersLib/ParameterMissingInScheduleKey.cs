@@ -1,15 +1,16 @@
-﻿using Autodesk.Revit.DB;
-using Libraries.LevelsLib;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Libraries.ParametersLib.UserWarningParametersLib
+﻿namespace Libraries.ParametersLib.UserWarningParametersLib
 {
+    /// <summary>
+    /// Отсутствует параметр в ключевой cпецификации
+    /// </summary>
     public class ParameterMissingInScheduleKey
     {
+        /// <summary>
+        /// Сообщение пользователю
+        /// </summary>
+        /// <param name="nameScheduleKey"></param>
+        /// <param name="nameParameter"></param>
+        /// <returns></returns>
         public string MessageForUser(string nameScheduleKey, string nameParameter)
         {
 

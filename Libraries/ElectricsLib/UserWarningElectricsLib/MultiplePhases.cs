@@ -2,8 +2,16 @@
 
 namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {
+    /// <summary>
+    /// Поставлены галки сразу у нескольких фаз
+    /// </summary>
     public class MultiplePhases
     {
+        /// <summary>
+        /// Сообщение пользователю
+        /// </summary>
+        /// <param name="familyInstance"></param>
+        /// <returns></returns>
         public string MessageForUser(FamilyInstance familyInstance)
         {
             string message = $@"
@@ -14,7 +22,7 @@ namespace Libraries.ElectricsLib.UserWarningElectricsLib
 
 с типоразмером: {familyInstance.Name}
 
-c Id: {familyInstance.Id.IntegerValue}
+c Id: {familyInstance.Id.ToString}
 
 Уберите лишние галки в семействе
 и запустите код заново.";

@@ -4,12 +4,17 @@ using Libraries.ParametersLib.UserWarningParametersLib;
 
 namespace Libraries.ParametersLib
 {
+    /// <summary>
+    /// Копирование значения параметра из одного объекта в другой объект
+    /// </summary>
     public class CopyValueParameter
     {
         private readonly ErrorModel _errorModel;
         private readonly ParameterValidatorIsMissing _parameterValidator;
 
-
+        /// <summary>
+        /// Конструктор
+        /// </summary>
         public CopyValueParameter()
         {
             _errorModel = new ErrorModel();
@@ -18,10 +23,10 @@ namespace Libraries.ParametersLib
 
 
         /// <summary>
-        /// <para>Копирует значение параметра из одного объекта
-        /// <para>в значение такого же параметра другого объекта.
-        /// <para>Перед копированием проверяется наличие параметра
-        /// <para>в обеих объектах и не только ли для чтения они
+        /// <para>Копирует значение параметра из одного объекта</para>
+        /// <para>в значение такого же параметра другого объекта.</para>
+        /// <para>Перед копированием проверяется наличие параметра</para>
+        /// <para>в обеих объектах и не только ли для чтения они</para>
         /// </summary>
         /// <param name="sourceElement"></param>
         /// <param name="targetElement"></param>
@@ -62,10 +67,10 @@ namespace Libraries.ParametersLib
 
 
         /// <summary>
-        /// <para>Копирует значение параметра из одного объекта
-        /// <para>в значение такого же параметра другого объекта.
-        /// <para>Перед копированием проверяется наличие параметра
-        /// <para>в обеих объектах и не только ли для чтения они
+        /// <para>Копирует значение параметра из одного объекта</para>
+        /// <para>в значение такого же параметра другого объекта.</para>
+        /// <para>Перед копированием проверяется наличие параметра</para>
+        /// <para>в обеих объектах и не только ли для чтения они</para>
         /// </summary>
         /// <param name="sourceElement"></param>
         /// <param name="parameterNameSource"></param>

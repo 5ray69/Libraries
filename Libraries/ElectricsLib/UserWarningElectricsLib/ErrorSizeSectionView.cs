@@ -3,8 +3,17 @@ using Libraries.LevelsLib;
 
 namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {
+    /// <summary>
+    /// Нужно уменьшить ширину разреза, чтобы избежать циклической ссылки.
+    /// </summary>
     public class ErrorSizeSectionView
     {
+        /// <summary>
+        /// Сообщение пользователю
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <param name="familyInstance"></param>
+        /// <returns></returns>
         public string MessageForUser(Document doc, FamilyInstance familyInstance)
         {
             LevelAnyObject levelAnyObject = new(doc);
@@ -20,7 +29,7 @@ namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {familyInstance.Name}
 
 Id дозы
-{familyInstance.Id.IntegerValue}
+{familyInstance.Id.ToString}
 
 доза размещенная на уровне
 {levelAnyObject.GetLevel(familyInstance).Name}

@@ -1,14 +1,18 @@
 ﻿using Autodesk.Revit.DB;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Libraries.ParametersLib.UserWarningParametersLib
 {
+    /// <summary>
+    /// Параметр только для чтения
+    /// </summary>
     public class ParameterIsReadOnly
     {
+        /// <summary>
+        /// Сообщение пользователю
+        /// </summary>
+        /// <param name="el"></param>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public string MessageForUser(Element el, string str)
         {
             string message = $@"
@@ -20,7 +24,7 @@ namespace Libraries.ParametersLib.UserWarningParametersLib
 {el.Name}
 
 c Id элемента:
-{el.Id.IntegerValue}
+{el.Id.ToString}
 
 категория:
 {el.Category?.Name ?? "у элемента нет категории"}

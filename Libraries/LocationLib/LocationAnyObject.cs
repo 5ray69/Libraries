@@ -3,12 +3,19 @@ using Autodesk.Revit.DB.Electrical;
 using Libraries.ElectricsLib.UserWarningElectricsLib;
 using Libraries.ErrorModelLib;
 using Libraries.LocationLib.UserWarningLocationLib;
-using System;
 
 namespace Libraries.LocationLib
 {
+    /// <summary>
+    /// Точка размещения любого объекта
+    /// </summary>
     public class LocationAnyObject()
     {
+        /// <summary>
+        /// Точка размещения любого объекта
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns></returns>
         public Object GetSpatialElementOrLocationXyzOrLine(Element element)
         {
             if (element is FamilyInstance familyInstance)

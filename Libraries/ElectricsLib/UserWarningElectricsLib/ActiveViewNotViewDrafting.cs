@@ -1,7 +1,14 @@
 ﻿namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {
+    /// <summary>
+    /// Активный вид не является чертежным видом
+    /// </summary>
     public class ActiveViewNotViewDrafting
     {
+        /// <summary>
+        /// сообщение пользователю
+        /// </summary>
+        /// <returns></returns>
         public string MessageForUser()
         {
             string message = $@"

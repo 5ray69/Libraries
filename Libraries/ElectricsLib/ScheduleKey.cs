@@ -6,6 +6,7 @@ namespace Libraries.ElectricsLib
 {
     /// <summary>
     /// ключевые спецификацие
+    /// </summary>
     /// <param name="doc"></param>
     /// <param name="nameSchedule"></param>
     public class ScheduleKey(Document doc, string nameSchedule)
@@ -24,7 +25,6 @@ namespace Libraries.ElectricsLib
         /// объект ключевой спецификации
         /// </summary>
         /// <returns></returns>
-
         public ViewSchedule GetView()
         {
             if (_viewSchedule == null)
@@ -41,6 +41,7 @@ namespace Libraries.ElectricsLib
             return _viewSchedule;
         }
 
+
         /// <summary>
         /// ключевые элементы спецификации
         /// </summary>
@@ -56,6 +57,7 @@ namespace Libraries.ElectricsLib
             return _elementsKey;
         }
 
+
         /// <summary>
         /// имена ключевых элементов в виде строк
         /// </summary>
@@ -68,6 +70,7 @@ namespace Libraries.ElectricsLib
             }
             return _nameElements;
         }
+
 
         /// <summary>
         /// Id элемента ключевой спецификации по имени
@@ -83,7 +86,6 @@ namespace Libraries.ElectricsLib
             }
             return elem.Id;
         }
-
 
 
         /// <summary>

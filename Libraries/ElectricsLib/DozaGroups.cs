@@ -17,8 +17,18 @@ namespace Libraries.ElectricsLib
             _groups = new List<DozaGroup>();
         }
 
+
+        /// <summary>
+        /// добавить группу доз/соединительных коробок
+        /// </summary>
+        /// <param name="group"></param>
         public void Add(DozaGroup group) => _groups.Add(group);
 
+
+        /// <summary>
+        /// получить перечислитель для групп доз/соединительных коробок
+        /// </summary>
+        /// <returns></returns>
         public IEnumerator<DozaGroup> GetEnumerator() => _groups.GetEnumerator();
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }

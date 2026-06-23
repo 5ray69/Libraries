@@ -1,20 +1,13 @@
 ﻿using Autodesk.Revit.DB;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Libraries.ElectricsLib
 {
     /// <summary>
     /// сборщик доз по группам одного семейства - дозы
     /// </summary>
-    public class DozaCollector
+    public class DozaCollector(Document doc)
     {
-        private readonly Document _doc;
-
-        public DozaCollector(Document doc)
-        {
-            _doc = doc;
-        }
+        private readonly Document _doc = doc;
 
 
         /// <summary>

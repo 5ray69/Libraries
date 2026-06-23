@@ -2,17 +2,26 @@
 using Autodesk.Revit.DB.Electrical;
 using Libraries.ElectricsLib.UserWarningElectricsLib;
 using Libraries.ErrorModelLib;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Libraries.ElectricsLib.GroupService
 {
+    /// <summary>
+    /// полный путь группы
+    /// </summary>
+    /// <param name="document"></param>
+    /// <param name="errorModel"></param>
     public class FullPath(Document document, ErrorModel errorModel)
     {
         private readonly Document _doc = document;
         private readonly ErrorModel _errorModel = errorModel;
 
 
+       /// <summary>
+       /// все цепи пути группы
+       /// </summary>
+       /// <param name="baseEquipmentId"></param>
+       /// <param name="endCircuit"></param>
+       /// <returns></returns>
         public List<ElectricalSystem> GetAllCircuits(ElementId baseEquipmentId, ElectricalSystem endCircuit)
         {
             List<ElectricalSystem> allCircuits = [endCircuit];

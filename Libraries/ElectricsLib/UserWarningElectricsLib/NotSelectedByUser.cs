@@ -1,7 +1,15 @@
 ﻿namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {
+    /// <summary>
+    /// Пользователь не сделал выбор
+    /// </summary>
     public class NotSelectedByUser
     {
+        /// <summary>
+        /// Сообщение пользователю
+        /// </summary>
+        /// <param name="nameGroup"></param>
+        /// <returns></returns>
         public string MessageForUser(string nameGroup)
         {
             string message = $@"

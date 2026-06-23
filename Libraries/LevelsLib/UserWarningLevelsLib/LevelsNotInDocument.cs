@@ -1,9 +1,15 @@
-﻿using System.Collections.Generic;
-
-namespace Libraries.LevelsLib.UserWarningLevelsLib
+﻿namespace Libraries.LevelsLib.UserWarningLevelsLib
 {
+    /// <summary>
+    /// В основном файле отсутствуют уровни, которые есть в файле связи
+    /// </summary>
     public class LevelsNotInDocument
     {
+        /// <summary>
+        /// Сообщение пользователю
+        /// </summary>
+        /// <param name="noLevelNames"></param>
+        /// <returns></returns>
         public string MessageForUser(ICollection<string> noLevelNames)
         {
             string message = $@"

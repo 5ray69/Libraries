@@ -1,13 +1,10 @@
 ﻿using Autodesk.Revit.DB;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Libraries.ElectricsLib
 {
     /// <summary>
-    /// <para>Класс, представляющий коллекцию групп коннекторов</para>
-    /// <para>Ключ — имя группы (string), значение — список коннекторов (List<Connector>)</para>
+    /// Коллекция групп коннекторов: ключ — имя группы (string), значение — список коннекторов
     /// </summary>
     public class GroupsOfConnectors : IEnumerable<KeyValuePair<string, List<Connector>>>
     {

@@ -3,12 +3,15 @@ using Autodesk.Revit.DB.Electrical;
 using Libraries.ElectricsLib.UserWarningElectricsLib;
 using Libraries.ErrorModelLib;
 using Libraries.ParametersLib;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Libraries.ElectricsLib.GroupService
 {
 
+    /// <summary>
+    /// находит головную панель цепи, если цепь подключена к панели, иначе возвращает null
+    /// </summary>
+    /// <param name="document"></param>
+    /// <param name="errorModel"></param>
     public class FindHeadPanel(Document document, ErrorModel errorModel)
     {
         private readonly Document _doc = document;
@@ -16,6 +19,11 @@ namespace Libraries.ElectricsLib.GroupService
 
 
 
+        /// <summary>
+        /// находит головную панель цепи, если цепь подключена к панели, иначе возвращает null
+        /// </summary>
+        /// <param name="сircuit"></param>
+        /// <returns></returns>
         public FamilyInstance Get(ElectricalSystem сircuit)
         {
             FamilyInstance headPanel = null;

@@ -2,15 +2,23 @@
 
 namespace Libraries.LocationLib.UserWarningLocationLib
 {
+    /// <summary>
+    /// У элемента нет свойства Location
+    /// </summary>
     public class NoContainLocation
     {
+        /// <summary>
+        /// Сообщение пользователю
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns></returns>
         public string MessageForUser(Element element)
         {
             string message = $@"
 У элемента с именем:
 {element.Name}
 
-Id этого элемента: {element.Id.IntegerValue}
+Id этого элемента: {element.Id.ToString}
 
 нет свойства Location.
 

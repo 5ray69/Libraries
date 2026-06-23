@@ -1,7 +1,14 @@
 ﻿namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {
+    /// <summary>
+    /// Отсутствуют схемы обозначения цепей в настройках проекта
+    /// </summary>
     public class CircuitNamingSchemeSettingseError
     {
+        /// <summary>
+        /// Сообщние пользователю
+        /// </summary>
+        /// <returns></returns>
         public string MessageForUser()
         {
             // у семейства не может быть уровня, только у разещенных экземпляров

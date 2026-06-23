@@ -1,18 +1,15 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Electrical;
 using Libraries.ErrorModelLib;
-using System.Collections.Generic;
 
 namespace Libraries.ElectricsLib.GroupService
 {
-    public class GroupMaxdU
+    /// <summary>
+    /// группа цепей с максимальным dU
+    /// </summary>
+    public class GroupMaxdU(Document doc, ErrorModel errorModel)
     {
-        private readonly CircuitMetrics _circuitMetrics;
-
-        public GroupMaxdU(Document doc, ErrorModel errorModel)
-        {
-            _circuitMetrics = new CircuitMetrics(doc, errorModel);
-        }
+        private readonly CircuitMetrics _circuitMetrics = new(doc, errorModel);
 
 
         private Dictionary<string, (double maxDU, string pathName, List<ElectricalSystem> circuits)>
@@ -59,13 +56,12 @@ namespace Libraries.ElectricsLib.GroupService
             return result;
         }
 
-
-
+       
         /// <summary>
         /// Возвращает максимальный dU по каждой группе.
         /// </summary>
-        /// <param name="groupAllPaths">все пути содержащиеся в группе</param>
-        /// <returns>Dictionary<string, double></returns>
+        /// <param name="groupAllPaths"></param>
+        /// <returns></returns>
         public Dictionary<string, double> GetMaxDU(Dictionary<string, Dictionary<string, List<ElectricalSystem>>> groupAllPaths)
         {
             Dictionary<string, (double maxDU, string pathName, List<ElectricalSystem> circuits)> calc = CalculateGroupMaxDU(groupAllPaths);
@@ -78,12 +74,11 @@ namespace Libraries.ElectricsLib.GroupService
         }
 
 
-
         /// <summary>
         /// Возвращает цепи пути с максимальным dU для каждой группы.
         /// </summary>
-        /// <param name="groupAllPaths">все пути содержащиеся в группе</param>
-        /// <returns>Dictionary<string, List<ElectricalSystem>></returns>
+        /// <param name="groupAllPaths"></param>
+        /// <returns></returns>
         public Dictionary<string, List<ElectricalSystem>> GetCircuitsMaxDU(Dictionary<string, Dictionary<string, List<ElectricalSystem>>> groupAllPaths)
         {
             Dictionary<string, (double maxDU, string pathName, List<ElectricalSystem> circuits)> calc = CalculateGroupMaxDU(groupAllPaths);
@@ -97,8 +92,3 @@ namespace Libraries.ElectricsLib.GroupService
         }
     }
 }
-
-
-
-
-

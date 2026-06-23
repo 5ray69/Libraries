@@ -3,27 +3,26 @@ using Autodesk.Revit.DB.Electrical;
 using Libraries.ErrorModelLib;
 using Libraries.ParametersLib;
 using Libraries.ParametersLib.UserWarningParametersLib;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Libraries.ElectricsLib.GroupService
 {
-    public class GroupPowers
+
+    /// <summary>
+    /// Мощности группы
+    /// </summary>
+    public class GroupPowers(Document doc, ErrorModel errorModel)
     {
-        private readonly Document _doc;
-        private readonly ErrorModel _errorModel;
+        private readonly Document _doc = doc;
+        private readonly ErrorModel _errorModel = errorModel;
 
-        private readonly ParameterValidatorMissingOrEmpty _parameterValidatorMissingOrEmpty;
+        private readonly ParameterValidatorMissingOrEmpty _parameterValidatorMissingOrEmpty = new ParameterValidatorMissingOrEmpty(doc, errorModel);
 
 
-        public GroupPowers(Document doc, ErrorModel errorModel)
-        {
-            _doc = doc;
-            _errorModel = errorModel;
-            _parameterValidatorMissingOrEmpty = new ParameterValidatorMissingOrEmpty(doc, errorModel);
-        }
-
+        /// <summary>
+        /// Словарь данных группы
+        /// </summary>
+        /// <param name="headPanels"></param>
+        /// <returns></returns>
         public Dictionary<string, GroupData> Get(Dictionary<string, ElementId> headPanels)
         {
             Dictionary<string, GroupData> result = [];
@@ -124,6 +123,12 @@ namespace Libraries.ElectricsLib.GroupService
         }
 
 
+        /// <summary>
+        /// Definition параметра
+        /// </summary>
+        /// <param name="panelId"></param>
+        /// <param name="paramName"></param>
+        /// <returns></returns>
         private Definition GetParameterDefinition(ElementId panelId, string paramName)
         {
             if (_doc.GetElement(panelId) is not FamilyInstance panel)

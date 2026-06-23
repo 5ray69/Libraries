@@ -3,8 +3,17 @@ using Libraries.LevelsLib;
 
 namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {
+    /// <summary>
+    /// Ошибка в параметре Обозначение цепей. Установлено значение, которое не соответствует правилам.
+    /// </summary>
     public class ErrorNoCorrectNaming
     {
+        /// <summary>
+        /// Сообщение пользователю
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <param name="baseEquipment"></param>
+        /// <returns></returns>
         public string MessageForUser(Document doc, FamilyInstance baseEquipment)
         {
             LevelAnyObject levelAnyObject = new(doc);
@@ -12,7 +21,7 @@ namespace Libraries.ElectricsLib.UserWarningElectricsLib
             string message = $@"
 У панели
 с именем: {baseEquipment.Symbol.FamilyName}
-с Id: {baseEquipment.Id.IntegerValue}
+с Id: {baseEquipment.Id.ToString}
 на уровне: {levelAnyObject.GetLevel(baseEquipment).Name}
 в параметре Обозначение цепей установлено значение 
 и не По проекту, и не С префиксами.

@@ -3,8 +3,17 @@ using Libraries.LevelsLib;
 
 namespace Libraries.ElectricsLib.UserWarningElectricsLib
 {
+    /// <summary>
+    /// у семейства нет типоразмера
+    /// </summary>
     public class FamilyEmptyType
     {
+        /// <summary>
+        /// Сообщение пользователю
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="doc"></param>
+        /// <returns></returns>
         public string MessageForUser(Element element, Document doc)
         {
             // у семейства не может быть уровня, только у разещенных экземпляров
@@ -13,7 +22,7 @@ namespace Libraries.ElectricsLib.UserWarningElectricsLib
 Имя семейства:
 {element.Name}
 
-Id семейства: {element.Id.IntegerValue}
+Id семейства: {element.Id.ToString}
 
 Уровень элемента: {new LevelAnyObject(doc).GetLevel(element)?.Name ?? "у семейства нет уровня, есть только у размещенных экземпляров семейства"}
 

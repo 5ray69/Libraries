@@ -1,10 +1,12 @@
 ﻿using Autodesk.Revit.DB;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Libraries.LevelsLib
 {
+    /// <summary>
+    /// Уровени в виде double, для сравнения отметок элементов с отметками уровней
+    /// </summary>
+    /// <param name="doc"></param>
+    /// <param name="zElement"></param>
     public class ElevationDouble(Document doc, double zElement)
     {
         //ОБЯЗАТЕЛЬНО ПРИВЕДЕНИЕ К ЦЕЛЫМ ЧИСЛАМ В СРАВНЕНИЯХ (усечение вместо округления)

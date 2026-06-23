@@ -1,22 +1,18 @@
 ﻿using Autodesk.Revit.DB;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Libraries.LevelsLib
 {
-    public class Levels
+    /// <summary>
+    /// Уровни
+    /// </summary>
+    /// <param name="doc"></param>
+    public class Levels(Document doc)
     {
+        private readonly Document _doc = doc;
         private List<Level> _cachedLevels;
         private Dictionary<string, ElementId> _levelDictionary;
         private Dictionary<double, ElementId> _elevationDict;
 
-        private readonly Document _doc;
-
-        public Levels(Document doc)
-        {
-            _doc = doc ?? throw new ArgumentNullException(nameof(doc));
-        }
 
         /// <summary>
         /// Получает кэшированную коллекцию уровней отсортированную в порядке возрастания высотных отметок

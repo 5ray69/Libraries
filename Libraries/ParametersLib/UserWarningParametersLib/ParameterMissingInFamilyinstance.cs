@@ -3,8 +3,18 @@ using Libraries.LevelsLib;
 
 namespace Libraries.ParametersLib.UserWarningParametersLib
 {
+    /// <summary>
+    /// У пользовательского семейства отсутствует параметр
+    /// </summary>
     public class ParameterMissingInFamilyinstance
     {
+        /// <summary>
+        /// Сообщение пользователю
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <param name="familyInstance"></param>
+        /// <param name="nameParameter"></param>
+        /// <returns></returns>
         public string MessageForUser(Document doc, FamilyInstance familyInstance, string nameParameter)
         {
             LevelAnyObject levelAnyObject = new(doc);
@@ -19,7 +29,7 @@ namespace Libraries.ParametersLib.UserWarningParametersLib
 имя семейства элемента:
 {familyInstance.Symbol.FamilyName}
 
-Id элемента: {familyInstance.Id.IntegerValue}
+Id элемента: {familyInstance.Id.ToString}
 
 уровень элемента: {new LevelAnyObject(doc).GetLevel(familyInstance)?.Name ?? "у семейства нет уровня, оно или вложено в родительское или размещено на грани"}
 

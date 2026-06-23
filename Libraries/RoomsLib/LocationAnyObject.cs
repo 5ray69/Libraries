@@ -2,14 +2,21 @@
 using Autodesk.Revit.DB.Electrical;
 using Libraries.ErrorModelLib;
 using Libraries.RoomsLib.UserWarningRoomsLib;
-using System;
 
 
 
 namespace Libraries.RoomsLib
 {
+    /// <summary>
+    /// Location любого объекта
+    /// </summary>
     public class LocationAnyObject()
     {
+        /// <summary>
+        /// Location любого объекта
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns></returns>
         public Object GetSpatialElementOrLocationXyzOrLine(Element element)
         {
             if (element is FamilyInstance familyInstance)
