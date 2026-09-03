@@ -11,13 +11,13 @@
 
     <!-- МЕТАДАННЫЕ ПАКЕТА (Заменяют блок <metadata>) -->
     <PackageId>5ray69.Libraries</PackageId>
-    <Version>6.0.0.50</Version>
+    <Version>6.0.0.52</Version>
     <Title>Libraries</Title>
     <Authors>5ray69</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>http://github.com/5ray69/Libraries.git/</PackageProjectUrl>
     <Description>Библиотека для Revit 2025 (.NET 8)</Description>
-    <PackageReleaseNotes>Migrated to .NET 8</PackageReleaseNotes>
+    <PackageReleaseNotes>Add Collectors</PackageReleaseNotes>
     <PackageTags>C#;package;Revit2025;net8</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     
@@ -40,6 +40,10 @@
       <HintPath>C:\Program Files\Autodesk\Revit 2025\RevitAPIUI.dll</HintPath>
       <Private>False</Private>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Collectors\UserWarningCollectors\" />
   </ItemGroup>
 
 </Project>
