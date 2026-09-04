@@ -192,9 +192,6 @@ publish/
 # in these scripts will be unencrypted
 PublishScripts/
 
-# NuGet Packages
-*.nupkg
-!nupkg/*.nupkg
 
 # NuGet Symbol Packages
 *.snupkg
@@ -365,3 +362,7 @@ MigrationBackup/
 FodyWeavers.xsd
 
 api key.rar
+
+# NuGet Packages
+*.nupkg
+!nupkg/*.nupkg
