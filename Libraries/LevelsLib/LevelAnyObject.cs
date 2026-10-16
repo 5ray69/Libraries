@@ -40,11 +40,12 @@ namespace Libraries.LevelsLib
             }
 
 
-            // HostFace is null у тех семейств, у которых рабочая плоскость это уровень, а не на грани геометрии
+            // HostFace is null у тех семейств, у которых рабочая плоскость это уровень, Размещены на уровне, а не на грани
             // Светильники, выключатели, розетки... и здесь полоса заземления, которая размещена на уровне
             if (
                 element is FamilyInstance familyInstance
                 && familyInstance.HostFace is null
+                && familyInstance.Host != null
                 && element.Category != null
                 && element.Category.Id != new ElementId(BuiltInCategory.OST_DetailComponents)  // элементы узлов
                 && element.Category.Id != new ElementId(BuiltInCategory.OST_GenericAnnotation)  // типовые аннотации (стрелка выносок)
