@@ -1,26 +1,30 @@
 ﻿using Autodesk.Revit.DB;
-using Libraries.ElectricsLib;
 
-namespace IntersectionsOfHolesAndWalls.LogicRevit.Collectors
+namespace Libraries.Collectors
 {
     /// <summary>
-    /// Коллектор имен уровней в основном файле проекта
+    /// Коллектор уровней
     /// </summary>
     public class LevelNamesCollector
     {
         /// <summary>
-        /// Список имен уровней
+        /// имена уровней
         /// </summary>
         public List<string> Names { get; }
 
         /// <summary>
-        /// Словарь ключ - имя уровня, значение - округленная отметка уровня
+        /// словарь ключ - имя уровня, значение - высотная отметка long
         /// </summary>
         public Dictionary<string, long> NamesElevations { get; }
 
+        /// <summary>
+        /// словарь ключ -  высотная отметка long, значение - имя уровня
+        /// </summary>
+        public Dictionary<long, string> ElevationsNames { get; }
+
 
         /// <summary>
-        /// Конструктор класса  
+        /// наполняет свойства класса
         /// </summary>
         /// <param name="doc"></param>
         public LevelNamesCollector(Document doc)
@@ -28,14 +32,16 @@ namespace IntersectionsOfHolesAndWalls.LogicRevit.Collectors
             FilteredElementCollector collector = new FilteredElementCollector(doc).OfClass(typeof(Level));
 
             NamesElevations = new Dictionary<string, long>();
+            ElevationsNames = new Dictionary<long, string>();
 
             // Быстро получаем точное количество элементов коллектора на стороне C++ ядра Revit
             int elCount = collector.GetElementCount();
 
             // Сразу выделяем точный объем памяти,
-            // избегая пересоздания массивов и для списка и для словаря
+            // избегая пересоздания массивов и для списка и для словарей
             List<string> tempNames = new List<string>(elCount);
             NamesElevations = new Dictionary<string, long>(elCount);  // инициализируем словарь
+            ElevationsNames = new Dictionary<long, string>(elCount);  // инициализируем словарь
 
             foreach (Element elem in collector)
             {
@@ -50,6 +56,7 @@ namespace IntersectionsOfHolesAndWalls.LogicRevit.Collectors
                     // Записываем вычисленное значение (если в проекте возможны дубликаты имен уровней,
                     // индексер перезапишет значение или можно использовать TryAdd / проверку)
                     NamesElevations[name] = roundElev;
+                    ElevationsNames[roundElev] = name;
                 }
             }
             // результат сортировки в свойство Names

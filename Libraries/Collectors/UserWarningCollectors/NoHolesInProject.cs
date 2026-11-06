@@ -1,7 +1,7 @@
 ﻿namespace Libraries.Collectors.UserWarningCollectors
 {
     /// <summary>
-    /// Нет ни одного семейства заглушки
+    /// В проекте не найдено ни одной заглушки/отверстия
     /// </summary>
     public class NoHolesInProject
     {

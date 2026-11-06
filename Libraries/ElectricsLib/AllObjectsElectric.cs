@@ -42,6 +42,7 @@ namespace Libraries.ElectricsLib
                         BuiltInCategory.OST_LightingFixtureTags,  // марки осветительных приборов
                         BuiltInCategory.OST_RoomTags,  // марки помещений
                         BuiltInCategory.OST_MultiCategoryTags,  // марки нескольких категорий
+                        BuiltInCategory.OST_MechanicalEquipmentTags,  // марки оборудования (заглушек)
                         BuiltInCategory.OST_ConduitTags,  // марки коробов
                         BuiltInCategory.OST_GenericAnnotation,  // типовые аннотации (стрелка выносок)
                         BuiltInCategory.OST_Dimensions,  // размеры

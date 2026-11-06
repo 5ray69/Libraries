@@ -11,13 +11,13 @@
 
     <!-- МЕТАДАННЫЕ ПАКЕТА (Заменяют блок <metadata>) -->
     <PackageId>5ray69.Libraries</PackageId>
-    <Version>6.0.0.56</Version>
+    <Version>6.0.0.57</Version>
     <Title>Libraries</Title>
     <Authors>5ray69</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>http://github.com/5ray69/Libraries.git/</PackageProjectUrl>
     <Description>Библиотека для Revit 2025 (.NET 8)</Description>
-    <PackageReleaseNotes>edit LevelAnyObject</PackageReleaseNotes>
+    <PackageReleaseNotes>add more collectors and add folder BaundingBoxs</PackageReleaseNotes>
     <PackageTags>C#;package;Revit2025;net8</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     
@@ -43,6 +43,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="BoundingBoxs\UserWarningBoundingBoxs\" />
+    <Folder Include="BoundingBoxs\InterfaceBoundingBoxs\" />
     <Folder Include="Collectors\UserWarningCollectors\" />
   </ItemGroup>
 

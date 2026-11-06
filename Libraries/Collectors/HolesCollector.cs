@@ -4,10 +4,10 @@ using Libraries.ErrorModelLib;
 using Libraries.LevelsLib;
 using Libraries.ParametersLib;
 
-namespace IntersectionsOfHolesAndWalls.LogicRevit.Collectors
+namespace Libraries.Collectors
 {
     /// <summary>
-    /// Коллектор семейств-заглушек
+    /// Коллектор заглушек/отверстий по именам семейств
     /// </summary>
     /// <param name="doc"></param>
     /// <param name="errorModel"></param>
@@ -18,14 +18,12 @@ namespace IntersectionsOfHolesAndWalls.LogicRevit.Collectors
         private readonly ErrorModel _errorModel = errorModel;
         private readonly ParameterValidatorIsMissing parameterValidatorIsMissing = new(errorModel);
 
-
         /// <summary>
         /// <para> Возвращает списки заглушек </para>
         /// <para> круглые в стенах, </para>
         /// <para> прямогульные в стенах </para>
-        /// <para> и круглые с прямоугольными в перекрытиях </para> 
+        /// <para> и круглые с прямоугольными в перекрытиях </para>
         /// </summary>
-        /// <returns></returns>
         public HolesSortingResult GetCollections()
         {
             var holesSortingResult = new HolesSortingResult();
@@ -143,7 +141,7 @@ namespace IntersectionsOfHolesAndWalls.LogicRevit.Collectors
                         break;
                 }
             }
-        return holesSortingResult;
+            return holesSortingResult;
         }
     }
 
@@ -154,22 +152,22 @@ namespace IntersectionsOfHolesAndWalls.LogicRevit.Collectors
     public class HolesSortingResult
     {
         /// <summary>
-        /// Список круглых заглушек в стенах
+        /// список круглых заглушек/отверстий в стенах
         /// </summary>
         public List<FamilyInstance> RoundWallHoles { get; } = [];
-
+        
         /// <summary>
-        /// Список прямоугольных заглушек в стенах
+        /// список прямоугольных заглушек/отверстий в стенах
         /// </summary>
         public List<FamilyInstance> RectangularWallHoles { get; } = [];
-
+        
         /// <summary>
-        /// Список круглых и прямоугольных заглушек в перекрытиях
+        /// список заглушек/отверстий в перекрытиях
         /// </summary>
         public List<FamilyInstance> HolesInTheFloor { get; } = [];
-
+        
         /// <summary>
-        /// Список всех заглушек в проекте
+        /// список всех заглушек/отверстий
         /// </summary>
         public List<FamilyInstance> HolesAll { get; } = [];
 

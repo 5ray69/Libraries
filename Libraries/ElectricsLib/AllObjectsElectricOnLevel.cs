@@ -40,6 +40,7 @@ namespace Libraries.ElectricsLib
                 new ElementId(BuiltInCategory.OST_MultiCategoryTags),  // марки нескольких категорий
                 new ElementId(BuiltInCategory.OST_ConduitTags),  // марки коробов
                 new ElementId(BuiltInCategory.OST_GenericAnnotation),  // типовые аннотации (стрелка выносок)
+                new ElementId(BuiltInCategory.OST_MechanicalEquipmentTags),  // марки оборудования (заглушек)
                 new ElementId(BuiltInCategory.OST_DetailComponents),  // элементы узлов
                 new ElementId(BuiltInCategory.OST_Dimensions),  // размеры
                 new ElementId(BuiltInCategory.OST_IOSDetailGroups)  // группы элементов узлов
