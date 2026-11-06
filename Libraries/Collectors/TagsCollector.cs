@@ -40,6 +40,7 @@ namespace Libraries.Collectors
             : this(doc, (IEnumerable<BuiltInCategory>)categories) { }
 
 
+
         /// <summary>
         /// <para> 2-й конструктор принимающий коллекцию </para>
         /// <para> IEnumerableBuiltInCategory — позволяет передавать уже готовые коллекции </para>
@@ -48,8 +49,11 @@ namespace Libraries.Collectors
         /// </summary>
         /// <param name="doc"></param>
         /// <param name="categories"></param>
+        /// <exception cref="System.ArgumentNullException"></exception>
         public TagsCollector(Document doc, IEnumerable<BuiltInCategory> categories)
         {
+            _doc = doc ?? throw new ArgumentNullException(nameof(doc)); // Сохраняем документ в поле!
+
             _symbolMap = new Dictionary<(BuiltInCategory, string, string), FamilySymbol>();
             _familyMap = new Dictionary<(BuiltInCategory, string), List<FamilySymbol>>();
 
@@ -143,8 +147,6 @@ namespace Libraries.Collectors
             }
             return [];  // пустой список
         }
-
-
     }
 }
 

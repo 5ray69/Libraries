@@ -27,50 +27,48 @@ namespace Libraries.ElectricsLib
         {
             ICollection<ElementId> elementIds = [];
 
-
-            // HashSet<int> - исключение дублирующихся элементов автоматически
-            // проверка пуш
-            HashSet<ElementId> annotationCategories =
-            [
-                new ElementId(BuiltInCategory.OST_TextNotes),  // текстовые примечания
-                new ElementId(BuiltInCategory.OST_Lines),  // линии детализации
-                new ElementId(BuiltInCategory.OST_ElectricalEquipmentTags),  // марки электрооборудования
-                new ElementId(BuiltInCategory.OST_LightingFixtureTags),  // марки осветительных приборов
-                new ElementId(BuiltInCategory.OST_RoomTags),  // марки помещений
-                new ElementId(BuiltInCategory.OST_MultiCategoryTags),  // марки нескольких категорий
-                new ElementId(BuiltInCategory.OST_ConduitTags),  // марки коробов
-                new ElementId(BuiltInCategory.OST_GenericAnnotation),  // типовые аннотации (стрелка выносок)
-                new ElementId(BuiltInCategory.OST_MechanicalEquipmentTags),  // марки оборудования (заглушек)
-                new ElementId(BuiltInCategory.OST_DetailComponents),  // элементы узлов
-                new ElementId(BuiltInCategory.OST_Dimensions),  // размеры
-                new ElementId(BuiltInCategory.OST_IOSDetailGroups)  // группы элементов узлов
-            ];
+            // HashSet<long> - исключение дублирующихся элементов автоматически
+            HashSet<long> annotationCategories =
+                                [
+                                            (long)BuiltInCategory.OST_TextNotes,  // текстовые примечания
+                                            (long)BuiltInCategory.OST_Lines,  // линии детализации
+                                            (long)BuiltInCategory.OST_ElectricalEquipmentTags,  // марки электрооборудования
+                                            (long)BuiltInCategory.OST_LightingFixtureTags,  // марки осветительных приборов
+                                            (long)BuiltInCategory.OST_RoomTags,  // марки помещений
+                                            (long)BuiltInCategory.OST_MechanicalEquipmentTags,  // марки оборудования (заглушек)
+                                            (long)BuiltInCategory.OST_MultiCategoryTags,  // марки нескольких категорий
+                                            (long)BuiltInCategory.OST_ConduitTags,  // марки коробов
+                                            (long)BuiltInCategory.OST_GenericAnnotation,  // типовые аннотации (стрелка выносок)
+                                            (long)BuiltInCategory.OST_Dimensions,  // размеры
+                                            (long)BuiltInCategory.OST_IOSDetailGroups  // группы элементов узлов
+                                            ];
 
             ICollection<BuiltInCategory> categories =
-            [
-                BuiltInCategory.OST_ElectricalFixtures,  // эл.приборы
-                BuiltInCategory.OST_ElectricalEquipment,  // электрооборудование
-                BuiltInCategory.OST_LightingDevices,  // выключатели
-                BuiltInCategory.OST_LightingFixtures,  // осветительные приборы
-                BuiltInCategory.OST_ConduitFitting,  // соед.детали коробов
-                BuiltInCategory.OST_CableTrayFitting,  // соед.детали кабельных лотков
-                BuiltInCategory.OST_FireAlarmDevices,  // пожарная сигнализация
-                BuiltInCategory.OST_MechanicalEquipment,  // оборудование
-                BuiltInCategory.OST_Conduit,  // короба
-                BuiltInCategory.OST_CableTray,  // кабельные лотки
-                BuiltInCategory.OST_TextNotes,  // текстовые примечания
-                BuiltInCategory.OST_Lines,  // линии детализации
-                BuiltInCategory.OST_ElectricalEquipmentTags,  // марки электрооборудования
-                BuiltInCategory.OST_LightingFixtureTags,  // марки осветительных приборов
-                BuiltInCategory.OST_RoomTags,  // марки помещений
-                BuiltInCategory.OST_MultiCategoryTags,  // марки нескольких категорий
-                BuiltInCategory.OST_ConduitTags,  // марки коробов
-                BuiltInCategory.OST_GenericAnnotation,  // типовые аннотации (стрелка выносок)
-                BuiltInCategory.OST_Dimensions,  // размеры
-                BuiltInCategory.OST_IOSDetailGroups,  // группы элементов узлов
-                BuiltInCategory.OST_DetailComponents,  // элементы узлов
-                BuiltInCategory.OST_ElectricalCircuit  // эл.цепи
-            ];
+                    [
+                                            BuiltInCategory.OST_ElectricalFixtures,  // эл.приборы
+                                            BuiltInCategory.OST_ElectricalEquipment,  // электрооборудование
+                                            BuiltInCategory.OST_LightingDevices,  // выключатели
+                                            BuiltInCategory.OST_LightingFixtures,  // осветительные приборы
+                                            BuiltInCategory.OST_ConduitFitting,  // соед.детали коробов
+                                            BuiltInCategory.OST_CableTrayFitting,  // соед.детали кабельных лотков
+                                            BuiltInCategory.OST_FireAlarmDevices,  // пожарная сигнализация
+                                            BuiltInCategory.OST_MechanicalEquipment,  // оборудование
+                                            BuiltInCategory.OST_Conduit,  // короба
+                                            BuiltInCategory.OST_CableTray,  // кабельные лотки
+                                            BuiltInCategory.OST_TextNotes,  // текстовые примечания
+                                            BuiltInCategory.OST_Lines,  // линии детализации
+                                            BuiltInCategory.OST_ElectricalEquipmentTags,  // марки электрооборудования
+                                            BuiltInCategory.OST_LightingFixtureTags,  // марки осветительных приборов
+                                            BuiltInCategory.OST_RoomTags,  // марки помещений
+                                            BuiltInCategory.OST_MechanicalEquipmentTags,  // марки оборудования (заглушек)
+                                            BuiltInCategory.OST_MultiCategoryTags,  // марки нескольких категорий
+                                            BuiltInCategory.OST_ConduitTags,  // марки коробов
+                                            BuiltInCategory.OST_GenericAnnotation,  // типовые аннотации (стрелка выносок)
+                                            BuiltInCategory.OST_Dimensions,  // размеры
+                                            BuiltInCategory.OST_IOSDetailGroups,  // группы элементов узлов
+                                            BuiltInCategory.OST_DetailComponents,  // элементы узлов
+                                            BuiltInCategory.OST_ElectricalCircuit  // эл.цепи
+                                            ];
 
             ElementMulticategoryFilter categoryFilter = new(categories);
             FilteredElementCollector collector = new FilteredElementCollector(_doc)
@@ -85,7 +83,7 @@ namespace Libraries.ElectricsLib
                 //Семейства принципиальных схем категории Типовые аннатации,
                 //тоже являются FamilyInstance и подпадают под другое условие
 
-                ElementId categoryId = element.Category.Id;
+                long categoryId = element.Category.Id.Value;
                 if (annotationCategories.Contains(categoryId))
                 {
                     // Для элементов аннотаций и др находящихся на четрежных видах и разрезах
