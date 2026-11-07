@@ -4,7 +4,7 @@ using Libraries.BoundingBoxs.UserWarningBoundingBoxs;
 using Libraries.ErrorModelLib;
 using Libraries.ParametersLib;
 
-namespace IntersectionOfHoles.LogicRevit
+namespace Libraries.BoundingBoxs
 {
     /// <summary>
     /// <para> Обработчик круглого отверстия в перекрытии </para>
