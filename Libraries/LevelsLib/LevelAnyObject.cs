@@ -2,17 +2,18 @@
 using Autodesk.Revit.DB.Electrical;
 using Libraries.ElectricsLib.UserWarningElectricsLib;
 using Libraries.ErrorModelLib;
-using System;
 
 namespace Libraries.LevelsLib
 {
-
     /// <summary>
     /// Извлекает уровень любого объекта электрика
     /// </summary>
     /// <param name="doc"></param>
     public class LevelAnyObject(Document doc)
     {
+        private static readonly ElementId _detailComponentsId = new(BuiltInCategory.OST_DetailComponents);
+        private static readonly ElementId _genericAnnotationId = new(BuiltInCategory.OST_GenericAnnotation);
+
         private readonly Document _doc = doc;
 
 
@@ -22,22 +23,22 @@ namespace Libraries.LevelsLib
         /// </summary>
         /// <param name="element"></param>
         /// <returns></returns>
-
-
         public Level GetLevel(Element element)
         {
             //НЕЛЬЗЯ МЕНЯТЬ ПОРЯДОК СЛЕДОВАНИЯ УСЛОВИЙ if
             //некоторые if подпадают под условия друг друга (семейства имеющие Host и HostFace)
 
+            ElementId levelId = element.LevelId;
 
             // Проверка на наличие свойства LevelId и извлечение его значения
             //familyinstance, соед.детали кабельных лотков, соед.детали коробов
             // LevelId у тех, у кого семейство НЕ на основе рабочей плоскости/НЕ на грани
             //if (element.LevelId != null && element.LevelId.IntegerValue != -1 )
-            if (element.LevelId != null && element.LevelId != ElementId.InvalidElementId)
+            if (levelId is not null && levelId != ElementId.InvalidElementId)
             {
-                return _doc.GetElement(element.LevelId) as Level;
+                return _doc.GetElement(levelId) as Level;
             }
+
 
 
             // HostFace is null у тех семейств, у которых рабочая плоскость это уровень, Размещены на уровне, а не на грани
@@ -45,10 +46,10 @@ namespace Libraries.LevelsLib
             if (
                 element is FamilyInstance familyInstance
                 && familyInstance.HostFace is null
-                && familyInstance.Host != null
-                && element.Category != null
-                && element.Category.Id != new ElementId(BuiltInCategory.OST_DetailComponents)  // элементы узлов
-                && element.Category.Id != new ElementId(BuiltInCategory.OST_GenericAnnotation)  // типовые аннотации (стрелка выносок)
+                && familyInstance.Host is not null
+                && element.Category is not null
+                && element.Category.Id != _detailComponentsId         // элементы узлов
+                && element.Category.Id != _genericAnnotationId        // типовые аннотации (стрелка выносок)
                 )
             {
                 return familyInstance.Host as Level;
@@ -71,22 +72,33 @@ namespace Libraries.LevelsLib
 
             if (element is ElectricalSystem electricalSystem)
             {
-                var baseEquipment = electricalSystem.BaseEquipment;
-                if (baseEquipment == null) // цепь не подключена "код завершил работу" с предупреждением пользователю
+                FamilyInstance baseEquipment = electricalSystem.BaseEquipment;
+                if (baseEquipment is null) // цепь не подключена "код завершил работу" с предупреждением пользователю
                 {
                     ErrorModel errorModel = new();
                     errorModel.UserWarning(new NoConnectCircuit().MessageForUser(electricalSystem));
+                    return null;
                 }
 
-                if (baseEquipment?.LevelId != null && baseEquipment.LevelId != ElementId.InvalidElementId)
-                {
-                    return _doc.GetElement(baseEquipment.LevelId) as Level;
-                }
+                // Делегируем определение уровня самому щиту: сработает и для щита на уровне,
+                // и для щита на рабочей плоскости, и для щита на грани стены (HostFace != null)
+                return GetLevel(baseEquipment);
 
-                if (baseEquipment?.Host is Level baseHostLevel)
-                {
-                    return baseHostLevel;
-                }
+                // Единая логика для щита и обычных семейств: baseEquipment имеет тип FamilyInstance.
+                // Когда он попадает в GetLevel(baseEquipment), код последовательно проверяет:
+                // - привязку через LevelId;
+                // - размещение на уровне(HostFace is null && Host is Level);
+                // - размещение на грани(HostFace: Reference) — и автоматически вызывает GetСlosestLevel(baseEquipment) по его нижней точке.
+                // Нет риска бесконечной рекурсии: electricalSystem.BaseEquipment возвращает именно FamilyInstance(оборудование),
+                // а не другую ElectricalSystem, поэтому повторного входа в ветку if (element is ElectricalSystem) не произойдёт.
+                // Меньше дублирования кода: больше не нужно отдельно поддерживать копию проверок baseEquipment.LevelId
+                // и baseEquipment.Host внутри ветки электрической цепи:
+
+                //ElementId baseLevelId = baseEquipment.LevelId;
+                //if (baseLevelId is not null && baseLevelId != ElementId.InvalidElementId)
+                //    return _doc.GetElement(baseLevelId) as Level;
+                //if (baseEquipment?.Host is Level baseHostLevel)
+                //    return baseHostLevel;
             }
 
 
@@ -96,23 +108,7 @@ namespace Libraries.LevelsLib
             // https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/patterns#property-patterns
             if (element is FamilyInstance { HostFace: Reference })
             {
-                double zElement = 0;
-
-                if (element.Location is LocationCurve locationCurve)
-                {
-                    //нижняя точка линии, та у которой значение высотной отметки меньше
-                    double minZ = Math.Round(
-                        Math.Min(locationCurve.Curve.GetEndPoint(0).Z, locationCurve.Curve.GetEndPoint(1).Z),
-                        3, MidpointRounding.AwayFromZero);
-                    zElement = minZ;
-                }
-                else if (element.Location is LocationPoint locationPoint)
-                {
-                    double zPoint = Math.Round(locationPoint.Point.Z, 3, MidpointRounding.AwayFromZero);
-                    zElement = zPoint;
-                }
-
-                return new ElevationDouble(_doc, zElement).AboveLevel();
+                return GetСlosestLevel(element);
             }
 
 
@@ -123,9 +119,8 @@ namespace Libraries.LevelsLib
             // марки нескольких категорий, марки коробов, типовые аннотации (стрелка выносок), элементы узлов, размеры
             if (element.OwnerViewId != null && _doc.GetElement(element.OwnerViewId) is ViewPlan ownerView)
             {
-                return ownerView.GenLevel as Level;
+                return ownerView.GenLevel;
             }
-
 
             return null;
         }
@@ -144,10 +139,12 @@ namespace Libraries.LevelsLib
 
             if (element.Location is LocationCurve locationCurve)
             {
-                //нижняя точка линии, та у которой значение высотной отметки меньше
+                // нижняя точка линии, та у которой значение высотной отметки меньше
+                Curve curve = locationCurve.Curve;
                 double minZ = Math.Round(
-                    Math.Min(locationCurve.Curve.GetEndPoint(0).Z, locationCurve.Curve.GetEndPoint(1).Z),
-                    3, MidpointRounding.AwayFromZero);
+                                        Math.Min(curve.GetEndPoint(0).Z, curve.GetEndPoint(1).Z),
+                                        3, MidpointRounding.AwayFromZero
+                                        );
                 zElement = minZ;
             }
             else if (element.Location is LocationPoint locationPoint)
@@ -157,97 +154,6 @@ namespace Libraries.LevelsLib
             }
 
             return new ElevationDouble(_doc, zElement).AboveLevel();
-
         }
-
     }
 }
-
-
-
-
-
-//public Level GetLevel(Element element)
-//{
-//    if (element == null)
-//        return null;
-
-//    // 1. Прямой LevelId (самый быстрый путь)
-//    if (element.LevelId != null && element.LevelId.IntegerValue != -1)
-//        return _doc.GetElement(element.LevelId) as Level;
-
-//    // 2. Type-based логика
-//    switch (element)
-//    {
-//        case FamilyInstance fi
-//            when fi.HostFace == null
-//            && fi.Category?.CategoryType == CategoryType.Model:
-//            return fi.Host as Level;
-
-//        case Conduit conduit
-//            when conduit.ReferenceLevel is Level refLevel:
-//            return refLevel;
-
-//        case CableTray tray
-//            when tray.ReferenceLevel is Level trayLevel:
-//            return trayLevel;
-
-//        case ElectricalSystem system:
-//            return GetElectricalSystemLevel(system);
-
-//        case FamilyInstance fi
-//            when fi.HostFace != null:
-//            return GetLevelFromElevation(fi);
-
-//        default:
-//            break;
-//    }
-
-//    // 3. View-specific элементы → ТОЛЬКО ViewPlan
-//    if (element.OwnerViewId != ElementId.InvalidElementId
-//        && _doc.GetElement(element.OwnerViewId) is ViewPlan viewPlan)
-//    {
-//        return viewPlan.GenLevel;
-//    }
-
-//    return null;
-//}
-
-
-//private Level GetElectricalSystemLevel(ElectricalSystem system)
-//{
-//    var baseEquipment = system.BaseEquipment;
-
-//    if (baseEquipment == null)
-//    {
-//        new ErrorModel()
-//            .UserWarning(new NoConnectCircuit().MessageForUser(system));
-//        return null;
-//    }
-
-//    if (baseEquipment.LevelId != null && baseEquipment.LevelId.IntegerValue != -1)
-//        return _doc.GetElement(baseEquipment.LevelId) as Level;
-
-//    return baseEquipment.Host as Level;
-//}
-
-
-//private Level GetLevelFromElevation(FamilyInstance fi)
-//{
-//    double z = fi.Location switch
-//    {
-//        LocationCurve lc =>
-//            Math.Round(
-//                Math.Min(
-//                    lc.Curve.GetEndPoint(0).Z,
-//                    lc.Curve.GetEndPoint(1).Z),
-//                3, MidpointRounding.AwayFromZero),
-
-//        LocationPoint lp =>
-//            Math.Round(lp.Point.Z, 3, MidpointRounding.AwayFromZero),
-
-//        _ => 0
-//    };
-
-//    return new ElevationDouble(_doc, z).AboveLevel();
-//}
